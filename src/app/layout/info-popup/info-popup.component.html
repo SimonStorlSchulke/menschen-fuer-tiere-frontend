@@ -1,7 +1,7 @@
 @if(newsData$ | async; as newsData) {
     <div class="popup sui flex-y gap-3 p-4 shadow">
         <div class="sui flex-x">
-            <span class="sui pt-3"><span class="text-sugar icon">!</span></span>
+            <span class="sui pt-3"><span class="text-oswald icon">!</span></span>
             <div class="sui grow-1" style="pointer-events: none;"></div>
             <span class="close sui pt-3" (click)="hideIdsForever(getIds(newsData))">✖</span>
         </div>

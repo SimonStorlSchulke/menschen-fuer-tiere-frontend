@@ -3,7 +3,8 @@
 
 
 nav {
-  font-family: more-sugar;
+  font-family: oswald, system-ui;
+  font-weight: 500;
   line-height: 1.1;
   opacity: 0;
   transition: opacity 0.3s;
@@ -11,6 +12,7 @@ nav {
   z-index: 22;
   width: 100dvw;
   pointer-events: none;
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.22);
 
   &.shown {
     opacity: 1;
@@ -169,6 +171,7 @@ nav.mobile .dropdown-container {
     display: none;
     overflow: hidden;
     background-color: $primary-bg;
+    color: #fff;
     flex-direction: column;
     margin-left: -12px;
 

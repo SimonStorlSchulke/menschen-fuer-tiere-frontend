@@ -40,7 +40,7 @@ function convertButtonLinks(linkUrl: string) {
     return linkUrl.replace("-BUTTON-SECONDARY", "").replace('href=', 'class="button secondary sui my-3 inline-block" href=');
   }
   if(linkUrl.includes("-BUTTON-CTO")) {
-    return linkUrl.replace("-BUTTON-CTO", "").replace('href=', 'class="button cto sui my-3 inline-block" href=');
+    return linkUrl.replace("-BUTTON-CTO", "").replace('href=', 'class="button primary sui my-3 inline-block" href=');
   }
   if(linkUrl.includes("-BUTTON")) {
     return linkUrl.replace("-BUTTON", "").replace('href=', 'class="button primary sui my-3 inline-block" href=');

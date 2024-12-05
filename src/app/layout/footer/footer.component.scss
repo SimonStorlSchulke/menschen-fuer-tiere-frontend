@@ -12,29 +12,21 @@
   height: 800px;
   max-height: 70dvh;
   background-size: cover;
-  background-position: 520px center;
+  background-position: center;
   position: relative;
   overflow: hidden;
+  color: #fff;
 
   app-article {
     display: flex;
     align-items: center;
-    width: 50%;
-    min-width: min(600px, 100%);
-    max-width: 100%;
-    background-color: $primary-bg;
+    width: 100%;
+    background: transparentize($primary, 0.5);
     position: absolute;
     height: 200%;
-    border-radius: 0 1200px 1200px 0;
     padding-left: min(100px, 10dvw);
     padding-right: min(100px, 10dvw);
     transition: width 0.5s, padding 0.5s;
-
-    &:hover {
-      width: calc(50% + 20px);
-      min-width: min(620px, 100%);
-      padding-right: min(120px, 10dvw);
-    }
   }
 }
 

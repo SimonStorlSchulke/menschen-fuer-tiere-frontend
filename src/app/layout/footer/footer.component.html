@@ -1,5 +1,5 @@
 @if (footerData$ | async; as footerData) {
-  <div class="banner"
+  <div class="banner bg-lightgreen"
        style="background-image: linear-gradient(90deg, #0006, #0002), url({{footerData.background | strapiMedia : 'xlarge'}});">
     <app-article class="sui py-3" [sections]="footerData.article"/>
   </div>

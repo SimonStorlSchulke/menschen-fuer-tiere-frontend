@@ -2,14 +2,14 @@
 @use "variables" as *;
 
 .animal-tile {
-    width: 230px;
+    width: 260px;
     height: 290px;
     transition: transform 0.23s, box-shadow 0.4s;
     display: block;
     background-color: $neutral100;
     position: relative;
     color: inherit;
-    border-radius: 12px;
+    border-radius: 6px;
     overflow: hidden;
 
     img {
@@ -44,7 +44,8 @@
         flex-direction: column;
         gap: 8px;
         align-items: start;
-        font-family: more-sugar;
+        font-family: oswald, system-ui;
+
         color: #fff;
 
         span {

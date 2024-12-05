@@ -4,8 +4,9 @@
 .button:not(.unstyled),
 button:not(.unstyled) {
     border: none;
-    border-radius: 100px;
-    font-family: more-sugar;
+    border-radius: 8px;
+    font-family: oswald, system-ui;
+
     padding: 0.5em 1.2em;
     cursor: pointer;
     transition: background-color 0.27s, outline-color 0.27s, color 0.27s, box-shadow 0.3s;
@@ -25,22 +26,12 @@ button:not(.unstyled) {
     }
 
     &.primary {
-        background-color: $primary;
+        background-color: $yellow;
         color: #fff;
 
         &:hover {
-            background-color: $primary-h1;
-        }
-    }
-
-    &.cto, &.call-to-action {
-        background-color: $cto;
-        color: #fff;
-        transition: transform 0.27s, background-color 0.27s;
-
-        &:hover {
-            background-color: $cto-d1;
-            transform: scale(1.05) translateY(-1%);
+          background-color: $yellow-h1;
+          color: #373737;
         }
     }
 
@@ -52,7 +43,7 @@ button:not(.unstyled) {
 
         &:hover {
             outline-color: $primary;
-            color: $primary;
+            color: #fff;
             background-color: $primary-bg;
         }
     }
@@ -106,10 +97,10 @@ button:disabled {
     transition: background-color 0.25s, color 0.25s;
     min-width: 42px;
     &:first-child {
-      border-radius: 100px 0 0 100px;
+      border-radius: 8px 0 0 8px;
     }
     &:last-child {
-      border-radius: 0 100px 100px 0;
+      border-radius: 0 8px 8px 0;
     }
     &.active {
       background-color: $primary;
@@ -120,7 +111,7 @@ button:disabled {
     }
 
     &:only-child {
-      border-radius: 100px;
+      border-radius: 8px;
     }
   }
 }

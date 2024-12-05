@@ -5,13 +5,13 @@ body {
   font-size: $fontsize-default;
   color: $text;
   line-height: 1.65;
-  background-color: $neutral150;
+  background-color: $neutral100;
 }
 h1,
 h2 {
-  font-family: more-sugar;
+  font-family: oswald, system-ui;
   color: $primary;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.25;
 }
 
@@ -26,16 +26,23 @@ h2 {
 }
 
 h3 {
-  font-family: more-sugar;
+  font-family: oswald, system-ui;
   font-size: $fontsize-h3;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 h4,
 h5,
 h6 {
   font-size: $fontsize-h4;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.bg-lightgreen {
+  color: #111;
+  h1, h2 {
+    color: #fff;
+  }
 }
 
 .text-primary {
@@ -46,9 +53,10 @@ h6 {
   color: $neutral600;
 }
 
-.text-sugar {
-  font-family: more-sugar;
-  font-weight: 400;
+.text-oswald {
+  font-family: oswald, system-ui;
+
+  font-weight: 500;
 }
 
 .text-center {

@@ -51,7 +51,7 @@
         stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
       </label>
     </div>
-    <button [disabled]="!valid" (click)="send()" class="sui cto large">Jetzt senden</button>
+    <button [disabled]="!valid" (click)="send()" class="sui primary large">Jetzt senden</button>
     @if(sentStatus == HttpStatusCode.TooManyRequests) {
       <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
         einmal.</p>

@@ -1,6 +1,6 @@
 @if (pageData) {
     <div class="sui wrapper flex-y my-4 gap-3">
-        <h1 class="sui text-sugar mb-0"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'../'">&lt; </a>{{ pageData.name }}</h1>
+        <h1 class="sui text-oswald mb-0"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'../'">&lt; </a>{{ pageData.name }}</h1>
     </div>
     <app-article [sections]="pageData.article" />
 
@@ -18,4 +18,3 @@
   } @else {
     Artikel konnte nicht geladen werden
   }
-  

@@ -3,19 +3,19 @@
     @if (images) {
       <div class="sui flex-x w-100 content" [class.jc-space-between]="multiImageMode"
            [class.jc-center]="!multiImageMode">
-  
+
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-sugar jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
         }
         <div class="sui flex-y ai-center jc-space-evenly gap-3 w-100 closable"
-  
+
         >
           <img
             class="sui rounded-2 closable"
             [alt]="images[currentIndex].alternativeText"
             [src]="currentSource"
           />
-  
+
           <span class="description sui py-2">
         @if (multiImageMode) {
           {{ currentIndex + 1 }}/{{ images.length }}
@@ -24,10 +24,10 @@
       </span>
         </div>
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-sugar jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
         }
       </div>
-  
+
     }
   </dialog>
 }
@@ -37,12 +37,12 @@
     @if (images) {
       <div class="sui flex-x w-100 mh-100" [class.jc-space-between]="multiImageMode"
            [class.jc-center]="!multiImageMode">
-  
+
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-sugar jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
         }
         <div class="sui flex-y ai-center jc-space-evenly gap-3 w-100 relative"
-  
+
         >
           <img
             class="sui rounded-2 c-pointer"
@@ -50,7 +50,7 @@
             [src]="currentSource"
             (click)="lightboxSv.openFullscreen(images, currentIndex, getFullscreenStartingSources())"
           />
-  
+
           <span class="description sui py-2">
         @if (multiImageMode) {
           {{ currentIndex + 1 }}/{{ images.length }}
@@ -59,10 +59,10 @@
       </span>
         </div>
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-sugar jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
         }
       </div>
-  
+
     }
   </div>
 }

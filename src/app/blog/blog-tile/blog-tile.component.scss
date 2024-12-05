@@ -3,11 +3,12 @@
 
 .blogtile {
   display: flex;
-  background: $neutral100;
+  background: $neutral150;
   height: 310px;
-  border-radius: 12px;
+  border-radius: 6px;
   transition: transform 0.23s, box-shadow 0.4s;
   position: relative;
+  box-shadow: 4px 4px 16px #0002;
 
   &:hover {
     transform: scale(1.01);
@@ -16,6 +17,7 @@
     button.secondary {
       background-color: $primary-bg;
       box-shadow: 1px 2px 4px #0000003f;
+      color: #fff;
     }
 }
 }
@@ -25,7 +27,7 @@ img {
   width: 320px;
   min-width: 320px;
   object-fit: cover;
-  border-radius: 12px 0 0 12px;
+  border-radius: 6px 0 0 6px;
 }
 
 .tile-content {
@@ -37,8 +39,9 @@ img {
   position: relative;
 
   h3 {
-    font-family: more-sugar;
-    font-weight: 400;
+    font-family: oswald, system-ui;
+
+    font-weight: 500;
     font-size: $fontsize-h3;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -72,7 +75,7 @@ img {
   img {
     width: 100%;
     height: 320px;
-    border-radius: 12px 12px 0 0px;
+    border-radius: 12px 12px 0 0;
   }
 
   h3 {
@@ -86,5 +89,5 @@ img {
       -webkit-line-clamp: 5;
     }
   }
-  
+
 }

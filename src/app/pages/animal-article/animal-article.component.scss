@@ -5,6 +5,7 @@ h1 .gender-icon {
   color: #fff;
   width: calc($fontsize-h1 * 1);
   height: calc($fontsize-h1 * 1.4);
+  transform: translateY(0.4rem);
   display: inline-block;
 }
 
@@ -13,12 +14,10 @@ h1 .gender-icon {
     max-width: fit-content;
 
     .tab {
-      background: mix($accent, #fff, 60%);
       border-radius: 16px 16px 0 0;
       font-size: $fontsize-h3;
       padding: 12px 24px;
       margin-right: 3px;
-      box-shadow: 0 -4px 12px #0002;
 
       cursor: pointer;
       transition:
@@ -27,8 +26,10 @@ h1 .gender-icon {
         margin 0.25s;
 
       &.active {
-        color: #fff;
-        background: $cto;
+        color: $primary;
+        text-decoration: underline;
+        text-decoration-thickness: 8px;
+        text-underline-offset: 6px;
       }
 
       &:not(.active):hover {
@@ -39,18 +40,16 @@ h1 .gender-icon {
       .gender-icon {
         width: calc($fontsize-h3 * 1.7);
         height: calc($fontsize-h3 * 1.7);
+        transform: translateY(0.3rem);
       }
 
       &.active {
-        .gender-icon {
-          filter: invert(1) brightness(1.7);
-        }
+
       }
     }
   }
 
   .tab-body {
-    background-color: $accent;
     border-radius: 0 16px 16px 16px;
 
     .cv-image-wrapper {
@@ -72,7 +71,8 @@ h1 .gender-icon {
         flex-direction: column;
         gap: 8px;
         align-items: start;
-        font-family: more-sugar;
+        font-family: oswald, system-ui;
+
         color: #fff;
 
         span {

@@ -1,6 +1,6 @@
 @if (article) {
     <div class="sui wrapper flex-x jc-space-between my-4 gap-3">
-        <h1 class="sui text-sugar mb-1 mb-3"><a class="back-link" [routerLink]="'../'">&lt; </a>{{ article.title }}</h1>
+        <h1 class="sui text-oswald mb-1 mb-3"><a class="back-link" [routerLink]="'../'">&lt; </a>{{ article.title }}</h1>
 
         <span class="date">{{ article.publishedAt | date: "dd.MMMM.yyyy" }}</span>
     </div>
@@ -8,4 +8,3 @@
   } @else {
     Tier nicht gefunden
   }
-  
