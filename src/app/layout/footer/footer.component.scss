@@ -33,7 +33,7 @@
 .footer {
   background-color: $primary-d1;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 
   .footer-top {
     display: grid;
@@ -107,8 +107,7 @@
 }
 
 img {
-  width: 175px;
-  height: 175px;
+  width: 250px;
 }
 
 :host ::ng-deep article {

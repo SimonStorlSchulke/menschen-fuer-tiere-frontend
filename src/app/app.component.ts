@@ -44,9 +44,9 @@ export class AppComponent implements OnInit{
           return;
         }
         if (title) {
-          this.titleSv.setTitle(`${title} | Herzenshunde Griechenland e.V.`);
+          this.titleSv.setTitle(`${title} | Menschen für Tiere e.V. Spaichingen`);
         } else {
-          this.titleSv.setTitle("Herzenshunde Griechenland e.V.");
+          this.titleSv.setTitle("Menschen für Tiere e.V. Spaichingen");
         }
       });
 

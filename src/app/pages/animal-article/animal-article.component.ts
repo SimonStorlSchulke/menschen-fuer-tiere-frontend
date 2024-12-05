@@ -59,7 +59,7 @@ export class AnimalArticleComponent {
         }
         this.article = animalArticle;
         this.selectedCv = this.article!.preselectedAnimalId;
-        this.titleSv.setTitle(`${this.getDefaultTitle()} | Herzenshunde Griechenland e.V.`);
+        this.titleSv.setTitle(`${this.getDefaultTitle()} | Menschen für Tiere e.V. Spaichingen`);
       });
   }
 

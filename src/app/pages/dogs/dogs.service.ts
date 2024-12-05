@@ -7,12 +7,6 @@ export class DogsService {
 
   filters = new Map<string, Map<string, boolean>>([
     [
-      'inGermany',
-      new Map([
-        ['inGermany', false],
-      ]),
-    ],
-    [
       'size',
       new Map([
         ['small', false],

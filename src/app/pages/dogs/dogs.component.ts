@@ -89,7 +89,6 @@ export class DogsComponent {
 
   getIsVisibleFunction(): (animal: Animal) => boolean {
     return (animal: Animal) => {
-      let inGermany = !this.isFilterActive('inGermany', 'inGermany') || this.animalSv.isInGermany(animal);
 
       let fitsSize = !this.activeFilter('size');
       if (animal.shoulderHeightCm) {
@@ -111,12 +110,11 @@ export class DogsComponent {
         if (this.isFilterActive('age', 'old') && yearsOld >= 7) fitsAge = true;
       }
 
-      return fitsSize && fitsGender && fitsAge && inGermany;
+      return fitsSize && fitsGender && fitsAge;
     };
   }
 
   getExplainer() {
-
     const sizeTexts = new Map<string, string>([
       ["small", "mit bis zu 30cm Schulterhöhe"],
       ["medium", "mit 30-55cm Schulterhöhe"],
@@ -133,9 +131,8 @@ export class DogsComponent {
     const genderText = gender ? (gender == "male" ? "Rüden" : "Hündinnen") : "Hunde";
     const sizeText = sizeTexts.get(this.activeFilter("size") ?? "") ?? "";
     const ageText = ageTexts.get(this.activeFilter("age") ?? "") ?? "";
-    const inGermanyText = this.isFilterActive('inGermany', 'inGermany') ? "in Deutschland" : "";
 
-    const text = [genderText, inGermanyText, sizeText, ageText].join(" ");
+    const text = [genderText, sizeText, ageText].join(" ");
     if(text.trim() == "Hunde") return "";
     return text;
   }
