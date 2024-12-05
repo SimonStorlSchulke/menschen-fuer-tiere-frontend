@@ -1,0 +1,31 @@
+@use "colors" as *;
+
+.popup {
+    top: 120px;
+    z-index: 50;
+    background-color: $primary-bg;
+    background-color: #fff;
+    font-size: 1rem;
+    padding-top: 0;
+
+    &:not(:has(.news)) {
+        display: none;
+    }
+
+    .icon {
+        font-size: 1.4rem;
+        color: $cto;
+        outline: 2px solid $cto;
+        padding: 0 0.6rem;
+        border-radius: 100px;
+    }
+
+    .close {
+        font-size: 1.3rem;
+        cursor: pointer;
+
+        &:hover {
+            color: $cto;
+        }
+    }
+}

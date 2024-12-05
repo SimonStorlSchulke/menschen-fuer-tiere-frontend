@@ -1,0 +1,21 @@
+@if (pageData) {
+    <div class="sui wrapper flex-y my-4 gap-3">
+        <h1 class="sui text-sugar mb-0"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'../'">&lt; </a>{{ pageData.name }}</h1>
+    </div>
+    <app-article [sections]="pageData.article" />
+
+    <!-- todo - clean up this disgusting workaround -->
+    @switch (route) {
+      @case("/helfen/mitgliedsantrag") {
+        <app-member-application/>
+
+      }
+      @case("/helfen/patenschaftsantrag") {
+        <app-sponsorship-application/>
+      }
+    }
+
+  } @else {
+    Artikel konnte nicht geladen werden
+  }
+  

@@ -1,0 +1,88 @@
+@if (article) {
+  <div class="sui wrapper">
+    <div class="sui pt-4">
+      <h1 class="sui mb-3 flex-x ai-center gap-4">
+        <a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/hunde'">&lt; </a>
+        {{ getDefaultTitle() }}
+      </h1>
+
+      <div class="cvs">
+        <div class="tabs sui flex-x wrap">
+          @for (animal of article.animals; track animal.id) {
+            <div class="tab sui p-3 text-sugar ai-center flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
+              <span>{{ article.animals.length > 1 ? animal.name : "Steckbrief" }}</span>
+              <img [alt]="animal.gender" class="gender-icon" [src]="getGendericon(animal)" />
+            </div>
+          }
+        </div>
+
+        <div class="tab-body sui p-4 flex-y gap-5 shadow">
+          <div class="cv-grid">
+            <div class="cv-attributes">
+              @if (article.animals.length > 1) {
+                <h2 class="text-sugar">Steckbrief</h2>
+              }
+              <div class="sui flex-y gap-2">
+                @if (cAnimal.birthday) {
+                  <span><strong>Alter:</strong> {{ animalSv.getAgeString(cAnimal) }}</span>
+                }
+                @if (cAnimal.castrated != null) {
+                  <span><strong>Kastriert:</strong> {{ cAnimal.castrated ? "ja" : "nein" }}</span>
+                }
+                @if (cAnimal.shoulderHeightCm != null) {
+                  <span><strong>{{ isAdult() ? "Schulterhöhe" : "Geschätzte Endschulterhöhe" }}: </strong>ca. {{ cAnimal.shoulderHeightCm }}cm</span>
+                }
+                @if (cAnimal.weightKg != null) {
+                  <span><strong>{{ isAdult() ? "Gewicht" : "Geschätztes Endgewicht" }}: </strong>ca. {{ cAnimal.weightKg }}kg</span>
+                }
+
+                @if (cAnimal.diseases?.trim()) {
+                  <span><strong>Gesundheit:</strong> {{ cAnimal.diseases }}</span>
+                }
+
+                @if (cAnimal.tolerating?.trim()) {
+                  <span><strong>Verträglichkeit:</strong> {{ cAnimal.tolerating }}</span>
+                }
+
+                @if (cAnimal.suitedFor?.trim()) {
+                  <span><strong>Geeignet für:</strong> {{ cAnimal.suitedFor }}</span>
+                }
+              </div>
+            </div>
+            <div class="cv-image-wrapper">
+              <img class="cv-img" [alt]="cAnimal.thumbnail?.alternativeText" [src]="cAnimal.thumbnail | strapiMedia: 'medium'" />
+              <div class="bubbles">
+                <span class="emergency" *ngIf="cAnimal.emergency">Notfall</span>
+                <span *ngIf="animalSv.isInGermany(cAnimal)">{{ cAnimal.whereInGermany }}</span>
+              </div>
+            </div>
+            <div class="cv-description">
+              <span class="short-description" [innerHTML]="cAnimal.description"></span>
+            </div>
+          </div>
+
+          @if(cAnimal.paten && cAnimal.paten.trim().length > 0) {
+            <h4 class="sui w-100 text-center text-sugar pate">Vielen Dank an {{cAnimal.paten}} für die Übernahme der Patenschaft für {{cAnimal.name}}!</h4>
+          }
+
+          <div class="sui flex-x gap-3">
+            <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
+            <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+  <app-article [sections]="article.sections" />
+  <div class="sui wrapper flex-y ai-center mt-5 mb-5 gap-3">
+    <h3 class="text-sugar">{{ getCtoText() }}</h3>
+
+    <div class="sui flex-x gap-3">
+      <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
+      <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
+    </div>
+  </div>
+} @else {
+  Tier nicht gefunden
+}

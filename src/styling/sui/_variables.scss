@@ -1,0 +1,44 @@
+$spacer-factor: 16px;
+
+$spacer0: 0;
+$spacer1: ($spacer-factor * 0.25);
+$spacer2: ($spacer-factor * 0.5);
+$spacer3: ($spacer-factor);
+$spacer4: ($spacer-factor * 1.5);
+$spacer5: ($spacer-factor * 2.5);
+$spacer6: ($spacer-factor * 3.8);
+
+$spacers: $spacer0, $spacer1, $spacer2, $spacer3, $spacer4, $spacer5, $spacer6;
+
+$percentages: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+$breakpoint-small: 800px;
+$breakpoint-mobile: 940px;
+
+:root {
+    --fontsize-small: 1rem;
+    --fontsize-default: 1.2rem;
+    --fontsize-h1: 3.8rem;
+    --fontsize-h2: 2.8rem;
+    --fontsize-h3: 1.85rem;
+    --fontsize-h4: 1.35rem;
+  }
+
+
+  @media (max-width: $breakpoint-mobile) {
+    :root {
+        --fontsize-small: 0.9rem;
+        --fontsize-default: 1rem;
+        --fontsize-h1: 2.8rem;
+        --fontsize-h2: 2rem;
+        --fontsize-h3: 1.6rem;
+        --fontsize-h4: 1.35rem;
+      }
+  }
+
+$fontsize-small: var(--fontsize-small);
+$fontsize-default: var(--fontsize-default);
+$fontsize-h1: var(--fontsize-h1);
+$fontsize-h2: var(--fontsize-h2);
+$fontsize-h3: var(--fontsize-h3);
+$fontsize-h4: var(--fontsize-h4);

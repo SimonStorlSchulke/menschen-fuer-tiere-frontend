@@ -1,0 +1,10 @@
+<section
+  class="sui wrapper imageposition-{{ sectionData.imagePosition }} {{
+    sectionData.__component
+  }}"
+>
+  <div [innerHTML]="sectionData.text | strapiRichText"></div>
+  
+  <app-strapi-media [imagePosition]="sectionData.imagePosition" [media]="sectionData.images" [asGallery]="sectionData.gallery"/>
+
+</section>

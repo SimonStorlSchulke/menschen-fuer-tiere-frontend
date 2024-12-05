@@ -1,0 +1,16 @@
+ :host {
+    display: flex;
+
+    svg {
+        width: inherit;
+        height: inherit;
+      }
+      
+      .inline-icon {
+        scale: 1.25;
+        vertical-align: baseline;
+        transform: translateY(-0.125em);
+        display: inline-block;
+        margin-right: clamp(8px, 0.25em, 10px);
+      }
+  }

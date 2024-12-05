@@ -1,0 +1,20 @@
+<a class="blogtile" [routerLink]="'/news/' + blog.id">
+  @if(!blog.publishedAt) {
+    <span class="draft">draft</span>
+  }
+  @if(blog.thumbnail) {
+    <img
+      [alt]="blog.thumbnail?.alternativeText"
+      [src]="blog.thumbnail | strapiMedia: 'medium'"
+    />
+  }
+  <div class="tile-content sui flex-y">
+    <h3>{{ blog.title }}</h3>
+    <span>{{ blog.description }}</span>
+    <div class="sui grow-1"></div>
+    <div class="sui flex-x space-between end-items w-100">
+      <button class="secondary">Mehr erfahren</button>
+    </div>
+    <span class="date">{{ blog.publishedAt | date: "dd.MMMM.yyyy" }}</span>
+  </div>
+</a>

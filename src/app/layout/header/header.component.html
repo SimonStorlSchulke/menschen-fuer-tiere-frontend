@@ -1,0 +1,69 @@
+<nav #navDesktop class="sui desktop" [class.shown]="showHeader" [style.height]="desktopHeaderHeight + 'px'">
+  <a routerLink="/" routerLinkActive="router-link-active" class="logo-link"><img alt="herzenshunde-logo"
+    src="assets/img/herzenshunde-logo-header.svg"></a>
+
+  @for (item of items; track $index) {
+
+    @if (item.link && !item.children || item.children?.length == 0) {
+      <a [routerLink]="item.link" [routerLinkActive]="'active'"
+         [routerLinkActiveOptions]="{ exact: true }"> {{ item.label }}</a>
+    }
+
+    @if (item.link && item.children) {
+      <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1"
+           [class.open]="openedDropdownIndex == $index">
+        <a [routerLink]="item.link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+          <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{ item.label }} v
+          </button>
+        </a>
+        <div class="dropdown-content" [style.top]="desktopHeaderHeight">
+          <div class="triangle"></div>
+          <div class="entries">
+            @for (child of item.children; track $index) {
+              <a [routerLink]="child.link" [routerLinkActive]="'active'"
+                 [routerLinkActiveOptions]="{ exact: true }"> {{ child.label }}</a>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  }
+</nav>
+
+<nav class="sui mobile" [class.shown]="showHeader">
+  <div class="sui flex-x px-3 py-1">
+    <button (click)="burgerMenuOpen = !burgerMenuOpen" class="burgermenu-button sui unstyled">
+      <img alt="menu icon" aria-hidden="true" class="burger" src="/assets/img/burger.png">
+    </button>
+    <div class="burgermenu-content" [class.open]="burgerMenuOpen">
+      @for (item of items; track $index) {
+
+        @if (item.link && !item.children || item.children?.length == 0) {
+          <a [routerLink]="item.link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             (click)="burgerMenuOpen = false"> {{ item.label }}</a>
+        }
+
+        @if (item.children) {
+          <div class="unstyled dropdown-container dropdown-index-{{$index}}"
+               [class.open]="openedDropdownIndex == $index">
+            <a [routerLink]="item.link" [routerLinkActive]="'active'"
+               (click)="burgerMenuOpen = false"> {{ item.label }}</a>
+            <button (click)="openedDropdownIndex = openedDropdownIndex == $index ? -1 : $index"
+                    class="secondary dropdown-button dropdown-index-{{$index}}">v
+            </button>
+            <div class="dropdown-content dropdown-index-{{$index}}">
+              @for (child of item.children; track $index) {
+                <a (click)="burgerMenuOpen = false" class="dropdown-index-{{$index}}" [routerLink]="child.link"
+                   [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> {{ child.label }}</a>
+              }
+            </div>
+
+          </div>
+        }
+
+      }
+    </div>
+    <div class="sui grow-1"></div>
+    <img alt="herzenshunde-logo" src="assets/img/herzenshunde_farbig.svg">
+  </div>
+</nav>

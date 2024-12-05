@@ -1,0 +1,32 @@
+@use "colors" as *;
+
+section {
+    margin-top: -42px;
+    margin-bottom: -42px;
+
+    a {
+        width: fit-content;
+        display: block;
+    
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+
+button {
+    background: linear-gradient(-70deg, rgb(86, 86, 233) 57px, $cto 58px);
+    color: #fff;
+    padding-right: 12px;
+    transition: filter 0.25s;
+
+    img {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    &:hover {
+        filter: saturate(1.5);
+    }
+}

@@ -1,0 +1,37 @@
+@if(media) {
+    @if(media[0].ext == '.mp4') {
+      <video [title]="media[0].caption ?? ''" class="media-container sui rounded-2" controls [src]="media[0] | strapiMedia : 'video'" type='video/mp4'></video>
+    }
+    @else {
+      @if (media.length == 1) {
+        @if(media[0] | strapiMedia; as imgSrc) {
+          <img
+          class="sui rounded-2 media-container c-pointer"
+          [alt]="media[0].alternativeText"
+          [src]="imgSrc"
+          (click)="lightboxSv.openFullscreen(media, 0, [imgSrc])"
+          />
+        }
+      } @else {
+        @if (asGallery) {
+
+            <app-lightbox [images]="media" [fullscreen]="false"/>
+        } @else {
+          <div class="imagegrid imageposition-{{imagePosition}}">
+            @if(strapiSv.getImageFormatUrls(media, "medium"); as imgs) {
+              @for (image of media; track $index) {
+                  <img
+                  class="sui rounded-2 c-pointer"
+                  [alt]="image.alternativeText"
+                  [src]="imgs[$index]"
+                  (click)="lightboxSv.openFullscreen(media, $index, imgs)"
+                  />
+                }
+            }
+          </div>
+        }
+      }
+    }
+} @else {
+    <span style="color: rgb(241, 87, 59)">Medien konnten nicht geladen werden.</span>
+}

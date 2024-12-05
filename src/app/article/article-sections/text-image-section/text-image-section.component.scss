@@ -1,0 +1,66 @@
+@use "colors" as *;
+
+section {
+  display: flex;
+  gap: 24px;
+
+  div {
+    flex-basis: 50%;
+    flex-grow: 0;
+  }
+}
+
+.imageposition-oben {
+  flex-direction: column-reverse;
+}
+
+.imageposition-unten,
+.imageposition-rechts,
+.imageposition-links {
+  flex-direction: column;
+
+  gallery {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 800px) {
+  .imageposition-oben {
+    flex-direction: column-reverse;
+  }
+
+  .imageposition-links,
+  .imageposition-rechts {
+    align-items: flex-start;
+    app-strapi-media {
+      min-width: 60%;
+      width: 60%;
+      max-height: 750px;
+    }
+  }
+
+  .imageposition-rechts {
+    flex-direction: row;
+  }
+
+  .imageposition-links {
+    flex-direction: row-reverse;
+  }
+  .imagegrid {
+    width: 60%;
+    min-width: 60%;
+    justify-content: end;
+  }
+
+}
+
+video {
+  background-color: $primary-bg;
+}
+
+::ng-deep {
+  .g-slider-content {
+    background: $accent;
+  }
+}

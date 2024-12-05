@@ -1,0 +1,8 @@
+@use "colors" as *;
+
+hr {
+    border: none;
+    background: mix(transparent, $neutral400, 50%);
+    height: 3px;
+    margin: 1.5rem 0;
+  }

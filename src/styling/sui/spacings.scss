@@ -1,0 +1,70 @@
+@use "variables" as *;
+
+.sui {
+  @for $i from 1 through length($spacers) {
+    $cspacer: nth($spacers, $i);
+
+    &.m-#{$i - 1} {
+      margin: nth($spacers, $i);
+    }
+    &.mx-#{$i - 1} {
+      margin-left: $cspacer;
+      margin-right: $cspacer;
+    }
+    &.my-#{$i - 1} {
+      margin-top: $cspacer;
+      margin-bottom: $cspacer;
+    }
+    &.mb-#{$i - 1} {
+      margin-bottom: $cspacer;
+    }
+    &.mt-#{$i - 1} {
+      margin-top: $cspacer;
+    }
+    &.mr-#{$i - 1} {
+      margin-right: $cspacer;
+    }
+    &.ml-#{$i - 1} {
+      margin-left: $cspacer;
+    }
+
+    &.p-#{$i - 1} {
+        padding: nth($spacers, $i);
+      }
+      &.px-#{$i - 1} {
+        padding-left: $cspacer;
+        padding-right: $cspacer;
+      }
+      &.py-#{$i - 1} {
+        padding-top: $cspacer;
+        padding-bottom: $cspacer;
+      }
+      &.pb-#{$i - 1} {
+        padding-bottom: $cspacer;
+      }
+      &.pt-#{$i - 1} {
+        padding-top: $cspacer;
+      }
+      &.pr-#{$i - 1} {
+        padding-right: $cspacer;
+      }
+      &.pl-#{$i - 1} {
+        padding-left: $cspacer;
+      }
+  }
+
+  @each $p in $percentages {
+    .w-#{$p} {
+        width: #{$p}#{"%"};
+    }
+    .h-#{$p} {
+        height: #{$p}#{"%"};
+    }
+    .w-min-#{$p} {
+        min-width: #{$p}#{"%"};
+    }
+    .h-min-#{$p} {
+        min-height: #{$p}#{"%"};
+    }
+  }
+}

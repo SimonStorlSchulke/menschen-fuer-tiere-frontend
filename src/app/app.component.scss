@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+:host {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    min-height: 100dvh;
+    padding-top: 86px;
+}
+
+@media (max-width: calc($breakpoint-mobile + 1px)) {
+    main {
+        padding-top: 63px;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  main {
+    padding-top: 63px;
+  }
+}
+
+@media (hover: none) {
+  main {
+    padding-top: 63px;
+  }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   data-name="Layer 1"
+   viewBox="0 0 100 125"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="female.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="6.96"
+     inkscape:cx="50.143678"
+     inkscape:cy="62.5"
+     inkscape:window-width="2560"
+     inkscape:window-height="1370"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <title
+     id="title2">Artboard 19</title>
+  <path
+     d="m 33.97966,22.295467 a 23,23 45 0 0 11.93113,39.002685 l -0.09478,10.132399 -8.72537,-0.07553 a 4,4 0 0 0 -4.036719,3.96743 v 0 a 4,4 0 0 0 3.967429,4.036719 l 8.725371,0.07553 -0.07553,8.725371 a 4,4 0 0 0 3.96743,4.036719 v 0 a 4,4 0 0 0 4.036719,-3.96743 l 0.07553,-8.725371 8.725371,0.07553 a 4,4 0 0 0 4.036719,-3.967429 v 0 a 4,4 0 0 0 -3.96743,-4.036719 l -8.725371,-0.07553 0.08777,-10.139531 A 23,23 45 1 0 33.97966,22.295467 Z m 26.636455,27.101647 a 15,15 0 1 1 0.183629,-21.212409 15,15 0 0 1 -0.183629,21.212409 z"
+     fill="#666666"
+     id="path4" />
+</svg>

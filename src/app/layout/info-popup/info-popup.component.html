@@ -1,0 +1,16 @@
+@if(newsData$ | async; as newsData) {
+    <div class="popup sui flex-y gap-3 p-4 shadow">
+        <div class="sui flex-x">
+            <span class="sui pt-3"><span class="text-sugar icon">!</span></span>
+            <div class="sui grow-1" style="pointer-events: none;"></div>
+            <span class="close sui pt-3" (click)="hideIdsForever(getIds(newsData))">✖</span>
+        </div>
+        @for (news of newsData; track $index) {
+            <div class="news sui flex-y gap-2">
+                <b>{{news.title}}</b>
+                <span class="description">{{news.description}}</span>
+                <a class="link" [routerLink]="'news/' + news.id" (click)="hideIdsForever([news.id])">Mehr erfahren ›</a>
+            </div>
+        }
+    </div>
+}

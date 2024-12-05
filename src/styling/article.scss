@@ -1,0 +1,13 @@
+@use "colors" as *;
+@use "variables" as *;
+
+app-article {
+    p {
+        min-height: 0.3rem;
+        margin: 0.55em 0;
+
+        &:only-child:empty {
+            display: none;
+        }
+    }
+}

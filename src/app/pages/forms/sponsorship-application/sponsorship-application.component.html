@@ -1,0 +1,46 @@
+<section class="form-container pt-5 sui wrapper">
+  <app-forms [subject]="'Patenschaftssantrag von ' + applicantName + ' für ' + animalName">
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="name">Vorname, Name</label>
+        <input [(ngModel)]="applicantName" type="text" name="name" id="name" />
+      </div>
+      <div class="form-block">
+        <label for="geburtsdatum">Geburtsdatum</label>
+        <input type="date" name="geburtsdatum" id="geburtsdatum" />
+      </div>
+    </div>
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="email">E-Mail Adresse</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="form-block">
+        <label for="tel">Tel. (Festnetz / Mobil)</label>
+        <input type="text" name="tel" id="tel" />
+      </div>
+    </div>
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="strase">Straße, Hausnummer</label>
+        <input type="text" name="strase" id="strase" />
+      </div>
+
+      <div class="form-block">
+        <label for="wohnort">Postleitzahl, Wohnort</label>
+        <input type="text" name="wohnort" id="wohnort" />
+      </div>
+
+    </div>
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="tier">Für welches Tier möchten Sie die Patenschaft übernehmen?</label>
+        <input [(ngModel)]="animalName"  type="text" name="tier" id="tier" />
+      </div>
+      <div class="form-block">
+        <label for="betrag">Höhe des Beitrags (min 25€)</label>
+        <input pattern="^\d+$"  type="text" name="betrag" id="betrag" />
+      </div>
+    </div>
+  </app-forms>
+</section>

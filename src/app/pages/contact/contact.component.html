@@ -1,0 +1,91 @@
+<app-hero [images]="[contactData.pageData.hero]"/>
+<app-article [sections]="contactData.pageData.article"/>
+
+<div class="sui flex-x gap-6 wrapper">
+
+  @if(sentStatus != HttpStatusCode.Ok) {
+  <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
+    <h2>Schreib uns!</h2>
+    <form
+      class="sui flex-y gap-5"
+      action="#"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="sui flex-x gap-5">
+        <div class="form-block">
+          <input
+            (input)="onInput()"
+            #messagerName
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name*"
+          />
+        </div>
+        <div class="form-block">
+          <input (input)="onInput()" #messagerMail type="email" name="email" id="email" placeholder="Email*"/>
+        </div>
+      </div>
+
+      <div class="form-block">
+      <textarea
+        #message
+        rows="1"
+        (input)="autogrow(message)"
+        name="message"
+        id="message"
+        placeholder="Nachricht*"
+      ></textarea>
+      @if(draftsText) {
+        <span>Drafts werden ab jetzt (in diesem Browsertab) angezeigt</span>
+      }
+
+      </div>
+
+    </form>
+    <div class="sui flex-x ai-center">
+      <input #acceptDsgvo (click)="onInput()" type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
+      <label class="sui  pl-3" for="accept-dsgvo">
+        Ich habe die <a class="link" target="_blank" [routerLink]="'/dsgvo'">Datenschutzerklärung</a> gelesen. Ich
+        stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
+      </label>
+    </div>
+    <button [disabled]="!valid" (click)="send()" class="sui cto large">Jetzt senden</button>
+    @if(sentStatus == HttpStatusCode.TooManyRequests) {
+      <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
+        einmal.</p>
+    }
+  </section>
+  } @else {
+    <div class="pt-5 sui rounded-3 wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
+    <h2>Danke für Ihre Zusendung!</h2>
+    <p>Wir melden uns so bald wie möglich zurück.</p>
+    </div>
+  }
+
+  <div class="contact  sui mb-4">
+    <span>
+      <h2>Kontakt</h2>
+        <a class="sui flex-x ai-center gap-3" href="mailto:kontakt@herzenshunde-griechenland.de"> <img alt="mail icon"
+                                                                                                       aria-hidden="true"
+                                                                                                       class="sui inline-icon"
+                                                                                                       src="assets/img/mail.svg"><span> kontakt&#64;herzenshunde-griechenland.de</span></a>
+        <span class="sui flex-x ai-center gap-3"><img alt="phone icon" aria-hidden="true" class="sui inline-icon"
+                                                      src="assets/img/phone.svg"><span>0 1234 / 56 78 99 - 0</span></span>
+    </span>
+  </div>
+</div>
+
+<div class="bg-beige ">
+  <div class="sui wrapper flex-y gap-5 py-6">
+    <h2>Das Team</h2>
+    <div class="sui flex-x wrap center gap-5 jc-center">
+      @for (member of contactData.teamMembers; track $index) {
+        <app-teammember-tile [teamMember]="member"/>
+      }
+    </div>
+  </div>
+</div>
+
+

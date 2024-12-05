@@ -1,0 +1,10 @@
+<div class="sui wrapper">
+<div class="sui flex-y gap-6">
+    @if(blogs$ | async; as blogs) {
+        @for(newsBlogEntry of blogs; track $index) {
+            <app-blog-tile [blog]="newsBlogEntry" />
+        }
+    }
+</div>
+    
+</div>

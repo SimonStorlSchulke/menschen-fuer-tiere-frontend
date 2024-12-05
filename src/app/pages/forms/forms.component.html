@@ -1,0 +1,27 @@
+<section class="form-container py-5 sui wrapper">
+
+    @if(sentStatus != HttpStatusCode.Ok) {
+    @if(title != "") {
+    <h1>{{title}}</h1>
+    }
+    <form class="sui flex-y gap-3" action="#" method="POST" enctype="multipart/form-data">
+        <ng-content></ng-content>
+    </form>
+
+    <div class="sui mt-4">
+        <button class="primary" (click)="send()">Abschicken</button>
+    </div>
+
+    } @else {
+    <h1>Danke für Ihre Zusendung!</h1>
+    <p>Wir melden uns so bald wie möglich zurück.</p>
+    <br><br>
+    <h3><a routerLink="/" class="link">&lt; Zurück zur Startseite</a></h3>
+    }
+
+
+    @if(sentStatus == HttpStatusCode.TooManyRequests) {
+    <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
+        einmal.</p>
+    }
+</section>

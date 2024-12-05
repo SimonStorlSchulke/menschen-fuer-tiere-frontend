@@ -1,0 +1,20 @@
+<a (click)="dogsSv.dogSelected(animal.id)" [routerLink]="['/tierartikel', animal.name]" class="animal-tile shadow fade-in" id="animal-card-{{animal.id}}">
+    <img [src]="animalSv.getImageFormatUrl(animal.thumbnail, 'small')" [alt]="animal.thumbnail?.alternativeText">
+
+    @if(!animal.publishedAt) {
+        <span class="draft">draft</span>
+    }
+    <div class="sui flex-x center ai-center name-row">
+        <span class="sui text-sugar text-secondary text-center p-1 px-2">{{animal.name}}</span>
+        @if(animal.gender == "male") {
+            <img [alt]="animal.gender" class="gender-icon" src="assets/img/male.svg">
+        } @else {
+            <img [alt]="animal.gender" class="gender-icon" src="assets/img/female.svg">
+        }
+    </div>
+
+    <div class="bubbles">
+        <span class="emergency" *ngIf="animal.emergency">Notfall</span>
+        <span *ngIf="animalSv.isInGermany(animal)">{{animal.whereInGermany}}</span>
+    </div>
+</a>

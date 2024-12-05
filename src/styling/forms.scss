@@ -1,0 +1,93 @@
+@use "colors" as *;
+.form-container {
+    box-sizing: border-box;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+
+    max-width: 750px;
+
+    /* NORMAL */
+    --fc-border-color: #ECEFF9;
+    --fc-normal-text-color: #0E0B3D;
+    --fc-normal-placeholder-color: #B3B8D0;
+
+    /* PRIMARY COLOR | HSL FORMAT*/
+    --fc-primary-color-hue: 220;
+    --fc-error-color-hue: 356;
+    --fc-primary-hsl: var(--fc-primary-color-hue), 100%, 54%;
+    --fc-error-hsl: var(--fc-error-color-hue), 100%, 54%;
+
+    /* HOVER */
+
+  }
+
+  .form-container * {
+    box-sizing: border-box;
+    flex-grow: 1;
+  }
+
+  .form-container label {
+    display: block;
+    cursor: pointer;
+  }
+
+
+  .form-container input,
+  .form-container textarea,
+  .form-container select {
+    margin-top: 4px;
+    width: 100%;
+    height: 42px;
+    border: 1px solid $neutral200;
+    border-radius: 6px;
+    padding: 8px 12px;
+    
+    transition: 125ms background, 125ms color, 125ms box-shadow;
+  }
+
+  .form-container textarea{
+    min-height: 188px;
+    max-width: 100%;
+    padding-top: 12px;
+  }
+
+  .form-container input::placeholder,
+  .form-container textarea::placeholder,
+  .form-container select::placeholder {
+    color: $neutral400;
+  }
+
+  .form-container input:hover,
+  .form-container textarea:hover,
+  .form-container select:hover {
+    border-color: $neutral400;
+  }
+
+  .form-container input:hover::placeholder,
+  .form-container textarea:hover::placeholder,
+  .form-container select:hover::placeholder {
+    color: var(--fc-field-hover-text-color);
+  }
+
+  .form-container input:focus,
+  .form-container textarea:focus,
+  .form-container select:focus {
+    background-color: #fff;
+    border-color: $primary;
+    box-shadow: $primary 0px 0px 0px 1px;
+    outline: none;
+  }
+
+
+  .form-container input:focus:required:invalid,
+  .form-container input:focus:invalid, 
+  .form-container select:focus:required:invalid,
+  .form-container select:focus:invalid
+  {
+    color: hsl(var(--fc-error-hsl)); 
+    border-color: hsl(var(--fc-error-hsl));
+    box-shadow: 0px 0px 0px 3px hsla(var(--fc-error-hsl), 12%);
+  }

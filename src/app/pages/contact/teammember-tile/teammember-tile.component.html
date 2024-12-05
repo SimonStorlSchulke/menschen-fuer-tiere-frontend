@@ -1,0 +1,12 @@
+<img class="avatar" [alt]="teamMember.name" [src]="teamMember.image ? (teamMember.image | strapiMedia : 'small') : '/assets/img/contact-no-image.jpg'">
+<h3 class="sui mb-1 mt-2">{{teamMember.name}}</h3>
+<span class="bold">{{teamMember.role}}</span>
+<span>{{teamMember.description}}</span>
+@if(teamMember.phone) {
+    <span class="phone sui flex-x gap-3 ai-center"><img [alt]="'Foto ' + teamMember.name" class="sui inline-icon" src="assets/img/phone.svg"><span>{{teamMember.phone}}</span></span>
+}
+
+<div class="grow-1"></div>
+@if(teamMember.mail) {
+    <a href="mailto:{{teamMember.mail}}"><button class="secondary">Mail schreiben</button></a>
+}

@@ -1,0 +1,31 @@
+@if(pageData.hero) {
+    <app-hero [images]="[pageData.hero]"/>
+}
+
+<app-article [sections]="pageData.article"/>
+
+<div class="sui wrapper flex-y gap-6 mb-6 scroll-anchor">
+
+    <div class="sui flex-x gap-3 wrap">
+        <button (click)="showAll()" [class.active]="activeFilter == ''" class="bubble">Alle Artikel</button>
+
+        <div class="filter-selector">
+            <button (click)="toggleFilter('news', 1)" [class.active]="isFilterActive('news')" class="bubble">News</button>
+            <button (click)="toggleFilter('wissen', 1)" [class.active]="isFilterActive('wissen')" class="bubble">Wissenswertes</button>
+            <button (click)="toggleFilter('helferbericht', 1)" [class.active]="isFilterActive('helferbericht')" class="bubble">Helfer*innenberichte</button>
+        </div>
+    </div>
+
+    @for(newsBlogEntry of pageData.news; track $index) {
+        <app-blog-tile [blog]="newsBlogEntry" />
+    }
+
+
+  @if(pageData.pagination.pageCount > 1) {
+    <div class="filter-selector pages">
+      @for (_ of [].constructor(pageData.pagination.pageCount); track $index) {
+        <button (click)="toggleFilter('', $index + 1)" [class.active]="activePage == $index + 1">{{$index + 1}}</button>
+      }
+    </div>
+  }
+</div>

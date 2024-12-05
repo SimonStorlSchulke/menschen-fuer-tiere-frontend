@@ -1,0 +1,97 @@
+@use "colors" as *;
+
+.to-btn {
+  color: #fff;
+  cursor: pointer;
+  width: clamp(150px, 125px, 15dvw);
+  font-size: 38px;
+  user-select: none;
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+
+  &.next:hover {
+  background: linear-gradient(90deg, transparent, #fff5);
+  }
+  &.prev:hover {
+    background: linear-gradient(-90deg, transparent, #fff5);
+  }
+}
+
+dialog {
+  width: 100dvw;
+  max-width: 100dvw;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  transition: opacity 0.5s;
+  position: fixed;
+
+  .content {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.671);
+    left: -90px;
+  }
+  img {
+    height: calc(100dvh - 100px);
+    min-height: calc(100dvh - 100px);
+    object-fit: contain;
+    max-width: min(100%, 85dvw);
+  }
+  
+  .description {
+    color: #ddd;
+    height: 40px;
+  }
+  
+  &:not([open]) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .to-btn {
+    width: clamp(150px, 125px, 15dvw);
+  }
+}
+
+dialog[open] {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
+
+
+button:focus-visible {
+  outline: none;
+  border: none;
+}
+
+.gallery {
+  background-color: $primary-bg;
+  position: relative;
+  height: 450px;
+
+  .description {
+    position: absolute;
+    bottom: 8px;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.75);
+  }
+  
+  img {
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .to-btn {
+    width: 70px;
+  }
+}

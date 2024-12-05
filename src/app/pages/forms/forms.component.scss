@@ -1,0 +1,6 @@
+@use "colors" as *;
+
+.errortext {
+    color: $cto;
+    padding: 16px 0;
+}

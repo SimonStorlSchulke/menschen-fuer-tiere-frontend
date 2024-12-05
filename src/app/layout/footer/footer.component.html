@@ -1,0 +1,80 @@
+@if (footerData$ | async; as footerData) {
+  <div class="banner"
+       style="background-image: linear-gradient(90deg, #0006, #0002), url({{footerData.background | strapiMedia : 'xlarge'}});">
+    <app-article class="sui py-3" [sections]="footerData.article"/>
+  </div>
+}
+
+
+<div class="footer sui flex-y">
+  <div class="footer-top">
+    <a routerLink="/">
+      <img alt="herzenshunde-logo" class="sui flex-y gap-2" src="assets/img/herzenshunde_weiß.svg"/>
+    </a>
+    <div class="sui flex-y gap-2">
+      <h3>Du hast Fragen? Wir helfen gerne!</h3>
+      <a class="sui flex-x ai-center gap-3" href="mailto:kontakt@herzenshunde-griechenland.de">
+        <icon type="mail"/>
+        <span>kontakt&#64;herzenshunde-griechenland.de</span>
+      </a>
+      <span class="sui flex-x ai-center gap-3">
+        <icon type="phone"/><span>+49 17684273140</span>
+      </span>
+      <a routerLink="/kontakt" class="sui flex-x ai-center gap-3">
+        <icon type="comment"/>
+        <span>Welcher Hund passt zu mir, lass dich von uns beraten</span>
+      </a><br><br>
+      <h3 class="sui pt-3">Soziale Netzwerke</h3>
+      <span class="sui flex-x ai-center gap-3">
+        <a aria-label="Unsere Facebook Seite" href="https://www.facebook.com/profile.php?id=61563419603932">
+          <icon type="facebook" size="larger"/>
+        </a>
+        <a aria-label="Unsere Instagram Seite" href="https://www.instagram.com/herzenshunde_griechenland/">
+          <icon type="instagram" size="large"/>
+        </a></span>
+
+    </div>
+    <div class="sui flex-y gap-2">
+      <h3>Sitemap</h3>
+      <a routerLink="/">› Home</a>
+      <a routerLink="/ueber-uns">› Über uns</a>
+      <a routerLink="/tiere/hunde">› Hunde</a>
+      <a routerLink="/vermittlung">› Vermittlung</a>
+      <a routerLink="/vermittlung/allgemeine-infos">&nbsp;&nbsp;&nbsp;› Allgemeine Infos zu den Tieren</a>
+      <a routerLink="/vermittlung/gedanken-vor-der-adoption">&nbsp;&nbsp;&nbsp;› Gedanken vor der Adoption</a>
+      <a routerLink="/vermittlung/vermittlungsablauf">&nbsp;&nbsp;&nbsp;› Vermittlungsablauf</a>
+      <a routerLink="/vermittlung/die-ersten-tage">&nbsp;&nbsp;&nbsp;› Die ersten Tage</a>
+      <!--<a routerLink="/vermittlung/happy-ends">&nbsp;&nbsp;&nbsp;› Happy Ends</a>-->
+      <a routerLink="/helfen">› Helfen</a>
+      <a routerLink="/helfen/mitgliedsantrag">&nbsp;&nbsp;&nbsp;› Mitgliedsantrag</a>
+      <a routerLink="/helfen/patenschaftsantrag">&nbsp;&nbsp;&nbsp;› Patenschaftsantrag</a>
+      <a routerLink="/news">› News & Wissen</a>
+      <a routerLink="/kontakt">› Kontakt</a>
+      <a routerLink="/impressum">› Impressum</a>
+      <a routerLink="/dsgvo">› Datenschutzerklärung</a>
+    </div>
+    <div class="sui flex-y gap-2">
+      <img alt="Geprüfte Organisation mit Erlaubnis nach §11 Tierschutzgesetz" class="para11" src="/assets/img/siegel-paragraph.png">
+    </div>
+    <div class="sui flex-y gap-2">
+      <span>
+        <b>Herzenshunde Griechenland e.V.</b><br>
+        Kalkofenstraße 25<br>
+        78050 Villingen<br>
+        IBAN: DE24 6945 0065 0151 0920 21<br>
+        BIC: SOLADES1VSS<br><br>
+      </span>
+      <app-paypal-button-section [sectionData]="{__component: 'article-section.paypal-button',background: 'nein'}"/>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="content">
+      <span>© Herzenshunde Griechenland e.V.</span>
+      <div class="sui flex-x gap-3 jc-center grow-1">
+        <a routerLink="impressum">Impressum</a>
+        <a routerLink="dsgvo">Datenschutzvereinbarung</a>
+      </div>
+    </div>
+  </div>
+</div>

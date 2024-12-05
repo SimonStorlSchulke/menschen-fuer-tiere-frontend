@@ -1,0 +1,89 @@
+@use "colors" as *;
+@use "variables" as *;
+
+.form-container {
+  border-radius: 24px;
+}
+
+input, textarea {
+  border-radius: 24px;
+  background-color: transparent;
+  border-color: #fff;
+  border-width: 1.8px;
+  font-family: system-ui, sans-serif;
+
+  &:hover {
+    border-color: #fff;
+  }
+
+  &::placeholder {
+    color: $text;
+    opacity: 1; /* Firefox */
+  }
+}
+
+textarea {
+  min-height: 0;
+  height: auto;
+}
+
+
+#accept-dsgvo {
+  max-width: 32px;
+  border-radius: 16px;
+  accent-color:  $primary;
+  height: 32px;
+  border-width: 50%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    position: relative;
+    margin-left: 4px;
+
+    &:checked::before {
+      background-image: url("/assets/img/check.svg");
+      content: "";
+      width: 50px;
+      height: 50px;
+      display: block;
+      position: absolute;
+      top: 0;
+      transform: translateY(-10px);
+      left: 0;
+      background-image: url("/assets/img/check.svg");
+      background-repeat: no-repeat;
+    }
+
+  &:focus-within, &:focus {
+  outline: none !important;
+  }
+}
+
+#accept-dsgvo + label {
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+button {
+  width: fit-content;
+}
+
+.contact {
+  min-width: 300px;
+
+  img {
+    filter: invert(0.6);
+  }
+}
+
+
+@media (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
+.errortext {
+  color: $cto;
+  padding: 16px 0;
+}

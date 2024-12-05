@@ -1,0 +1,47 @@
+@if (pageContent$ | async; as pageContent) {
+<app-hero [images]="[pageContent.hero]" />
+
+<app-article [sections]="pageContent.article"/>
+<div class="sui wrapper flex-y gap-3 mb-5">
+    <div class="sui flex-y gap-5">
+        <div class="sui filters gap-4 wrap">
+            <div class="form-container">
+                <div class="form-block">
+                    <input class="text-sugar" type="text" name="search" id="search" placeholder="suchen" #searchInput (input)="onSearchTyped(searchInput.value)"/>
+                </div>
+            </div>
+            <div class="">
+                <div class="filter-selector">
+                    <button (click)="toggleFilter('inGermany', 'inGermany')" [class.active]="isFilterActive('inGermany', 'inGermany')">in Deutschland</button>
+                </div>
+            </div>
+            <div class="">
+                <div class="filter-selector">
+                    <button (click)="toggleFilter('size', 'small')" [class.active]="isFilterActive('size', 'small')">klein</button>
+                    <button (click)="toggleFilter('size', 'medium')" [class.active]="isFilterActive('size', 'medium')">mittel</button>
+                    <button (click)="toggleFilter('size', 'large')" [class.active]="isFilterActive('size', 'large')">groß</button>
+                </div>
+            </div>
+            <div class="">
+                <div class="filter-selector">
+                    <button (click)="toggleFilter('gender', 'female')" [class.active]="isFilterActive('gender', 'female')" >Hündinnen</button>
+                    <button (click)="toggleFilter('gender', 'male')" [class.active]="isFilterActive('gender', 'male')">Rüden</button>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="filter-selector">
+                    <button (click)="toggleFilter('age', 'young')" [class.active]="isFilterActive('age', 'young')">Welpen</button>
+                    <button (click)="toggleFilter('age', 'medium')" [class.active]="isFilterActive('age', 'medium')">Erwachsen</button>
+                    <button (click)="toggleFilter('age', 'old')" [class.active]="isFilterActive('age', 'old')">Senioren</button>
+                </div>
+            </div>
+        </div>
+        <strong class="sui text-center">{{getExplainer()}}</strong>
+
+        <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" (loaded)="onDogsLoaded()"/>
+    </div>
+
+</div>
+
+}

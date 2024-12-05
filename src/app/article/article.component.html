@@ -1,0 +1,50 @@
+<article #article>
+  @for (section of sections; track $index) {
+    <!-- This is disgusting code but it works -->
+    @if (section.__component == "article-section.row-start") {
+      @if (setRowColumnIndex($any(section))) {}
+      <div [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'"
+      ><div class="sui wrapper article-rows" [attr.data-columns]="columnIndex"
+      [class.text-center]="section.textCentered"></div></div>
+    } @else {
+      @if (decrementRowColumnIndex()) {}
+    }
+
+    @if (section.__component != "article-section.row-start") {
+      <div #sectionContainer class="section-container" [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'">
+        @switch (section.__component) {
+          @case ("article-section.section-start") {
+            <app-section-start [sectionData]="section" />
+          }
+          @case ("article-section.text") {
+            <app-text-section [sectionData]="section" />
+          }
+          @case ("article-section.text-with-image-section") {
+            <app-text-image-section [sectionData]="section" />
+          }
+          @case ("article-section.hero") {
+            <app-hero-section [sectionData]="section" />
+          }
+          @case ("article-section.image") {
+            <app-image-section [sectionData]="section" />
+          }
+          @case ("article-section.animal-cards") {
+            <app-animal-cards-section [sectionData]="section" />
+          }
+          @case ("article-section.button-link") {
+            <app-button-link-section [sectionData]="section" />
+          }
+          @case ("article-section.news-cards") {
+            <app-blog-cards [sectionData]="section" />
+          }
+          @case ("article-section.counter") {
+            <app-counter-section [sectionData]="section" />
+          }
+          @case ("article-section.paypal-button") {
+            <app-paypal-button-section [sectionData]="section" />
+          }
+        }
+      </div>
+    }
+  }
+</article>

@@ -1,0 +1,153 @@
+<section class="form-container pt-5 sui wrapper">
+  <app-forms title="Bewerben Sie sich auf einen unserer Schützlinge!" [subject]="'Neue Bewerbung für ' + animalName ">
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="name">Vorname, Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="form-block">
+        <label for="geburtsdatum">Geburtsdatum</label>
+        <input type="date" name="geburtsdatum" id="geburtsdatum" />
+      </div>
+    </div>
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="email">E-Mail Adresse</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="form-block">
+        <label for="tel">Tel. (Festnetz / Mobil)</label>
+        <input type="text" name="tel" id="tel" />
+      </div>
+    </div>
+    <div class="sui flex-x gap-2">
+      <div class="form-block">
+        <label for="strase">Straße, Hausnummer</label>
+        <input type="text" name="strase" id="strase" />
+      </div>
+
+      <div class="form-block">
+        <label for="wohnort">Postleitzahl, Wohnort</label>
+        <input type="text" name="wohnort" id="wohnort" />
+      </div>
+    </div>
+
+    <div class="form-block">
+      <label for="beruf">Beruf</label>
+      <input type="text" name="beruf" id="beruf" />
+    </div>
+
+    <div class="form-block">
+      <label for="tiername">Für welches Tier möchten sie sich bewerben?</label>
+      <input [(ngModel)]="animalName" type="text" name="tiername" id="tiername" />
+    </div>
+
+    <div class="form-block">
+      <label for="message">Hatten Sie schon einmal einen Hund aus dem Tierschutz? Wenn ja, wie lange?</label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">Eingewöhnung und Umgang mit dem Tier: Sind sie ruhig, geduldig, könnten auch mal ein
+        "Pfützchen" tolerieren? Wären Sie bereit, auch schwierige Eingewöhnungssituationen zu überstehen?</label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Welche Tiere leben jetzt in Ihrem Haushalt? Sind diese bereits kastriert? Wie alt sind diese Tiere?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Besteht die Möglichkeit das neu ankommende Tier, von den Vorhandenen anfangs räumlich zu trennen?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Wieviele Personen leben in Ihrem Haushalt? Wenn Sie Kinder haben, wie alt sind diese?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Wie lange wäre der Hund maximal pro Tag allein Zuhause?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+
+    <div class="form-block">
+      <label for="message">
+        Wohnen Sie im eigenen Haus oder leben Sie in einer Eigentums- oder Mietwohnung (Etage? Aufzug vorhanden?).
+        Liegt ein schriftliches Einverständnis zur Tierhaltung vor? Bitte klären Sie das, bevor sie den
+        Bewerbungsbogen versenden.
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+
+    <div class="form-block">
+      <label for="message">
+        Wie lange wäre der Hund maximal pro Tag allein Zuhause?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+
+    <div class="form-block">
+      <label for="message">
+        Wenn Sie einen Garten haben, ist dieser sicher eingezäunt?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+
+    <div class="form-block">
+      <label for="message">
+        Was ist Ihr Plan B? Im Krankheitsfall, in der Urlaubszeit, .... was geschieht mit dem Tier?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Ab wann könnte das Tier bei Ihnen einziehen?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Wieviele Kilometer würden Sie fahren um Ihr Tier an einem Übergabe- Treffpunkt abzuholen?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Können Sie sich am Anreisetag und die darauffolgenden Tage frei nehmen?
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Hier ist Raum für Ihre Bemerkungen/ Fragen
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-block">
+      <label for="message">
+        Wie sind Sie auf unsere Seite aufmerksam geworden? (Angaben wie Internetsuche, facebook, Freunde, ...)
+      </label>
+      <textarea name="message" name="message" id="message"></textarea>
+    </div>
+  </app-forms>
+</section>
