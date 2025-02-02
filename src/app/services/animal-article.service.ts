@@ -22,9 +22,7 @@ export class AnimalArticleService extends StrapiService {
   getArticleByAnimalName(name: string): Observable<AnimalArticle> {
     const path = `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][thumbnail]=*&populate[animals][populate][animalKind][populate][icon]=*`;
     return this.getAndInsertAnimalLinks<AnimalArticle[]>(path).pipe(
-      map((articles) => {
-        return articles[0];
-      }),
+      map((articles) => articles[0]),
     );
   }
 

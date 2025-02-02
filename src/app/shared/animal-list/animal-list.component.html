@@ -1,5 +1,6 @@
 @if (animals$ | async; as animals) {
     <div class="animal-list">
+
         @for (animal of filterAnimals(animals); track animal.id) {
             <app-animal-tile [animal]="animal" />
         } @empty {

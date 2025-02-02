@@ -1,45 +1,65 @@
-import {AfterViewInit, Component, ElementRef, HostListener, inject, ViewChild} from '@angular/core';
+import { Component, ElementRef, inject, ViewChild} from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
-import { HeroComponent } from '../../shared/hero/hero.component';
-import { Animal, StrapiMedia } from '../../shared/shared-types';
+import { Animal, AnimalKind } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, map, Observable, switchMap, tap } from 'rxjs';
 import { AnimalArticleService } from '../../services/animal-article.service';
 import {DogsService} from "./dogs.service";
+import { ActivatedRoute, ResolveFn, RouterLink, RouterLinkActive } from '@angular/router';
+import { StrapiService } from '../../services/strapi.service';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
+
+export const animalsResolver: ResolveFn<AnimalKindsData> = async (route) => {
+  return {
+    currentAnimalKind: route.paramMap.get("animalKind")  ?? "tiere",
+    animalKinds: await lastValueFrom(inject(StrapiService).get("animal-kinds?populate=icon")),
+  }
+}
+
+export type AnimalKindsData = {
+  currentAnimalKind: string,
+  animalKinds: AnimalKind[],
+}
+
+export type AnimalsPageData = {
+  article?: ArticleSection[];
+  animalKindsData: AnimalKindsData,
+}
 
 @Component({
   selector: 'app-dogs',
   standalone: true,
-  imports: [AsyncPipe, AnimalListComponent, HeroComponent, ArticleComponent],
-  templateUrl: './dogs.component.html',
-  styleUrl: './dogs.component.scss',
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
+  templateUrl: './animals.component.html',
+  styleUrl: './animals.component.scss',
 })
-export class DogsComponent {
-
-  initialLoadDone = false;
-
-  onDogsLoaded() {
-    window.setTimeout(() => {
-      if(!this.initialLoadDone && this.dogsSv.lastSelectedDogId != -1) {
-        this.initialLoadDone = true;
-        document.getElementById("animal-card-" + this.dogsSv.lastSelectedDogId)?.scrollIntoView()
-      }
-    }, 10)
-  }
+export class AnimalsComponent {
 
   @ViewChild("searchInput") searchInput!: ElementRef<HTMLInputElement>;
 
   animalSv = inject(AnimalService);
+  animalArticleSv = inject(AnimalArticleService);
   dogsSv = inject(DogsService);
 
   query$ = new BehaviorSubject<string>('');
 
-  pageContent$ = inject(AnimalArticleService).getAndInsertAnimalLinks<{
-    hero: StrapiMedia;
-    article: ArticleSection[];
-  }>('dogs-page?populate=*');
+  pageContent$: Observable<AnimalsPageData> = inject(ActivatedRoute).data.pipe(
+    switchMap(data => {
+      const animalKindsData: AnimalKindsData = data["animalKindsData"];
+      const url = `animal-kinds?filters[namePlural][$eqi]=${animalKindsData.currentAnimalKind}&populate=*`
+      const dynamicPage$ = this.animalArticleSv
+        .getAndInsertAnimalLinks<AnimalKind[]>(url);
+
+      return dynamicPage$.pipe(
+        map(dynamicPageData => ({
+          animalKindsData,
+          article: dynamicPageData[0]?.article ?? [],
+        }))
+      );
+    })
+  );
 
 
   toggleFilter(category: string, key: string) {

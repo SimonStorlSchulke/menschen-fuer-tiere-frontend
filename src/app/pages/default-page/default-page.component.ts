@@ -8,6 +8,8 @@ import { SponsorhipApplicationComponent } from '../forms/sponsorship-application
 export type DefaultPageData = {
   id: number,
   name: string,
+  path: string,
+  description: string,
   article: ArticleSection[],
   createdAt: Date,
 }

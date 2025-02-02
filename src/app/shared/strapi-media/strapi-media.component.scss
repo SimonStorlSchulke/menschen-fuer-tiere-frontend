@@ -8,6 +8,10 @@
   background-color: $primary-bg;
 }
 
+img {
+  object-fit: contain;
+}
+
 .imagegrid {
   display: flex;
   flex-wrap: wrap;

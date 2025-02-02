@@ -3,19 +3,13 @@ import {
   AnimalArticleComponent,
   animalArticleResolver,
 } from './pages/animal-article/animal-article.component';
-import { DogsComponent } from './pages/dogs/dogs.component';
-import { HomeComponent, homeResolver } from './pages/home/home.component';
+import { AnimalsComponent, animalsResolver } from './pages/dogs/animals.component';
 import { AboutComponent, aboutResolver } from './pages/about/about.component';
 import { NewsComponent, newsResolver } from './pages/news/news.component';
-import { HelpComponent, helpResolver } from './pages/help/help.component';
 import {
   ContactComponent,
   contactResolver,
 } from './pages/contact/contact.component';
-import {
-  ConveyComponent,
-  conveyResolver,
-} from './pages/convey/convey.component';
 import { ApplyComponent } from './pages/forms/apply/apply.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { blogArticleResolver, BlogComponent } from './blog/blog.component';
@@ -27,26 +21,28 @@ import {
   DefaultPageData,
 } from './pages/default-page/default-page.component';
 import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
-import { NotFoundComponent } from './pages/404/404.component';
 
-function getSubPageResolver(collectionNamePlural: string) {
-  const resolver: ResolveFn<DefaultPageData> = (
-    route: ActivatedRouteSnapshot,
-  ) => {
-    const urlName = route.paramMap.get('urlName')!; //todo null savety
-    const path = `${collectionNamePlural}?filters[urlName][$eq]=${urlName}&populate[article][populate]=*`;
-    return inject(AnimalArticleService)
-      .getAndInsertAnimalLinks<DefaultPageData[]>(path)
-      .pipe(
-        map((article) => {
-          return article[0];
-        }),
-      );
-  };
-  return resolver;
-}
+
+const pageResolver: ResolveFn<DefaultPageData> = (
+  route: ActivatedRouteSnapshot,
+) => {
+  const sitePath = route.url.join("/")!;
+
+  let apiPath: string;
+
+  if(sitePath == "") {
+    apiPath = `pages?filters[path][$null]=true&populate[article][populate]=*`
+  } else {
+    apiPath = `pages?filters[path][$eq]=${sitePath}&populate[article][populate]=*`;
+  }
+
+  return inject(AnimalArticleService)
+    .getAndInsertAnimalLinks<DefaultPageData[]>(apiPath)
+    .pipe(map(article =>  article[0]));
+};
+
+
 export const routes: Routes = [
-  { path: '', component: HomeComponent, resolve: { homeData: homeResolver } },
   {
     path: 'ueber-uns',
     component: AboutComponent,
@@ -54,32 +50,22 @@ export const routes: Routes = [
     resolve: { aboutData: aboutResolver },
   },
   {
-    path: 'vermittlung/:urlName',
-    component: DefaultPageComponent,
-    data: { title: 'Vermittlung' },
-    resolve: { pageData: getSubPageResolver('convey-subpages') },
+    path: 'tiere',
+    component: AnimalsComponent,
+    data: { title: 'Tiere' },
+    resolve: {animalKindsData: animalsResolver },
   },
   {
-    path: 'vermittlung',
-    component: ConveyComponent,
-    data: { title: 'Vermittlung' },
-    resolve: { conveyData: conveyResolver },
+    path: 'tiere/:animalKind',
+    component: AnimalsComponent,
+    data: { title: 'Tiere' },
+    resolve: {animalKindsData: animalsResolver },
   },
   {
-    path: 'helfen',
-    component: HelpComponent,
-    data: { title: 'Helfen' },
-    resolve: { helpData: helpResolver },
-  },
-  {
-    path: 'helfen/:urlName',
-    component: DefaultPageComponent,
-    resolve: { pageData: getSubPageResolver('help-subpages') },
-  },
-  {
-    path: 'tiere/hunde',
-    component: DogsComponent,
-    data: { title: 'Hunde' },
+    path: 'tierartikel/:name',
+    component: AnimalArticleComponent,
+    data: { title: 'dynamic' },
+    resolve: { animalArticle: animalArticleResolver },
   },
   {
     path: 'news',
@@ -101,12 +87,6 @@ export const routes: Routes = [
   },
   { path: 'impressum', component: ImprintComponent },
   { path: 'dsgvo', component: DsgvoComponent },
-  {
-    path: 'tierartikel/:name',
-    component: AnimalArticleComponent,
-    data: { title: 'dynamic' },
-    resolve: { animalArticle: animalArticleResolver },
-  },
+  { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
   { path: 'formulare/bewerbung', component: ApplyComponent },
-  { path: '**', pathMatch: "full", component:  NotFoundComponent},
 ];

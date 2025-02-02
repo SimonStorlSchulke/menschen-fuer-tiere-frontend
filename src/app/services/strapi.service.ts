@@ -11,11 +11,12 @@ let showDrafts = false;
 export class StrapiService {
 
   //This api key  offers read-only-access to the cms and is supposed to be public, so it's fine to put it here hardcoded.
-  static readonly bearer =
-    '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
 
-  static readonly apiBaseUrl = 'https://cms.herzenshunde-griechenland.de/api/';
-  static readonly uploadsBaseUrl = 'https://cms.herzenshunde-griechenland.de';
+  //static bearer = '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
+  static bearer = '3592726182b15e1eda2b03e472a6ab4166d915436b00e57b994b398f0874927fd545a144dfe201bc1e475681dadb83bf8a60003102efce63e6c57e599e181e349445b176cd06e106fdc0cbee782b8afdd32253c2f9c26753e22b8fd1950010d87261d24a4e2e92de86bff92b9c8bc59ea63a0c5b458def010117f3512bd70e84';
+
+  static apiBaseUrl = 'http://localhost:1337/api/';
+  static uploadsBaseUrl = 'http://localhost:1337';
 
   static readonly headers = {
     'Content-Type': 'application/json',

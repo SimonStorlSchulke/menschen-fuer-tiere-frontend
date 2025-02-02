@@ -1,7 +1,19 @@
 @if (pageContent$ | async; as pageContent) {
-  <app-hero [images]="[pageContent.hero]"/>
+    <div class="sui flex-x animal-kinds">
+      @for(kind of pageContent.animalKindsData.animalKinds; track $index) {
+        <a class="animal-kind-link relative sui text-capitalize grow-1" [routerLink]="'/tiere/' + kind.namePlural" routerLinkActive="active">
+          <img [src]="kind.icon | strapiMedia : 'medium'">
+          <div class="overlay">
+            <span class="sui bold px-2">{{kind.namePlural}}</span>
+          </div>
+        </a>
+      }
+    </div>
+  <div class="sui wrapper flex-y gap-3 mt-5">
+    <h1 class="sui text-capitalize pt-3">{{pageContent.animalKindsData.currentAnimalKind}}</h1>
+  </div>
 
-  <app-article [sections]="pageContent.article"/>
+  <app-article [sections]="pageContent.article!"/>
   <div class="sui wrapper flex-y gap-3 mb-5">
     <div class="sui flex-y gap-5">
       <div class="sui filters gap-4 wrap">
@@ -38,8 +50,7 @@
   </div>
   <div class="bg-lightgreen sui py-5">
     <div class="sui wrapper">
-      <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" (loaded)="onDogsLoaded()"/>
+      <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()"/>
     </div>
   </div>
-
 }

@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
 
   router = inject(Router);
   titleSv = inject(Title);
-  contexts = inject(ChildrenOutletContexts);
   animalSv = inject(AnimalService);
 
   ngOnInit() {

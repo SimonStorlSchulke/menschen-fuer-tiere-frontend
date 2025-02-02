@@ -22,9 +22,22 @@ export class AnimalListComponent implements OnInit {
 
   protected animals$?: Observable<Animal[]>;
 
-  filterAnimals(animals: Animal[]) {
-    if(!this.isVisibleFunction) return animals;
-    return animals.filter((animal) => this.isVisibleFunction!(animal));
+  filterAnimals(animals: Animal[]): Map<string, Animal[]> {
+    if(this.isVisibleFunction) {
+      animals = animals.filter((animal) => this.isVisibleFunction!(animal));
+    }
+    const whereMap = new Map<string, Animal[]>();
+
+    for (const animal  of animals) {
+      const where = animal.status ?? "in-spaichingen";
+      if(whereMap.has(where)) {
+        whereMap.get(where)!.push(animal);
+      } else {
+        whereMap.set(where, [animal]);
+      }
+    }
+
+    return whereMap;
   }
 
   ngOnInit() {

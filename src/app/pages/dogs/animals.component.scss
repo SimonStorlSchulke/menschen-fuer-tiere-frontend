@@ -1,0 +1,90 @@
+@use "colors" as *;
+@use "variables" as *;
+
+.animal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+#search {
+  color: $neutral800;
+  outline: 3px solid $primary;
+  outline-offset: -1px;
+  border-radius: 100px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.animal-kind-link {
+  text-align: center;
+  color: #fff;
+  background: $primary;
+  overflow: hidden;
+
+  &:hover {
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(#0000, #0007);
+
+    span {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      font-size: $fontsize-h3;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    opacity: 0.42;
+    transition: opacity 0.2s, transform 0.2s, height 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &.active {
+    background-color: $primary;
+
+    .overlay {
+      background: linear-gradient(#0000 15px, #000b);
+    }
+
+    img {
+      opacity: 1;
+    }
+  }
+
+}
+
+@media (max-width: 500px) {
+  .animal-kinds {
+    flex-direction: column;
+  }
+
+  .animal-kind-link {
+    img {
+      height: 70px;
+      width: 100%;
+    }
+
+    &.active {
+      img {
+        height: 160px;
+      }
+    }
+  }
+}
