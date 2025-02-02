@@ -31,11 +31,10 @@ export const contactResolver: ResolveFn<ContactData> = () => {
 }
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [HeroComponent, ArticleComponent, TeammemberTileComponent, RouterLink],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+    selector: 'app-contact',
+    imports: [HeroComponent, ArticleComponent, TeammemberTileComponent, RouterLink],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   contactData!: ContactData;

@@ -9,11 +9,10 @@ export type ArticleTextSection = {
 };
 
 @Component({
-  selector: 'app-text-section',
-  standalone: true,
-  imports: [StrapiRichTextPipe],
-  templateUrl: './text-section.component.html',
-  styleUrl: './text-section.component.scss',
+    selector: 'app-text-section',
+    imports: [StrapiRichTextPipe],
+    templateUrl: './text-section.component.html',
+    styleUrl: './text-section.component.scss'
 })
 export class TextSectionComponent {
   @Input({ required: true }) sectionData!: ArticleTextSection;

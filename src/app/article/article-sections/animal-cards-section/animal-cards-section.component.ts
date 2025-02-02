@@ -16,11 +16,10 @@ export type ArticleAnimalCardsSection = {
 };
 
 @Component({
-  selector: 'app-animal-cards-section',
-  standalone: true,
-  imports: [AnimalTileComponent, AsyncPipe, StrapiRichTextPipe],
-  templateUrl: './animal-cards-section.component.html',
-  styleUrl: './animal-cards-section.component.scss'
+    selector: 'app-animal-cards-section',
+    imports: [AnimalTileComponent, AsyncPipe, StrapiRichTextPipe],
+    templateUrl: './animal-cards-section.component.html',
+    styleUrl: './animal-cards-section.component.scss'
 })
 export class AnimalCardsSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleAnimalCardsSection;

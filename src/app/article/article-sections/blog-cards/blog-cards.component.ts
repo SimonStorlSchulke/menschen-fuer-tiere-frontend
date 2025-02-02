@@ -14,11 +14,10 @@ export type ArticleBlogCardsSection = {
 
 
 @Component({
-  selector: 'app-blog-cards',
-  standalone: true,
-  imports: [BlogTileComponent, AsyncPipe],
-  templateUrl: './blog-cards.component.html',
-  styleUrl: './blog-cards.component.scss'
+    selector: 'app-blog-cards',
+    imports: [BlogTileComponent, AsyncPipe],
+    templateUrl: './blog-cards.component.html',
+    styleUrl: './blog-cards.component.scss'
 })
 export class BlogCardsComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleBlogCardsSection;

@@ -5,11 +5,10 @@ import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-blog-tile',
-  standalone: true,
-  imports: [StrapiMediaPipe, DatePipe, RouterLink],
-  templateUrl: './blog-tile.component.html',
-  styleUrl: './blog-tile.component.scss'
+    selector: 'app-blog-tile',
+    imports: [StrapiMediaPipe, DatePipe, RouterLink],
+    templateUrl: './blog-tile.component.html',
+    styleUrl: './blog-tile.component.scss'
 })
 export class BlogTileComponent {
   @Input({required: true}) blog!: BlogArticle;

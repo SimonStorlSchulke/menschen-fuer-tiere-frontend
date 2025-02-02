@@ -35,22 +35,21 @@ export type ArticleRowStartSection = {
 };
 
 @Component({
-  selector: 'app-article',
-  standalone: true,
-  imports: [
-    TextSectionComponent,
-    TextImageSectionComponent,
-    HeroSectionComponent,
-    ImageSectionComponent,
-    AnimalCardsSectionComponent,
-    ButtonLinkSectionComponent,
-    SectionStartComponent,
-    BlogCardsComponent,
-    CounterSectionComponent,
-    PaypalButtonSectionComponent,
-  ],
-  templateUrl: './article.component.html',
-  styleUrl: './article.component.scss',
+    selector: 'app-article',
+    imports: [
+        TextSectionComponent,
+        TextImageSectionComponent,
+        HeroSectionComponent,
+        ImageSectionComponent,
+        AnimalCardsSectionComponent,
+        ButtonLinkSectionComponent,
+        SectionStartComponent,
+        BlogCardsComponent,
+        CounterSectionComponent,
+        PaypalButtonSectionComponent,
+    ],
+    templateUrl: './article.component.html',
+    styleUrl: './article.component.scss'
 })
 export class ArticleComponent implements AfterViewInit {
   @Input({ required: true }) sections!: ArticleSection[];

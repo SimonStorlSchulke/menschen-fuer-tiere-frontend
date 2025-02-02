@@ -15,11 +15,10 @@ export type DefaultPageData = {
 }
 
 @Component({
-  selector: 'app-blog',
-  standalone: true,
-  imports: [ArticleComponent, RouterLink, MemberApplicationComponent, SponsorhipApplicationComponent],
-  templateUrl: './default-page.component.html',
-  styleUrl: './default-page.component.scss'
+    selector: 'app-blog',
+    imports: [ArticleComponent, RouterLink, MemberApplicationComponent, SponsorhipApplicationComponent],
+    templateUrl: './default-page.component.html',
+    styleUrl: './default-page.component.scss'
 })
 export class DefaultPageComponent {
 

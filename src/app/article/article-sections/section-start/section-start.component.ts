@@ -7,11 +7,10 @@ export type SectionStartSection = {
 };
 
 @Component({
-  selector: 'app-section-start',
-  standalone: true,
-  imports: [],
-  templateUrl: './section-start.component.html',
-  styleUrl: './section-start.component.scss'
+    selector: 'app-section-start',
+    imports: [],
+    templateUrl: './section-start.component.html',
+    styleUrl: './section-start.component.scss'
 })
 export class SectionStartComponent {
   @Input({required: true}) sectionData!: SectionStartSection;

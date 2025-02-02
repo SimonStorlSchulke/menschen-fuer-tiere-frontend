@@ -10,10 +10,9 @@ import { AnimalService } from './services/animal.service';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent],
+    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent]
 })
 export class AppComponent implements OnInit{
   title = 'sheltify-frontend';

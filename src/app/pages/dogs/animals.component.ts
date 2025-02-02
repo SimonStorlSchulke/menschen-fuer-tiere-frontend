@@ -29,11 +29,10 @@ export type AnimalsPageData = {
 }
 
 @Component({
-  selector: 'app-dogs',
-  standalone: true,
-  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
-  templateUrl: './animals.component.html',
-  styleUrl: './animals.component.scss',
+    selector: 'app-dogs',
+    imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
+    templateUrl: './animals.component.html',
+    styleUrl: './animals.component.scss'
 })
 export class AnimalsComponent {
 

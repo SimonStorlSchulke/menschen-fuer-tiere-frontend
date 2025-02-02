@@ -11,11 +11,10 @@ export type ArticleCounterSection = {
 };
 
 @Component({
-  selector: 'app-counter-section',
-  standalone: true,
-  imports: [StrapiRichTextPipe, CountUpModule],
-  templateUrl: './counter-section.component.html',
-  styleUrl: './counter-section.component.scss',
+    selector: 'app-counter-section',
+    imports: [StrapiRichTextPipe, CountUpModule],
+    templateUrl: './counter-section.component.html',
+    styleUrl: './counter-section.component.scss'
 })
 export class CounterSectionComponent {
   @Input({ required: true }) sectionData!: ArticleCounterSection;

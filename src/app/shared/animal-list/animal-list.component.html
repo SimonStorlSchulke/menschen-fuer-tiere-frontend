@@ -1,10 +1,11 @@
 @if (animals$ | async; as animals) {
-    <div class="animal-list">
+  <div class="animal-list">
 
-        @for (animal of filterAnimals(animals); track animal.id) {
-            <app-animal-tile [animal]="animal" />
-        } @empty {
-            Momentan haben wir leider keine Hunde in der Vermittlung, die diesen Eigenschaften entsprechen.
-        }
-    </div>
+    @for (whereEntry of {animals: animals, isVisibleFunction: isVisibleFunction} | filterAnimals; track $index) {
+      {{ whereEntry[0] }}
+      @for (animal of whereEntry[1]; track animal.id) {
+        <app-animal-tile [animal]="animal" />
+      }
     }
+  </div>
+}

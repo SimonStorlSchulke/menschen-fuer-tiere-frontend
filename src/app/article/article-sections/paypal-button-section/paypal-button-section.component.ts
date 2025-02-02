@@ -7,11 +7,10 @@ export type ArticlePaypalButtonSection = {
 };
 
 @Component({
-  selector: 'app-paypal-button-section',
-  standalone: true,
-  imports: [CountUpModule],
-  templateUrl: './paypal-button-section.component.html',
-  styleUrl: './paypal-button-section.component.scss',
+    selector: 'app-paypal-button-section',
+    imports: [CountUpModule],
+    templateUrl: './paypal-button-section.component.html',
+    styleUrl: './paypal-button-section.component.scss'
 })
 export class PaypalButtonSectionComponent {
   @Input({ required: true }) sectionData!: ArticlePaypalButtonSection;

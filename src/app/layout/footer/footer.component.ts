@@ -16,11 +16,10 @@ type FooterDataBannerData = {
 };
 
 @Component({
-  selector: "app-footer",
-  standalone: true,
-  imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiMediaPipe, IconComponent, PaypalButtonSectionComponent],
-  templateUrl: "./footer.component.html",
-  styleUrl: "./footer.component.scss",
+    selector: "app-footer",
+    imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiMediaPipe, IconComponent, PaypalButtonSectionComponent],
+    templateUrl: "./footer.component.html",
+    styleUrl: "./footer.component.scss"
 })
 export class FooterComponent {
   strapiSv = inject(StrapiService);

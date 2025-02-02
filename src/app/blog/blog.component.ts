@@ -27,11 +27,10 @@ export const blogArticleResolver: ResolveFn<BlogArticle>  = (
 
 
 @Component({
-  selector: 'app-blog',
-  standalone: true,
-  imports: [ArticleComponent, RouterLink, DatePipe],
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss'
+    selector: 'app-blog',
+    imports: [ArticleComponent, RouterLink, DatePipe],
+    templateUrl: './blog.component.html',
+    styleUrl: './blog.component.scss'
 })
 export class BlogComponent {
 

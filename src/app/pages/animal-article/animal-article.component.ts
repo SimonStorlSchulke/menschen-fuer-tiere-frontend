@@ -28,7 +28,6 @@ export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
 
 @Component({
     selector: 'app-animal-article',
-    standalone: true,
     templateUrl: './animal-article.component.html',
     styleUrl: './animal-article.component.scss',
     imports: [

@@ -5,11 +5,11 @@ import { StrapiService } from '../../services/strapi.service';
 import { StrapiMedia } from '../shared-types';
 
 @Component({
-  selector: 'app-lightbox',
+    selector: 'app-lightbox',
+    imports: [StrapiMediaPipe],
+    templateUrl: './lightbox.component.html',
+    styleUrl: './lightbox.component.scss',
   standalone: true,
-  imports: [StrapiMediaPipe],
-  templateUrl: './lightbox.component.html',
-  styleUrl: './lightbox.component.scss'
 })
 export class LightboxComponent implements OnInit {
   @ViewChild("modal") dialogRef!: ElementRef<HTMLDialogElement>;

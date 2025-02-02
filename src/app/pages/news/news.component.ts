@@ -32,11 +32,10 @@ export type NewsData = {
 }
 
 @Component({
-  selector: 'app-news',
-  standalone: true,
-  imports: [HeroComponent, ArticleComponent, BlogTileComponent],
-  templateUrl: './news.component.html',
-  styleUrl: './news.component.scss'
+    selector: 'app-news',
+    imports: [HeroComponent, ArticleComponent, BlogTileComponent],
+    templateUrl: './news.component.html',
+    styleUrl: './news.component.scss'
 })
 export class NewsComponent {
   pageData!: NewsData;

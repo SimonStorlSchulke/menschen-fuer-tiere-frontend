@@ -9,11 +9,10 @@ export type ButtonLinkSection = {
 };
 
 @Component({
-  selector: 'app-button-link-section',
-  standalone: true,
-  imports: [],
-  templateUrl: './button-link-section.component.html',
-  styleUrl: './button-link-section.component.scss'
+    selector: 'app-button-link-section',
+    imports: [],
+    templateUrl: './button-link-section.component.html',
+    styleUrl: './button-link-section.component.scss'
 })
 export class ButtonLinkSectionComponent {
   @Input({required: true}) sectionData!: ButtonLinkSection;

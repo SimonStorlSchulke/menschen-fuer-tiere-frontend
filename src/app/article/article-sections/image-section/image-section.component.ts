@@ -14,11 +14,10 @@ export type ArticleImageSection = {
 };
 
 @Component({
-  selector: 'app-image-section',
-  standalone: true,
-  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, StrapiMediaComponent],
-  templateUrl: './image-section.component.html',
-  styleUrl: './image-section.component.scss'
+    selector: 'app-image-section',
+    imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, StrapiMediaComponent],
+    templateUrl: './image-section.component.html',
+    styleUrl: './image-section.component.scss'
 })
 export class ImageSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleImageSection;

@@ -5,11 +5,10 @@ import { HttpStatusCode } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-forms',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './forms.component.html',
-  styleUrl: './forms.component.scss'
+    selector: 'app-forms',
+    imports: [RouterLink],
+    templateUrl: './forms.component.html',
+    styleUrl: './forms.component.scss'
 })
 export class FormsComponent {
 

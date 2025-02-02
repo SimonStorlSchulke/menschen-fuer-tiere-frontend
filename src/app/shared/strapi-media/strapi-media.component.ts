@@ -8,11 +8,11 @@ import { StrapiMedia } from '../shared-types';
 import { LightboxComponent } from '../lightbox/lightbox.component';
 
 @Component({
-  selector: 'app-strapi-media',
-  standalone: true,
-  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, LightboxComponent],
-  templateUrl: './strapi-media.component.html',
-  styleUrl: './strapi-media.component.scss'
+    selector: 'app-strapi-media',
+    imports: [StrapiMediaPipe, GalleryModule, LightboxComponent],
+    templateUrl: './strapi-media.component.html',
+    styleUrl: './strapi-media.component.scss',
+    standalone: true,
 })
 export class StrapiMediaComponent {
   @Input({required: true}) media?: StrapiMedia[] = [];

@@ -13,7 +13,6 @@ export type TeamMember = {
 
 @Component({
     selector: 'app-teammember-tile',
-    standalone: true,
     templateUrl: './teammember-tile.component.html',
     styleUrl: './teammember-tile.component.scss',
     imports: [StrapiMediaPipe]

@@ -17,11 +17,10 @@ export const aboutResolver: ResolveFn<AboutData> = () => {
 }
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [HeroComponent, ArticleComponent],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+    selector: 'app-about',
+    imports: [HeroComponent, ArticleComponent],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent {
   aboutData!: AboutData;

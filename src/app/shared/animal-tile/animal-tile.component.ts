@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import {DogsService} from "../../pages/dogs/dogs.service";
 
 @Component({
-  selector: 'app-animal-tile',
-  standalone: true,
-  imports: [NgIf, RouterLink],
-  templateUrl: './animal-tile.component.html',
-  styleUrl: './animal-tile.component.scss'
+    selector: 'app-animal-tile',
+    imports: [NgIf, RouterLink],
+    templateUrl: './animal-tile.component.html',
+    styleUrl: './animal-tile.component.scss'
 })
 export class AnimalTileComponent {
 
