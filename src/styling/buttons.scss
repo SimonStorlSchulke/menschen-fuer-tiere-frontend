@@ -54,6 +54,7 @@ button:not(.unstyled) {
         outline-offset: -3px;
         background-color: transparent;
         color: $primary;
+        margin-left: -3px;
 
         &:hover {
             outline-color: $primary;

@@ -25,6 +25,8 @@
   color: #fff;
   background: $primary;
   overflow: hidden;
+  min-width: 16.66%;
+
 
   &:hover {
   }
@@ -50,6 +52,9 @@
     object-fit: cover;
     opacity: 0.42;
     transition: opacity 0.2s, transform 0.2s, height 0.2s;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
 
     &:hover {
       transform: scale(1.05);
@@ -70,7 +75,7 @@
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 900px) {
   .animal-kinds {
     flex-direction: column;
   }

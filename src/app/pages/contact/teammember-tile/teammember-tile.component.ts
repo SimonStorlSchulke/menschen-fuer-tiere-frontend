@@ -9,13 +9,15 @@ export type TeamMember = {
   mail: string,
   phone: string,
   image?: StrapiMedia,
+  ehrenamtlich: boolean,
 }
 
 @Component({
     selector: 'app-teammember-tile',
     templateUrl: './teammember-tile.component.html',
     styleUrl: './teammember-tile.component.scss',
-    imports: [StrapiMediaPipe]
+    imports: [StrapiMediaPipe],
+  standalone: true,
 })
 export class TeammemberTileComponent {
   @Input({required: true}) teamMember!: TeamMember;

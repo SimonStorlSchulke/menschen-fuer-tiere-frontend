@@ -7,6 +7,15 @@
     background-color: #fff;
     font-size: 1rem;
     padding-top: 0;
+    position: absolute;
+    width: 800px;
+
+  img {
+    border-radius: 4px;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+  }
 
     &:not(:has(.news)) {
         display: none;

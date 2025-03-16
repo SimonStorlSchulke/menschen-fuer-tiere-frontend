@@ -67,21 +67,28 @@
   <div class="contact  sui mb-4">
     <span>
       <h2>Kontakt</h2>
-        <a class="sui flex-x ai-center gap-3" href="mailto:kontakt@herzenshunde-griechenland.de"> <img alt="mail icon"
+        <a class="sui flex-x ai-center gap-3" href="mailto:info@menschen-fuer-tiere-spaichingen.de"> <img alt="mail icon"
                                                                                                        aria-hidden="true"
                                                                                                        class="sui inline-icon"
-                                                                                                       src="assets/img/mail.svg"><span> kontakt&#64;herzenshunde-griechenland.de</span></a>
+                                                                                                       src="assets/img/mail.svg"><span>info&#64;menschen-fuer-tiere-spaichingen.de</span></a>
         <span class="sui flex-x ai-center gap-3"><img alt="phone icon" aria-hidden="true" class="sui inline-icon"
                                                       src="assets/img/phone.svg"><span>0 1234 / 56 78 99 - 0</span></span>
     </span>
   </div>
 </div>
 
-<div class="bg-beige ">
+<div class="">
   <div class="sui wrapper flex-y gap-5 py-6">
     <h2>Das Team</h2>
     <div class="sui flex-x wrap center gap-5 jc-center">
-      @for (member of contactData.teamMembers; track $index) {
+      @for (member of mitarbeiter; track $index) {
+        <app-teammember-tile [teamMember]="member"/>
+      }
+    </div>
+
+    <h2>Ehrenamtliche Helfer</h2>
+    <div class="sui flex-x wrap center gap-5 jc-center">
+      @for (member of ehrenamtliche; track $index) {
         <app-teammember-tile [teamMember]="member"/>
       }
     </div>

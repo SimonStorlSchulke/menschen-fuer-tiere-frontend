@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-sponsorship-application',
     imports: [FormsComponent, FormsModule],
     templateUrl: './sponsorship-application.component.html',
-    styleUrl: './sponsorship-application.component.scss'
+    styleUrl: './sponsorship-application.component.scss',
+  standalone: true,
 })
 export class SponsorhipApplicationComponent {
-  applicantName = "";  
-  animalName = "";  
+  applicantName = "";
+  animalName = "";
 }

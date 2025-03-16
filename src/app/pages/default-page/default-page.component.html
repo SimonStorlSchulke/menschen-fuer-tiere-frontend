@@ -1,9 +1,11 @@
 @if (pageData) {
-    <div class="sui wrapper flex-y my-4 gap-3">
+<!--    <div class="sui wrapper flex-y my-4 gap-3">
         <h1 class="sui text-oswald mb-0"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'../'">&lt; </a>{{ pageData.name }}</h1>
+    </div>-->
+    <div class="sui wrapper">
+      <app-info-popup/>
     </div>
     <app-article [sections]="pageData.article" />
-
     <!-- todo - clean up this disgusting workaround -->
     @switch (route) {
       @case("/helfen/mitgliedsantrag") {

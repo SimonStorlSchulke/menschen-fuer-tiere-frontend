@@ -1,19 +1,19 @@
-import { Component, ElementRef, inject, ViewChild} from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
-import { Animal, AnimalKind } from '../../shared/shared-types';
+import { Animal, AnimalKind, StrapiMedia } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
 import { BehaviorSubject, lastValueFrom, map, Observable, switchMap, tap } from 'rxjs';
 import { AnimalArticleService } from '../../services/animal-article.service';
-import {DogsService} from "./dogs.service";
+import { DogsService } from "./dogs.service";
 import { ActivatedRoute, ResolveFn, RouterLink, RouterLinkActive } from '@angular/router';
 import { StrapiService } from '../../services/strapi.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 
 export const animalsResolver: ResolveFn<AnimalKindsData> = async (route) => {
   return {
-    currentAnimalKind: route.paramMap.get("animalKind")  ?? "tiere",
+    currentAnimalKind: route.paramMap.get("animalKind") ?? "tiere",
     animalKinds: await lastValueFrom(inject(StrapiService).get("animal-kinds?populate=icon")),
   }
 }
@@ -28,11 +28,18 @@ export type AnimalsPageData = {
   animalKindsData: AnimalKindsData,
 }
 
+type AnimalsSettings = {
+  imageLost: StrapiMedia,
+  imageFound: StrapiMedia,
+  imageHomeFound: StrapiMedia,
+}
+
 @Component({
-    selector: 'app-dogs',
-    imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
-    templateUrl: './animals.component.html',
-    styleUrl: './animals.component.scss'
+  selector: 'app-dogs',
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
+  templateUrl: './animals.component.html',
+  styleUrl: './animals.component.scss',
+  standalone: true,
 })
 export class AnimalsComponent {
 
@@ -47,9 +54,22 @@ export class AnimalsComponent {
   pageContent$: Observable<AnimalsPageData> = inject(ActivatedRoute).data.pipe(
     switchMap(data => {
       const animalKindsData: AnimalKindsData = data["animalKindsData"];
+
       const url = `animal-kinds?filters[namePlural][$eqi]=${animalKindsData.currentAnimalKind}&populate=*`
-      const dynamicPage$ = this.animalArticleSv
-        .getAndInsertAnimalLinks<AnimalKind[]>(url);
+      const dynamicPage$ = this.animalArticleSv.getAndInsertAnimalLinks<AnimalKind[]>(url);
+
+
+      if(animalKindsData.currentAnimalKind == "vermisst") {
+        this.query$.next(`filters[status][$eqi]=vermisst`);
+      } else if(animalKindsData.currentAnimalKind == "zuhause-gefunden") {
+        this.query$.next(`filters[status][$eqi]=zuhause-gefunden`);
+      } else if(animalKindsData.currentAnimalKind == "fundtier") {
+        this.query$.next(`filters[status][$eqi]=fundtier`);
+      } else if(animalKindsData.currentAnimalKind == "tiere") {
+        this.query$.next(``);
+      } else {
+        this.query$.next(`filters[$and][0][animalKind][namePlural][$eqi]=${animalKindsData.currentAnimalKind}&filters[$and][1][status][$ne]=vermisst&filters[$and][2][status][$ne]=zuhause-gefunden`);
+      }
 
       return dynamicPage$.pipe(
         map(dynamicPageData => ({
@@ -60,6 +80,8 @@ export class AnimalsComponent {
     })
   );
 
+  settings$: Observable<AnimalsSettings> = this.animalArticleSv.get<AnimalsSettings>("einstellungen-tiere?populate=*");
+
 
   toggleFilter(category: string, key: string) {
     [...this.dogsSv.filters.get(category)!.keys()].forEach((cKey) => {
@@ -69,9 +91,9 @@ export class AnimalsComponent {
     });
     const oldValue = this.dogsSv.filters.get(category)!.get(key)!;
     this.dogsSv.filters.get(category)!.set(key, !oldValue);
-    if (this.query$.value != '') {
+/*    if (this.query$.value != '') {
       this.query$.next('');
-    }
+    }*/
     this.searchInput.nativeElement.value = "";
   }
 
@@ -85,7 +107,7 @@ export class AnimalsComponent {
 
   onSearchTyped(e: string) {
     if (e.length > 1) {
-      this.query$.next(`filters[$or][0][name][$contains]=${e}&filters[$or][1][description][$contains]=${e}`);
+      this.query$.next(`filters[$or][0][name][$contains]=${e}&filters[$or][1][description][$contains]=${e}&`);
       window.setTimeout(() => {
         this.resetFilters();
       }, 400);
@@ -152,7 +174,7 @@ export class AnimalsComponent {
     const ageText = ageTexts.get(this.activeFilter("age") ?? "") ?? "";
 
     const text = [genderText, sizeText, ageText].join(" ");
-    if(text.trim() == "Hunde") return "";
+    if (text.trim() == "Hunde") return "";
     return text;
   }
 }

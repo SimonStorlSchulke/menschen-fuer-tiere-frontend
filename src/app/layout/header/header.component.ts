@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, inject, ViewChild} from '@angular/c
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {StrapiService} from '../../services/strapi.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import { SitemapService } from '../../services/sitemap.service';
 
 type HeaderItem = {
   label: string,
@@ -22,16 +23,30 @@ type subPageLink = {
     selector: 'app-header',
     imports: [RouterLink, RouterLinkActive],
     templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+    styleUrl: './header.component.scss',
+  standalone: true,
 })
 export class HeaderComponent {
   items: HeaderItem[] = [
     {label: "Home", link: "/"},
     {label: "Über uns", link: "/ueber-uns"},
-    {label: "Hunde", link: "/tiere/hunde"},
-    {label: "Vermittlung", link: "/vermittlung"},
+    {label: "Tiere", link: "/tiere", children: [
+        {label: "Hunde", link: "/tiere/Hunde"},
+        {label: "Katzen", link: "/tiere/Katzen"},
+        {label: "Kleintiere", link: "/tiere/Kleintiere"},
+        {label: "Vermisst", link: "/tiere/vermisst"},
+        {label: "Zuhause Gefunden", link: "/tiere/zuhause-gefunden"},
+        {label: "Fundtiere", link: "/tiere/fundtier"},
+      ]},
+/*    {label: "Vermittlung", link: "/vermittlung", children: [
+        {label: "Vermittlungshilfe Hund", link: "/vermittlung/hund"},
+        {label: "Vermittlungshilfe Katze", link: "/vermittlung/katze"},
+      ]},*/
     {label: "Helfen", link: "/helfen"},
-    {label: "News & Wissen", link: "/news"},
+    {label: "Veranstaltungen", link: "/news"},
+    {label: "Wissenswertes", link: "/wissenswertes"},
+    {label: "Sponsoren ♥", link: "/sponsoren"},
+    {label: "Tierheimjugend", link: "/tierheimjugend"},
     {label: "Kontakt", link: "/kontakt"},
   ]
 
@@ -40,32 +55,19 @@ export class HeaderComponent {
   burgerMenuOpen: boolean = false;
 
   strapiSv = inject(StrapiService);
+  siteMapSv = inject(SitemapService);
 
   @ViewChild("navDesktop") navDesktop!: ElementRef;
   previousScrollPosition = 0;
   showHeader = true;
   desktopHeaderHeight = 96;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const currentScrollPosition = document.documentElement.scrollTop ?? 0;
-    this.showHeader = currentScrollPosition < this.previousScrollPosition || currentScrollPosition < 100;
-    if(!this.showHeader) this.burgerMenuOpen = false;
-    this.desktopHeaderHeight = currentScrollPosition > 200 ? 66 : 86;
-    this.previousScrollPosition = currentScrollPosition;
-  }
+
 
   constructor() {
-    this.strapiSv.get<subPageLink[]>("convey-subpages?fields[0]=name&fields[1]=urlName")
-      .pipe(takeUntilDestroyed())
-      .subscribe(subPageData => {
-        this.items[3].children = subPageData.map(element => {
-          return {
-            label: element.name,
-            link: "vermittlung/" + element.urlName,
-          }
-        })
-      });
+
+
+    this.siteMapSv.getSitemap().subscribe()
 
     this.strapiSv.get<subPageLink[]>("help-subpages?fields[0]=name&fields[1]=urlName")
       .pipe(takeUntilDestroyed())

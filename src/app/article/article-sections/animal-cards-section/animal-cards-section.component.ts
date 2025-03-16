@@ -19,7 +19,8 @@ export type ArticleAnimalCardsSection = {
     selector: 'app-animal-cards-section',
     imports: [AnimalTileComponent, AsyncPipe, StrapiRichTextPipe],
     templateUrl: './animal-cards-section.component.html',
-    styleUrl: './animal-cards-section.component.scss'
+    styleUrl: './animal-cards-section.component.scss',
+  standalone: true,
 })
 export class AnimalCardsSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleAnimalCardsSection;

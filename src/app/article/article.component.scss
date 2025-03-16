@@ -9,7 +9,10 @@ article {
 .section-container {
   padding-bottom: 38px;
   padding-top: 38px;
-  transition: transform 0.3s, opacity 0.3s;
+
+  &:has(app-hero-section) {
+    padding-top: 0;
+  }
 
   &.bg-beige,
   &.bg-lightgreen {

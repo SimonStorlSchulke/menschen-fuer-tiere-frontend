@@ -8,7 +8,8 @@ import { RouterLink } from '@angular/router';
     selector: 'app-forms',
     imports: [RouterLink],
     templateUrl: './forms.component.html',
-    styleUrl: './forms.component.scss'
+    styleUrl: './forms.component.scss',
+  standalone: true,
 })
 export class FormsComponent {
 

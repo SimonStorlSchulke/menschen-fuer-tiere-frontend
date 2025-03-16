@@ -6,7 +6,8 @@ import { FormsModule } from "@angular/forms";
     selector: 'app-member-application',
     imports: [FormsComponent, FormsModule],
     templateUrl: './member-application.component.html',
-    styleUrl: './member-application.component.scss'
+    styleUrl: './member-application.component.scss',
+  standalone: true,
 })
 export class MemberApplicationComponent {
   applicantName = "";

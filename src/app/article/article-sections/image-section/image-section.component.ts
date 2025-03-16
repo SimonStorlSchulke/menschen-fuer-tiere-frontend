@@ -17,13 +17,14 @@ export type ArticleImageSection = {
     selector: 'app-image-section',
     imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, StrapiMediaComponent],
     templateUrl: './image-section.component.html',
-    styleUrl: './image-section.component.scss'
+    styleUrl: './image-section.component.scss',
+  standalone: true,
 })
 export class ImageSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleImageSection;
   strapiSv = inject(StrapiService);
 
-  galleryImages: GalleryItem[] = [];
+  galleryImages: ImageItem[] | undefined = [];
 
   ngOnInit() {
     this.galleryImages = this.sectionData.images?.map((strapiImage) => new ImageItem({

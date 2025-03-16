@@ -34,10 +34,13 @@ export const contactResolver: ResolveFn<ContactData> = () => {
     selector: 'app-contact',
     imports: [HeroComponent, ArticleComponent, TeammemberTileComponent, RouterLink],
     templateUrl: './contact.component.html',
-    styleUrl: './contact.component.scss'
+    styleUrl: './contact.component.scss',
+  standalone: true,
 })
 export class ContactComponent {
   contactData!: ContactData;
+  mitarbeiter!: TeamMember[];
+  ehrenamtliche!: TeamMember[];
   mailFormSv = inject(MailformService);
   strapiSv = inject(StrapiService);
 
@@ -53,7 +56,11 @@ export class ContactComponent {
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
-      .subscribe(({contactData}) => this.contactData = contactData);
+      .subscribe(({contactData}) => {
+        this.contactData = contactData;
+        this.ehrenamtliche = this.contactData.teamMembers.filter(m => m.ehrenamtlich);
+        this.mitarbeiter = this.contactData.teamMembers.filter(m => !m.ehrenamtlich);
+      });
   }
 
   autogrow(area: HTMLTextAreaElement) {

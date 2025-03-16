@@ -2,7 +2,10 @@
 @use "variables" as *;
 
 :host {
-    width: 30%;
+  width: 400px;
+}
+
+.teammember {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,4 +30,17 @@
             filter: invert(0.7);
         }
     }
+
+  &.ehrenamtlich {
+/*    h3 {
+      font-size: 1.4rem;
+    }
+
+    .avatar {
+      height: 100px;
+      min-height: 100px;
+      width: 100px;
+      min-width: 100px;
+    }*/
+  }
 }

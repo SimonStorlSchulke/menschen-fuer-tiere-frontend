@@ -61,6 +61,7 @@ export type Animal = {
   updatedAt: string,
   publishedAt: string,
   name: string,
+  race?: string,
   gender: "male" | "female" | "other";
   thumbnail?: StrapiMedia | null,
   description: string,
@@ -77,10 +78,11 @@ export type Animal = {
   suitedFor?: string | null,
   priority: number,
   status: AnimalStatusName;
+  freeRoamer?: boolean,
   animal_article?: {
     updatedAt: string,
   }
 }
 
-export type AnimalStatusName = "in-spaichingen" | "in-bulgarien" | "vermittlungshilfe" | "zuhause-gefunden" | "vermisst" | "fundtier";
+export type AnimalStatusName = "in-spaichingen" | "in-rumänien" | "vermittlungshilfe" | "zuhause-gefunden" | "vermisst" | "fundtier";
 

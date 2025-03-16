@@ -7,7 +7,7 @@ import { AnimalArticleService } from './animal-article.service';
 
 export type StrapiDynamicRoute = {
   name: string;
-  path: string;
+  url: string;
   createNavigationMenuEntry: boolean;
 }
 
@@ -25,7 +25,7 @@ const pageResolver: ResolveFn<DefaultPageData> = (
   route: ActivatedRouteSnapshot,
 ) => {
   const sitePath = "/" + route.url.join("/")!;
-  const apiPath = `pages?filters[path][$eq]=${sitePath}&populate[article][populate]=*`;
+  const apiPath = `pages?filters[url][$eq]=${sitePath}&populate[article][populate]=*`;
 
   return inject(AnimalArticleService)
     .getAndInsertAnimalLinks<DefaultPageData[]>(apiPath)
@@ -46,12 +46,12 @@ export class SitemapService {
   private buildRouteHierarchy(strapiRoutes: StrapiDynamicRoute[]): RouteHierarchy {
     const hierarchy: RouteHierarchy = {};
 
-    strapiRoutes.forEach(({ path, name }) => {
-      path = path ?? "";
-      const parts = path.split("/");
+    strapiRoutes.forEach(({ url, name }) => {
+      url = url ?? "";
+      const parts = url.split("/");
 
       if (parts.length > 2) {
-        throw new Error(`Invalid route format: "${path}". Routes can only have up to two parts.`);
+        throw new Error(`Invalid route format: "${url}". Routes can only have up to two parts.`);
       }
 
       const [part1, part2] = parts;
@@ -69,6 +69,7 @@ export class SitemapService {
         (hierarchy[part1] as RouteHierarchy)[part2] = { name };
       }
     });
+    console.log(hierarchy);
     return hierarchy;
   }
 }

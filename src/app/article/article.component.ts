@@ -49,7 +49,8 @@ export type ArticleRowStartSection = {
         PaypalButtonSectionComponent,
     ],
     templateUrl: './article.component.html',
-    styleUrl: './article.component.scss'
+    styleUrl: './article.component.scss',
+    standalone: true,
 })
 export class ArticleComponent implements AfterViewInit {
   @Input({ required: true }) sections!: ArticleSection[];
@@ -61,14 +62,14 @@ export class ArticleComponent implements AfterViewInit {
 
   constructor() {
   }
-  
+
   ngAfterViewInit() {
     const rowStartTags = (this.articleElement.nativeElement as HTMLElement).querySelectorAll<HTMLElement>('.article-rows');
     rowStartTags.forEach((rowStart) => {
       const columns: number = +rowStart.getAttribute('data-columns')!;
       rowStart.append(...this.getNextNSiblings(rowStart.parentElement!, columns));
     });
-    
+
     this.animate$.pipe(throttleTime(75)).subscribe(() => {
       this.animateFn();
     })
@@ -106,7 +107,7 @@ export class ArticleComponent implements AfterViewInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.animate$.next();
+    //this.animate$.next();
   }
 
   private animateFn() {

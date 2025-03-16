@@ -9,11 +9,11 @@
          [routerLinkActiveOptions]="{ exact: true }"> {{ item.label }}</a>
     }
 
-    @if (item.link && item.children) {
+    @if (item.link && item.children && item.children.length > 0) {
       <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1"
            [class.open]="openedDropdownIndex == $index">
         <a [routerLink]="item.link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-          <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{ item.label }} v
+          <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{ item.label }} ▾
           </button>
         </a>
         <div class="dropdown-content" [style.top]="desktopHeaderHeight">
@@ -43,7 +43,7 @@
              (click)="burgerMenuOpen = false"> {{ item.label }}</a>
         }
 
-        @if (item.children) {
+        @if (item.link && item.children && item.children.length > 0) {
           <div class="unstyled dropdown-container dropdown-index-{{$index}}"
                [class.open]="openedDropdownIndex == $index">
             <a [routerLink]="item.link" [routerLinkActive]="'active'"

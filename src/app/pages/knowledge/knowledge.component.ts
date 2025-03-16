@@ -32,12 +32,12 @@ export type NewsData = {
 }
 
 @Component({
-    selector: 'app-news',
+    selector: 'app-knowledge',
     imports: [HeroComponent, ArticleComponent, BlogTileComponent],
-    templateUrl: './news.component.html',
-    styleUrl: './news.component.scss'
+    templateUrl: './knowledge.component.html',
+    styleUrl: './knowledge.component.scss'
 })
-export class NewsComponent {
+export class KnowledgeComponent {
   pageData!: NewsData;
   activeFilter = "";
   activePage = 1;
@@ -48,11 +48,10 @@ export class NewsComponent {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
     .subscribe( ({ newsData }) => {
         this.pageData = newsData;
-        this.toggleFilter("news", 0)
+        this.toggleFilter("wissen", 0)
       }
     );
   }
-
 
   toggleFilter(filterKey: string, pageNumber: number) {
     if(filterKey != "") {

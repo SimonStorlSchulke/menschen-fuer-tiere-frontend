@@ -28,6 +28,12 @@
                 @if (cAnimal.birthday) {
                   <span><strong>Alter:</strong> {{ animalSv.getAgeString(cAnimal) }}</span>
                 }
+                @if (cAnimal.race?.trim()) {
+                  <span><strong>Rasse:</strong> {{ cAnimal.race?.trim() }}</span>
+                }
+                @if (cAnimal.freeRoamer !== null) {
+                  <span><strong>Freigänger:</strong> {{ cAnimal.freeRoamer ? 'ja' : 'nein' }}</span>
+                }
                 @if (cAnimal.castrated != null) {
                   <span><strong>Kastriert:</strong> {{ cAnimal.castrated ? "ja" : "nein" }}</span>
                 }
@@ -67,24 +73,27 @@
             <h4 class="sui w-100 text-center text-oswald pate">Vielen Dank an {{cAnimal.paten}} für die Übernahme der Patenschaft für {{cAnimal.name}}!</h4>
           }
 
-          <div class="sui flex-x gap-3">
-            <a [routerLink]="'/formulare/bewerbung'"><button class="primary">Jetzt bewerben</button></a>
-            <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="primary">Pate werden</button></a>
-          </div>
+          @if(["in-spaichingen", "in-rumänien", "vermittlungshilfe"].includes(cAnimal.status)) {
+            <div class="sui flex-x gap-3">
+              <a [routerLink]="'/formulare/bewerbung'"><button class="primary">Jetzt bewerben</button></a>
+            </div>
+          }
         </div>
       </div>
       <br />
     </div>
   </div>
   <app-article [sections]="article.sections" />
+
+  @if(["in-spaichingen", "in-rumänien", "vermittlungshilfe"].includes(cAnimal.status)) {
   <div class="sui wrapper flex-y ai-center mt-5 mb-5 gap-3">
     <h3 class="text-oswald">{{ getCtoText() }}</h3>
 
     <div class="sui flex-x gap-3">
       <a [routerLink]="'/formulare/bewerbung'"><button class="primary">Jetzt bewerben</button></a>
-      <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="primary">Pate werden</button></a>
     </div>
   </div>
+  }
 } @else {
   Tier nicht gefunden
 }

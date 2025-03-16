@@ -8,6 +8,27 @@
           </div>
         </a>
       }
+
+      @if(settings$ | async; as settings) {
+      <a class="animal-kind-link relative sui text-capitalize grow-1" [routerLink]="'/tiere/vermisst'" routerLinkActive="active">
+        <img [src]="settings.imageLost | strapiMedia: 'medium'" alt="vermisst">
+        <div class="overlay">
+          <span class="sui bold px-2">Vermisst</span>
+        </div>
+      </a>
+      <a class="animal-kind-link relative sui text-capitalize grow-1" [routerLink]="'/tiere/zuhause-gefunden'" routerLinkActive="active">
+        <img [src]="settings.imageHomeFound | strapiMedia: 'medium'" alt="zuhause gefunden">
+        <div class="overlay">
+          <span class="sui bold px-2">Zuhause gefunden</span>
+        </div>
+      </a>
+      <a class="animal-kind-link relative sui text-capitalize grow-1" [routerLink]="'/tiere/fundtier'" routerLinkActive="active">
+        <img [src]="settings.imageFound | strapiMedia: 'medium'" alt="fundtiere">
+        <div class="overlay">
+          <span class="sui bold px-2">Fundtiere</span>
+        </div>
+      </a>
+      }
     </div>
   <div class="sui wrapper flex-y gap-3 mt-5">
     <h1 class="sui text-capitalize pt-3">{{pageContent.animalKindsData.currentAnimalKind}}</h1>
@@ -16,12 +37,14 @@
   <app-article [sections]="pageContent.article!"/>
   <div class="sui wrapper flex-y gap-3 mb-5">
     <div class="sui flex-y gap-5">
+
       <div class="sui filters gap-4 wrap">
         <div class="form-container">
           <div class="form-block">
             <input class="text-oswald" type="text" name="search" id="search" placeholder="suchen" #searchInput (input)="onSearchTyped(searchInput.value)"/>
           </div>
         </div>
+      @if(pageContent.animalKindsData.currentAnimalKind == 'Hunde') {
         <div class="">
           <div class="filter-selector">
             <button (click)="toggleFilter('size', 'small')" [class.active]="isFilterActive('size', 'small')">klein</button>
@@ -43,6 +66,7 @@
             <button (click)="toggleFilter('age', 'old')" [class.active]="isFilterActive('age', 'old')">Senioren</button>
           </div>
         </div>
+      }
       </div>
       <strong class="sui text-center">{{ getExplainer() }}</strong>
 
@@ -50,7 +74,7 @@
   </div>
   <div class="bg-lightgreen sui py-5">
     <div class="sui wrapper">
-      <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()"/>
+      <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" [animalKind]="pageContent.animalKindsData.currentAnimalKind"/>
     </div>
   </div>
 }

@@ -4,13 +4,14 @@ import { BlogArticle } from '../../blog/blog.component';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 
 @Component({
   selector: 'app-info-popup',
   standalone: true,
-  imports: [AsyncPipe, RouterLink],
+  imports: [AsyncPipe, RouterLink, StrapiMediaPipe],
   templateUrl: './info-popup.component.html',
-  styleUrl: './info-popup.component.scss'
+  styleUrl: './info-popup.component.scss',
 })
 export class InfoPopupComponent {
   newsData$ = inject(StrapiService).get<BlogArticle[]>("blogs?filters[showAsPopup]=true&sort[1]=publishedAt:desc&populate[thumbnail]=*")

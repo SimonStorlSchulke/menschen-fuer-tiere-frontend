@@ -1,6 +1,32 @@
+@use "colors" as *;
+
 :host {
     min-height: 340px;
 }
+
+
+.animal-list-section .section-explainer {
+  display: none;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+::ng-deep {
+  .animal-list-section .section-explainer {
+
+    a {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+.animal-list-section:has(app-animal-tile) {
+  .section-explainer {
+    display: block;
+  }
+}
+
 .animal-list {
     display: flex;
     flex-wrap: wrap;

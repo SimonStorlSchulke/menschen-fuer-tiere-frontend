@@ -14,7 +14,8 @@ export type ArticleCounterSection = {
     selector: 'app-counter-section',
     imports: [StrapiRichTextPipe, CountUpModule],
     templateUrl: './counter-section.component.html',
-    styleUrl: './counter-section.component.scss'
+    styleUrl: './counter-section.component.scss',
+  standalone: true,
 })
 export class CounterSectionComponent {
   @Input({ required: true }) sectionData!: ArticleCounterSection;

@@ -20,7 +20,8 @@ export type ArticleTextWithImageSection = {
     selector: 'app-text-image-section',
     imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, StrapiMediaComponent],
     templateUrl: './text-image-section.component.html',
-    styleUrl: './text-image-section.component.scss'
+    styleUrl: './text-image-section.component.scss',
+  standalone: true,
 })
 export class TextImageSectionComponent {
   @Input({ required: true }) sectionData!: ArticleTextWithImageSection;

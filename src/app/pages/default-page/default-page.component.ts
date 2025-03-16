@@ -4,11 +4,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { MemberApplicationComponent } from '../forms/member-application/member-application.component';
 import { SponsorhipApplicationComponent } from '../forms/sponsorship-application/sponsorship-application.component';
+import { InfoPopupComponent } from '../../layout/info-popup/info-popup.component';
 
 export type DefaultPageData = {
   id: number,
   name: string,
-  path: string,
+  url: string,
   description: string,
   article: ArticleSection[],
   createdAt: Date,
@@ -16,9 +17,10 @@ export type DefaultPageData = {
 
 @Component({
     selector: 'app-blog',
-    imports: [ArticleComponent, RouterLink, MemberApplicationComponent, SponsorhipApplicationComponent],
+  imports: [InfoPopupComponent, ArticleComponent, RouterLink, MemberApplicationComponent, SponsorhipApplicationComponent, InfoPopupComponent],
     templateUrl: './default-page.component.html',
-    styleUrl: './default-page.component.scss'
+    styleUrl: './default-page.component.scss',
+  standalone: true,
 })
 export class DefaultPageComponent {
 

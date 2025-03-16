@@ -9,7 +9,8 @@ import {DogsService} from "../../pages/dogs/dogs.service";
     selector: 'app-animal-tile',
     imports: [NgIf, RouterLink],
     templateUrl: './animal-tile.component.html',
-    styleUrl: './animal-tile.component.scss'
+    styleUrl: './animal-tile.component.scss',
+  standalone: true,
 })
 export class AnimalTileComponent {
 

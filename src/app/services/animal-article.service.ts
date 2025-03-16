@@ -55,7 +55,6 @@ export class AnimalArticleService extends StrapiService {
 
         // remove ~ signs from names that were not found in the animalList
         replacedString = replacedString.replace(/~([^~]*)~/g, '$1');
-
         return JSON.parse(replacedString) as T;
       }),
     );

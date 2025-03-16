@@ -44,12 +44,12 @@ dialog {
     object-fit: contain;
     max-width: min(100%, 85dvw);
   }
-  
+
   .description {
     color: #ddd;
     height: 40px;
   }
-  
+
   &:not([open]) {
     opacity: 0;
     pointer-events: none;
@@ -73,9 +73,8 @@ button:focus-visible {
 }
 
 .gallery {
-  background-color: $primary-bg;
   position: relative;
-  height: 450px;
+  height: 650px;
 
   .description {
     position: absolute;
@@ -83,7 +82,7 @@ button:focus-visible {
     color: #fff;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.75);
   }
-  
+
   img {
     height: 100%;
     max-height: 100%;

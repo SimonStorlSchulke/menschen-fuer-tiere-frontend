@@ -13,7 +13,8 @@ export type ArticleHeroSection = {
     selector: 'app-hero-section',
     imports: [StrapiRichTextPipe, StrapiMediaPipe],
     templateUrl: './hero-section.component.html',
-    styleUrl: './hero-section.component.scss'
+    styleUrl: './hero-section.component.scss',
+  standalone: true,
 })
 export class HeroSectionComponent {
   @Input({required: true}) sectionData!: ArticleHeroSection;

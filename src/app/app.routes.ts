@@ -4,7 +4,6 @@ import {
   animalArticleResolver,
 } from './pages/animal-article/animal-article.component';
 import { AnimalsComponent, animalsResolver } from './pages/dogs/animals.component';
-import { AboutComponent, aboutResolver } from './pages/about/about.component';
 import { NewsComponent, newsResolver } from './pages/news/news.component';
 import {
   ContactComponent,
@@ -21,6 +20,8 @@ import {
   DefaultPageData,
 } from './pages/default-page/default-page.component';
 import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
+import { SponsorsComponent, sponsorsResolver } from './pages/sponsors/sponsors.component';
+import { KnowledgeComponent } from './pages/knowledge/knowledge.component';
 
 
 const pageResolver: ResolveFn<DefaultPageData> = (
@@ -31,9 +32,9 @@ const pageResolver: ResolveFn<DefaultPageData> = (
   let apiPath: string;
 
   if(sitePath == "") {
-    apiPath = `pages?filters[path][$null]=true&populate[article][populate]=*`
+    apiPath = `pages?filters[url][$null]=true&populate[article][populate]=*`
   } else {
-    apiPath = `pages?filters[path][$eq]=${sitePath}&populate[article][populate]=*`;
+    apiPath = `pages?filters[url][$eq]=${sitePath}&populate[article][populate]=*`;
   }
 
   return inject(AnimalArticleService)
@@ -43,12 +44,12 @@ const pageResolver: ResolveFn<DefaultPageData> = (
 
 
 export const routes: Routes = [
-  {
+/*  {
     path: 'ueber-uns',
     component: AboutComponent,
     data: { title: 'Über uns' },
     resolve: { aboutData: aboutResolver },
-  },
+  },*/
   {
     path: 'tiere',
     component: AnimalsComponent,
@@ -70,7 +71,13 @@ export const routes: Routes = [
   {
     path: 'news',
     component: NewsComponent,
-    data: { title: 'News & Wissen' },
+    data: { title: 'Veranstaltungen' },
+    resolve: { newsData: newsResolver },
+  },
+  {
+    path: 'wissenswertes',
+    component: KnowledgeComponent,
+    data: { title: 'Wissenswertes' },
     resolve: { newsData: newsResolver },
   },
   {
@@ -85,8 +92,14 @@ export const routes: Routes = [
     data: { title: 'Kontakt' },
     resolve: { contactData: contactResolver },
   },
+  {
+    path: 'sponsoren',
+    component: SponsorsComponent,
+    data: { title: 'Sponsoren' },
+    resolve: { pageData: sponsorsResolver },
+  },
   { path: 'impressum', component: ImprintComponent },
   { path: 'dsgvo', component: DsgvoComponent },
-  { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
   { path: 'formulare/bewerbung', component: ApplyComponent },
+  { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
 ];

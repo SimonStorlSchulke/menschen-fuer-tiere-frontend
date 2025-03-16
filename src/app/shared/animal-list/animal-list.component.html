@@ -1,11 +1,18 @@
 @if (animals$ | async; as animals) {
-  <div class="animal-list">
-
-    @for (whereEntry of {animals: animals, isVisibleFunction: isVisibleFunction} | filterAnimals; track $index) {
-      {{ whereEntry[0] }}
-      @for (animal of whereEntry[1]; track animal.id) {
-        <app-animal-tile [animal]="animal" />
-      }
-    }
-  </div>
+  @for (whereEntry of {animals: animals, isVisibleFunction: isVisibleFunction} | filterAnimals; track $index) {
+    <div class="animal-list-section">
+      <div class="section-explainer">
+        <h3>{{ whereEntryName(whereEntry[0]) }}</h3>
+        <p [innerHTML]="whereEntryExplainer(animalKind + '-' + whereEntry[0])"></p>
+      </div>
+      <div class="animal-list">
+        @for (animal of whereEntry[1]; track animal.id) {
+          @if(isVisibleFunction!(animal)) {
+            <app-animal-tile [animal]="animal"/>
+          }
+        }
+      </div>
+      <br>
+    </div>
+  }
 }
