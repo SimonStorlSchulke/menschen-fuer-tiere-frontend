@@ -1,0 +1,12 @@
+@use "colors" as *;
+
+.sponsor {
+  background: $neutral150;
+  overflow: hidden;
+
+  img {
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+  }
+}

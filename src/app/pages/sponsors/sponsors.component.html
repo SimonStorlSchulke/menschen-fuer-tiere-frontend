@@ -1,0 +1,15 @@
+<app-article [sections]="pageData.article"/>
+
+<div class="sui wrapper flex-y gap-5">
+  @for (sponsor of pageData.sponsors; track $index) {
+    <div class="sponsor shadow sui rounded-1">
+      <div class="sui flex-x gap-4">
+        <img [src]="sponsor.icon | strapiMedia : 'small'">
+        <div>
+          <b>{{ sponsor.name }}</b><br>
+          {{ sponsor.description }}
+        </div>
+      </div>
+    </div>
+}
+</div>
