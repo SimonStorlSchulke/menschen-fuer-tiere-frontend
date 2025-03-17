@@ -60,7 +60,7 @@ export class HeaderComponent {
   @ViewChild("navDesktop") navDesktop!: ElementRef;
   previousScrollPosition = 0;
   showHeader = true;
-  desktopHeaderHeight = 96;
+  desktopHeaderHeight = 110;
 
 
 

@@ -1,13 +1,19 @@
 @use "colors" as *;
 
 .popup {
-    top: 120px;
+    bottom: 0px;
+    right: 0px;
     z-index: 2;
-    background-color: #fff;
+    background-color: $primary-bg;
     font-size: 1rem;
     padding-top: 0;
     position: absolute;
-    width: 800px;
+    width: 500px;
+    color: #000;
+  a {
+    color: #000;
+    font-weight: bold;
+  }
 
   img {
     border-radius: 4px;
