@@ -1,4 +1,4 @@
-import {Component, Input, inject, OnInit} from '@angular/core';
+import { Component, Input, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BlogArticle } from '../../../blog/blog.component';
 import { Observable } from 'rxjs';
 import { StrapiService } from '../../../services/strapi.service';
@@ -19,6 +19,7 @@ export type ArticleBlogCardsSection = {
     templateUrl: './blog-cards.component.html',
     styleUrl: './blog-cards.component.scss',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogCardsComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleBlogCardsSection;
@@ -28,7 +29,10 @@ export class BlogCardsComponent implements OnInit {
   strapiSv = inject(StrapiService);
 
   ngOnInit() {
-    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&pagination[pageSize]=${this.sectionData.amount}`);
+    setTimeout(() => {
+    console.log(this.sectionData.type)
+    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&filters[type]=${this.sectionData.type}&pagination[pageSize]=${this.sectionData.amount}`);
+    }, 10)
   }
 
 }

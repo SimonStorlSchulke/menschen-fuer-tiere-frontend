@@ -4,7 +4,6 @@ import {
   animalArticleResolver,
 } from './pages/animal-article/animal-article.component';
 import { AnimalsComponent, animalsResolver } from './pages/dogs/animals.component';
-import { NewsComponent, newsResolver } from './pages/news/news.component';
 import {
   ContactComponent,
   contactResolver,
@@ -21,7 +20,6 @@ import {
 } from './pages/default-page/default-page.component';
 import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
 import { SponsorsComponent, sponsorsResolver } from './pages/sponsors/sponsors.component';
-import { KnowledgeComponent } from './pages/knowledge/knowledge.component';
 
 
 const pageResolver: ResolveFn<DefaultPageData> = (
@@ -68,8 +66,8 @@ export const routes: Routes = [
     data: { title: 'dynamic' },
     resolve: { animalArticle: animalArticleResolver },
   },
-  {
-    path: 'news',
+/*  {
+    path: 'veranstaltungen',
     component: NewsComponent,
     data: { title: 'Veranstaltungen' },
     resolve: { newsData: newsResolver },
@@ -79,7 +77,7 @@ export const routes: Routes = [
     component: KnowledgeComponent,
     data: { title: 'Wissenswertes' },
     resolve: { newsData: newsResolver },
-  },
+  },*/
   {
     path: 'news/:id',
     component: BlogComponent,

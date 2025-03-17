@@ -43,7 +43,7 @@ export class HeaderComponent {
         {label: "Vermittlungshilfe Katze", link: "/vermittlung/katze"},
       ]},*/
     {label: "Helfen", link: "/helfen"},
-    {label: "Veranstaltungen", link: "/news"},
+    {label: "Veranstaltungen", link: "/veranstaltungen"},
     {label: "Wissenswertes", link: "/wissenswertes"},
     {label: "Sponsoren ♥", link: "/sponsoren"},
     {label: "Tierheimjugend", link: "/tierheimjugend"},

@@ -2,7 +2,7 @@
   <div class="sui wrapper">
     <div class="sui pt-4">
       <h1 class="sui mb-3 flex-x ai-center gap-4">
-        <a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/hunde'">&lt; </a>
+        <a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/' + article.animals[0].animalKind?.namePlural">&lt; </a>
         {{ getDefaultTitle() }}
         @if(article.animals.length == 1) {
           <img [alt]="article.animals[0].gender" class="gender-icon" [src]="getGendericon(article.animals[0])" />

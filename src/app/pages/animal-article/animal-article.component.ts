@@ -31,10 +31,6 @@ export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
     templateUrl: './animal-article.component.html',
     styleUrl: './animal-article.component.scss',
     imports: [
-        AsyncPipe,
-        MarkdownPipe,
-        TextSectionComponent,
-        TextImageSectionComponent,
         ArticleComponent,
         StrapiMediaPipe,
         RouterLink,

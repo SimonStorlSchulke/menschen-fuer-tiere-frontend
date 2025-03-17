@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewChildren, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewChildren, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
 import { ArticleTextSection, TextSectionComponent } from './article-sections/text-section/text-section.component';
 import { ArticleTextWithImageSection, TextImageSectionComponent } from './article-sections/text-image-section/text-image-section.component';
 import { ArticleHeroSection, HeroSectionComponent } from './article-sections/hero-section/hero-section.component';
@@ -9,7 +9,7 @@ import { SectionStartComponent, SectionStartSection } from './article-sections/s
 import { ArticleBlogCardsSection, BlogCardsComponent } from './article-sections/blog-cards/blog-cards.component';
 import { ArticleCounterSection, CounterSectionComponent } from './article-sections/counter-section/counter-section.component';
 import { ArticlePaypalButtonSection, PaypalButtonSectionComponent } from './article-sections/paypal-button-section/paypal-button-section.component';
-import { Subject, throttleTime } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 export type ArticleSection =
   | ArticleTextSection
@@ -51,16 +51,19 @@ export type ArticleRowStartSection = {
     templateUrl: './article.component.html',
     styleUrl: './article.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements AfterViewInit {
-  @Input({ required: true }) sections!: ArticleSection[];
+  @Input({required: true}) sections!: ArticleSection[];
   @ViewChild("article") articleElement!: ElementRef;
 
   @ViewChildren("sectionContainer") sectionContainers!: ElementRef<HTMLElement>[];
 
-  animate$ = new Subject<void>();
-
-  constructor() {
+  constructor(cdRef: ChangeDetectorRef) {
+    inject(ActivatedRoute).url.subscribe(() => {
+      console.log("AAAA")
+      cdRef.markForCheck()
+    })
   }
 
   ngAfterViewInit() {
@@ -69,10 +72,6 @@ export class ArticleComponent implements AfterViewInit {
       const columns: number = +rowStart.getAttribute('data-columns')!;
       rowStart.append(...this.getNextNSiblings(rowStart.parentElement!, columns));
     });
-
-    this.animate$.pipe(throttleTime(75)).subscribe(() => {
-      this.animateFn();
-    })
   }
 
   getNextNSiblings(element: HTMLElement, siblingNum: number): ChildNode[] {
@@ -103,27 +102,4 @@ export class ArticleComponent implements AfterViewInit {
     }
     return true;
   }
-
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    //this.animate$.next();
-  }
-
-  private animateFn() {
-    const clientHeight = window.innerHeight;
-    const transitionEnd = clientHeight / 2.5;
-    for (const section of this.sectionContainers) {
-      const y = clientHeight - section.nativeElement.getBoundingClientRect().top;
-      section.nativeElement.style.transform = `scale(${mapRange(y, 0, transitionEnd, 0.9)})`
-      section.nativeElement.style.opacity = `${mapRange(y, 0, transitionEnd, 0)}`
-    }
-  }
-}
-
-
-
-export function mapRange(value: number, in_min: number, in_max: number, outMin: number): number {
-  const remapped = (value - in_min) * (1 - outMin) / (in_max - in_min) + outMin;
-  return Math.max(0, Math.min(remapped, 1))
 }

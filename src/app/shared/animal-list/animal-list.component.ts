@@ -17,7 +17,10 @@ export class FitlerAnimalsPipe implements PipeTransform {
       animals = value.animals.filter((animal) => value.isVisibleFunction!(animal));
     }
 
-    const whereMap = new Map<string, Animal[]>([]);
+    const whereMap = new Map<string, Animal[]>([
+      ["in-spaichingen", []],
+      ["in-rumänien", []],
+    ]);
 
     for (const animal  of animals) {
       const where = animal.status ?? "in-spaichingen";
@@ -65,6 +68,7 @@ export class AnimalListComponent implements OnInit {
     return new Map<string, string>([
       ["in-spaichingen", "In Spaichingen"],
       ["in-rumänien", "In Rumänien"],
+      ["vermittlungshilfe", "Vermittlungshilfe"],
     ]).get(whereEntryKey);
   }
 
@@ -72,8 +76,10 @@ export class AnimalListComponent implements OnInit {
     return new Map<string, string>([
       ["Hunde-in-spaichingen", "Hier sind unsere bellenden Fellnasen, die ein neues Zuhause suchen. Doch bevor Sie sich einen Hund anschaffen, sollten Sie sich ausreichend informieren."],
       ["Hunde-vermisst", "Hier sind unsere bellenden Fellnasen, die ein neues Zuhause suchen. Doch bevor Sie sich einen Hund anschaffen, sollten Sie sich ausreichend informieren. Hier finden Sie wichtige Informationen über den Hund."],
+      ["Hunde-vermittlungshilfe", "Diese Hunde befinden sich nicht bei uns im Tierheim. <br> Das Tierheim Spaichingen übernimmt lediglich die Veröffentlichung der Anzeigen und trägt keine Verantwortung für die Richtigkeit der Angaben oder die Inhalte der Anzeigen. Alle Informationen zu den Tieren und deren Haltern stammen von den jeweiligen Anzeigenstellern und wurden vom Tierheim nicht überprüft."],
       ["Hunde-in-rumänien", "Die Hunde befinden sich nicht bei uns sondern sind in Rumänien von unserem Partnerverein Metanoia Tiernothilfe. Einer dieser Hunde in Rumänien hat Ihr Interesse geweckt? Melden Sie sich gerne bei uns im Tierheim. Die Einreise und Vermittlung findet direkt über uns statt. 🐾"],
       ["Katzen-in-spaichingen", "Hier sind unsere Miniaturtiger, die ein neues Zuhause suchen. Doch bevor Sie sich eine Katze anschaffen, sollten Sie sich ausreichend informieren. Uns ist es besonders wichtig, dass die süßen Miezen in liebevollen und verantwortungsvollen Händen landen. Deshalb werden alle Katzen nur nach einer positiven Vorkontrolle in ihr neues Zuhause vermittelt. Kitten und Jungkatzen vermitteln wir ausschließlich zu zweit, denn nichts ist schöner für ein Katzenkind, als gemeinsam mit einem Spielgefährten die Welt zu erkunden. ❤️ 🔍🤝"],
+      ["Katzen-vermittlungshilfe", ""],
       ["vermisst-vermisst", "Auf dieser Seite sehen Sie die vermissten Tiere. Wenn Sie Ihr Tier vermissen, wenden Sie sich an uns. Wenn Sie eines der Tiere von dieser Seite gesehen haben, wenden Sie sich bitte umgehend an das Tierheim. Hier kommen Sie zu unserer <a href='/kontakt'>Kontaktseite</a>."],
       ["fundtier-fundtier", "Auf dieser Seite sehen Sie die uns zugelaufenen Tiere. Wenn Sie eines der Tiere erkennen, wenden Sie sich an uns. Hier kommen Sie zu unserer <a href='/kontakt'>Kontaktseite</a>"],
     ]).get(whereEntryKeyAndAnimal);

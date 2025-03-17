@@ -17,7 +17,7 @@ export type DefaultPageData = {
 
 @Component({
     selector: 'app-blog',
-  imports: [InfoPopupComponent, ArticleComponent, RouterLink, MemberApplicationComponent, SponsorhipApplicationComponent, InfoPopupComponent],
+  imports: [InfoPopupComponent, ArticleComponent, MemberApplicationComponent, SponsorhipApplicationComponent, InfoPopupComponent],
     templateUrl: './default-page.component.html',
     styleUrl: './default-page.component.scss',
   standalone: true,
