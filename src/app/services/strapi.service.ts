@@ -12,11 +12,10 @@ export class StrapiService {
 
   //This api key  offers read-only-access to the cms and is supposed to be public, so it's fine to put it here hardcoded.
 
-  //static bearer = '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
-  static bearer = '253e68385150b69aaae93332e97284077c0ab3df71135a1df52536ca2e342cf0085642c1be1101551a30c7eb66fe17a8b928177b3899aa47b786a6c6e7cd2e5ef947b3824dcc49d2bdfe3c37a4994e279b35b0be410d41de7e0ade54a69dd19af47c821919e9b899c3fa961f0f1c0beec53b9abbf08cfb7896e1ae65715c6535';
+  static bearer = 'c6f33e8a21252174e4e5dc8a57bb2fbfbc968ec87d77f6b0c350d3ab173f91c413f322c0a61631aaa768d785f539d0c2ec5eed3d1fd2c2fbdaf0b11ad9b323a588d2e642765b00f2163c00144a53fa509f494fbd099d7300211c0cd8bfd8cfbcc9201c840ebdd5c2acbf692fff6233b24cd049a25fbabf7b3be7e986ce259a38';
 
-  static apiBaseUrl = 'http://localhost:1337/api/';
-  static uploadsBaseUrl = 'http://localhost:1337';
+  static apiBaseUrl = 'http://217.154.64.57:1337/api/';
+  static uploadsBaseUrl = 'http://217.154.64.57:1337';
 
   static readonly headers = {
     'Content-Type': 'application/json',
