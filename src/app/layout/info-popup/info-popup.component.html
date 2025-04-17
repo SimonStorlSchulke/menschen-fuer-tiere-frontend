@@ -1,8 +1,9 @@
 @if(newsData$ | async; as newsData) {
-    <div class="popup sui flex-y gap-3 p-4 shadow">
+  @if(!closed) {
+    <div class="popup sui flex-y gap-3 p-4 shadow" >
         <div class="sui flex-x" style="height: 20px">
             <div class="sui grow-1" style="pointer-events: none;"></div>
-            <span class="close sui pt-3" (click)="hideIdsForever(getIds(newsData))">✖</span>
+            <span class="close sui pt-3" (click)="hideIdsForever(getIds(newsData)); close()">✖</span>
         </div>
         @for (news of newsData; track $index) {
                 <b>{{news.title}}</b>
@@ -18,4 +19,5 @@
           </div>
         }
     </div>
+  }
 }

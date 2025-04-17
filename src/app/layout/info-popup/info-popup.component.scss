@@ -7,7 +7,7 @@
     background-color: $primary-bg;
     font-size: 1rem;
     padding-top: 0;
-    position: absolute;
+    position: fixed;
     width: 500px;
     color: #000;
   a {
@@ -37,6 +37,9 @@
     .close {
         font-size: 1.3rem;
         cursor: pointer;
+        height: 64px;
+        z-index: 2000;
+        width: 24px;
 
         &:hover {
             color: $cto;

@@ -14,6 +14,7 @@ import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pip
   styleUrl: './info-popup.component.scss',
 })
 export class InfoPopupComponent {
+  closed = false;
   newsData$ = inject(StrapiService).get<BlogArticle[]>("blogs?filters[showAsPopup]=true&sort[1]=publishedAt:desc&populate[thumbnail]=*")
     .pipe(map(news => news.filter(n => !this.storedHiddenIds.includes(n.id))));
 
@@ -24,6 +25,10 @@ export class InfoPopupComponent {
 
   getIds(news: BlogArticle[]): number[] {
     return news.map(n => n.id);
+  }
+
+  close() {
+    this.closed = true;
   }
 
   private get storedHiddenIds(): number[] {

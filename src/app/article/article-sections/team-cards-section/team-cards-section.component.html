@@ -1,0 +1,18 @@
+<section class="sui wrapper {{ sectionData.__component }}">
+  @if (sectionData.text && sectionData.text.length > 0) {
+    <div
+      class="list-text"
+      [innerHTML]="sectionData.text | strapiRichText"
+    ></div>
+  }
+
+  <div class="animal-list">
+    @if (animals$ | async; as animals) {
+      <div class="animal-list">
+        @for (animal of animals; track animal.id) {
+          <app-animal-tile [animal]="animal" />
+        }
+      </div>
+    }
+  </div>
+</section>
