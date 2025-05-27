@@ -6,7 +6,13 @@
   height: 100%;
   max-height: 750px;
   background-color: $primary-bg;
+
+  &.thumbnail {
+  width: unset;
+  height: unset;
 }
+}
+
 
 img {
   object-fit: contain;

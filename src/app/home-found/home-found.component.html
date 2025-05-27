@@ -1,0 +1,10 @@
+@if(animals$ | async; as animals) {
+    @for (animal of animals; track $index) {
+        <div class="card">
+            @if(animal.homeFoundArticle.images?.length! > 0) {
+                <app-strapi-media [media]="animal!.homeFoundArticle!.images!" [asGallery]="true" [thumbnail]="true"/>
+            }
+            <div class="text" [innerHTML]="animal.homeFoundArticle.text | strapiRichText"></div>
+        </div>
+    }
+}

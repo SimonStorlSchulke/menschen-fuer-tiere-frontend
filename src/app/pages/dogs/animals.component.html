@@ -35,6 +35,7 @@
   </div>
 
   <app-article [sections]="pageContent.article!"/>
+  @if(pageContent.animalKindsData.currentAnimalKind != "zuhause-gefunden") {
   <div class="sui wrapper flex-y gap-3 mb-5">
     <div class="sui flex-y gap-5">
 
@@ -72,9 +73,14 @@
 
     </div>
   </div>
-  <div class="sui py-5">
+  }
+  <div class="sui py-4">
     <div class="sui wrapper">
-      <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" [animalKind]="pageContent.animalKindsData.currentAnimalKind"/>
-    </div>
+      @if(pageContent.animalKindsData.currentAnimalKind == "zuhause-gefunden") {
+        <app-home-found/>
+      } @else {
+        <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" [animalKind]="pageContent.animalKindsData.currentAnimalKind"/>
+      }
+      </div>
   </div>
 }

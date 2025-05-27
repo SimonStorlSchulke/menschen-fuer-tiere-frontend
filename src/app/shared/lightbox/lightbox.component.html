@@ -5,7 +5,7 @@
            [class.jc-center]="!multiImageMode">
 
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="toFromUi(currentIndex - 1)"><span>&lt;</span></div>
         }
         <div class="sui flex-y ai-center jc-space-evenly gap-3 w-100 closable"
 
@@ -24,7 +24,7 @@
       </span>
         </div>
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="toFromUi(currentIndex + 1)"><span>&gt;</span></div>
         }
       </div>
 
@@ -39,7 +39,7 @@
            [class.jc-center]="!multiImageMode">
 
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="to(currentIndex - 1)"><span>&lt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center prev" style="left: 0" (click)="toFromUi(currentIndex - 1)"><span>&lt;</span></div>
         }
         <div class="sui flex-y ai-center jc-space-evenly gap-3 w-100 relative"
 
@@ -59,7 +59,7 @@
       </span>
         </div>
         @if (multiImageMode) {
-          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="to(currentIndex + 1)"><span>&gt;</span></div>
+          <div class="to-btn sui flex-x ai-center text-oswald jc-center next" style="right: 0" (click)="toFromUi(currentIndex + 1)"><span>&gt;</span></div>
         }
       </div>
 

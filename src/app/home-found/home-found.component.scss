@@ -1,0 +1,20 @@
+@use "colors" as *;
+@use "variables" as *;
+
+.card {
+    width: 360px;
+    height: 490px;
+    transition: transform 0.23s, box-shadow 0.4s;
+    display: block;
+    background-color: $neutral100;
+    position: relative;
+    color: inherit;
+    border-radius: 6px;
+    overflow: hidden;
+
+    app-strapi-media {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+}

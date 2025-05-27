@@ -12,10 +12,10 @@ export class StrapiService {
 
   //This api key  offers read-only-access to the cms and is supposed to be public, so it's fine to put it here hardcoded.
 
-  static bearer = 'c6f33e8a21252174e4e5dc8a57bb2fbfbc968ec87d77f6b0c350d3ab173f91c413f322c0a61631aaa768d785f539d0c2ec5eed3d1fd2c2fbdaf0b11ad9b323a588d2e642765b00f2163c00144a53fa509f494fbd099d7300211c0cd8bfd8cfbcc9201c840ebdd5c2acbf692fff6233b24cd049a25fbabf7b3be7e986ce259a38';
+  static bearer = 'a54b3bdc5772ebdacff1a1b5b8176b6011421634344e42e42252b7895882016ad16cf0c5ecb4b1b8cef5cb4fd840e12e4d7cfe8d00571f070be27bc831c2f5d3ab9ba3b048d6cad8ff9070055d748b2409745b302119664d7d97b366aafe0a39486c090f1ddb1101d2c3e050874f0e97c6f25b60cfb80e8ec9d38775106e2289';
 
-  static apiBaseUrl = 'http://217.154.64.57:1337/api/';
-  static uploadsBaseUrl = 'http://217.154.64.57:1337';
+  static apiBaseUrl = 'https://cms.sheltify.de/api/';
+  static uploadsBaseUrl = 'https://cms.sheltify.de';
 
   static readonly headers = {
     'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export class StrapiService {
     size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
   ): string {
     if (image == null) {
-      return 'https://herzenshunde-strapi-prod.azurewebsites.net/uploads/paw_e60a248111.svg';
+      return '';
     }
 
     if (!image.formats) {

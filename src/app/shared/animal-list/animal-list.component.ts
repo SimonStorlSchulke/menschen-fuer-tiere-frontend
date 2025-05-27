@@ -19,6 +19,7 @@ export class FitlerAnimalsPipe implements PipeTransform {
 
     const whereMap = new Map<string, Animal[]>([
       ["in-spaichingen", []],
+      ["vermittlungshilfe", []],
       ["in-rumänien", []],
     ]);
 
@@ -67,8 +68,8 @@ export class AnimalListComponent implements OnInit {
   whereEntryName(whereEntryKey: string) {
     return new Map<string, string>([
       ["in-spaichingen", "In Spaichingen"],
-      ["in-rumänien", "In Rumänien"],
       ["vermittlungshilfe", "Vermittlungshilfe"],
+      ["in-rumänien", "In Rumänien"],
     ]).get(whereEntryKey);
   }
 

@@ -9,7 +9,7 @@ export type TeamMember = {
   mail: string,
   phone: string,
   image?: StrapiMedia,
-  ehrenamtlich: boolean,
+  category: "ehrenamtlich" | "vorstand" | "tierheim",
 }
 
 @Component({

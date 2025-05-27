@@ -10,6 +10,7 @@ import { DogsService } from "./dogs.service";
 import { ActivatedRoute, ResolveFn, RouterLink, RouterLinkActive } from '@angular/router';
 import { StrapiService } from '../../services/strapi.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
+import { HomeFoundComponent } from "../../home-found/home-found.component";
 
 export const animalsResolver: ResolveFn<AnimalKindsData> = async (route) => {
   return {
@@ -36,7 +37,7 @@ type AnimalsSettings = {
 
 @Component({
   selector: 'app-dogs',
-  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive],
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, RouterLink, StrapiMediaPipe, RouterLinkActive, HomeFoundComponent],
   templateUrl: './animals.component.html',
   styleUrl: './animals.component.scss',
   standalone: true,

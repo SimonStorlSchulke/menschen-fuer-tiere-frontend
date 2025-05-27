@@ -1,0 +1,28 @@
+  <div class="sui wrapper flex-y gap-5 py-6">
+    <h2>Das Team</h2>
+
+    @if(teammembers$ | async; as teammembers) {
+        <h3>Vorstand</h3>
+        <div class="sui flex-x wrap center gap-5 jc-center">
+          @for (member of teammembers.get("vorstand"); track $index) {
+            <app-teammember-tile [teamMember]="member"/>
+          }
+        </div>
+
+        <h3>Tierheim-Team</h3>
+        <div class="sui flex-x wrap center gap-5 jc-center">
+          @for (member of teammembers.get("tierheim"); track $index) {
+            <app-teammember-tile [teamMember]="member"/>
+          }
+        </div>
+
+        <h3>Ehrenamtliche Helfer</h3>
+        <div class="sui flex-x wrap center gap-5 jc-center">
+          @for (member of teammembers.get("ehrenamtlich"); track $index) {
+            <app-teammember-tile [teamMember]="member"/>
+          }
+        </div>
+
+    }
+
+  </div>

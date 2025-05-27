@@ -17,7 +17,6 @@ export type ContactData = {
     hero: StrapiMedia,
     article: ArticleSection[],
   },
-  teamMembers: TeamMember[],
 }
 
 
@@ -25,8 +24,6 @@ export const contactResolver: ResolveFn<ContactData> = () => {
   return forkJoin({
     pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<{ hero: StrapiMedia, article: ArticleSection[], }>
     ("contact-page?populate[hero]=*&populate[article][populate]=*"),
-    teamMembers: inject(StrapiService).get<TeamMember[]>
-    ("teammembers?populate=*&sort[0]=priority:desc"),
   })
 }
 
@@ -58,8 +55,6 @@ export class ContactComponent {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
       .subscribe(({contactData}) => {
         this.contactData = contactData;
-        this.ehrenamtliche = this.contactData.teamMembers.filter(m => m.ehrenamtlich);
-        this.mitarbeiter = this.contactData.teamMembers.filter(m => !m.ehrenamtlich);
       });
   }
 

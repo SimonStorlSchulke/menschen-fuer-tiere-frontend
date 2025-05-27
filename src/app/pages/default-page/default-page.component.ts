@@ -5,6 +5,7 @@ import { ArticleComponent, ArticleSection } from '../../article/article.componen
 import { MemberApplicationComponent } from '../forms/member-application/member-application.component';
 import { SponsorhipApplicationComponent } from '../forms/sponsorship-application/sponsorship-application.component';
 import { InfoPopupComponent } from '../../layout/info-popup/info-popup.component';
+import { TeammembersListComponent } from "../../teammembers-list/teammembers-list.component";
 
 export type DefaultPageData = {
   id: number,
@@ -17,7 +18,7 @@ export type DefaultPageData = {
 
 @Component({
     selector: 'app-blog',
-  imports: [InfoPopupComponent, ArticleComponent, MemberApplicationComponent, SponsorhipApplicationComponent, InfoPopupComponent],
+  imports: [InfoPopupComponent, ArticleComponent, MemberApplicationComponent, SponsorhipApplicationComponent, InfoPopupComponent, TeammembersListComponent],
     templateUrl: './default-page.component.html',
     styleUrl: './default-page.component.scss',
   standalone: true,

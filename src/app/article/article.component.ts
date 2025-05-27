@@ -61,8 +61,7 @@ export class ArticleComponent implements AfterViewInit {
 
   constructor(cdRef: ChangeDetectorRef) {
     inject(ActivatedRoute).url.subscribe(() => {
-      console.log("AAAA")
-      cdRef.markForCheck()
+      cdRef.markForCheck();
     })
   }
 

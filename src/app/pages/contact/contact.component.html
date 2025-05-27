@@ -87,22 +87,5 @@
   </div>
 </div>
 
-<div class="">
-  <div class="sui wrapper flex-y gap-5 py-6">
-    <h2>Das Team</h2>
-    <div class="sui flex-x wrap center gap-5 jc-center">
-      @for (member of mitarbeiter; track $index) {
-        <app-teammember-tile [teamMember]="member"/>
-      }
-    </div>
-
-    <h2>Ehrenamtliche Helfer</h2>
-    <div class="sui flex-x wrap center gap-5 jc-center">
-      @for (member of ehrenamtliche; track $index) {
-        <app-teammember-tile [teamMember]="member"/>
-      }
-    </div>
-  </div>
-</div>
 
 

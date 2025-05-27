@@ -36,6 +36,20 @@ export class AnimalService extends StrapiService {
   }
 
 
+  getHomeFoundAnimals(): Observable<Animal[]> {
+  let url = `animals?pagination[pageSize]=500&populate[thumbnail]=*&filters[status][$eq]=zuhause-gefunden&populate[homeFoundArticle][populate]=*&`;
+    return this.get<Animal[]>(url).pipe(
+      map(animals => animals
+        .sort((a, b) => {
+        if (a.priority !== b.priority) {
+          return b.priority - a.priority;
+        }
+        const dateA = new Date(a.updatedAt ?? "2000-01-01").getTime();
+        const dateB = new Date(b.updatedAt ?? "2000-01-01").getTime();
+        return dateB - dateA;
+      }))
+    );
+  }
 
   getAgeString(animal: Animal): string {
     if (!animal.birthday) return 'Unbekannt';

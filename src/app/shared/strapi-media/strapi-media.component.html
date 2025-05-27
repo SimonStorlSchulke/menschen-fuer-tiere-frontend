@@ -1,20 +1,19 @@
 @if(media) {
     @if(media[0].ext == '.mp4') {
-      <video [title]="media[0].caption ?? ''" class="media-container sui rounded-2" controls [src]="media[0] | strapiMedia : 'video'" type='video/mp4'></video>
+      <video [title]="media[0].caption ?? ''" class="media-container sui rounded-2" [class.thumbnail]="thumbnail" controls [src]="media[0] | strapiMedia : 'video'" type='video/mp4'></video>
     }
     @else {
-      @if (media.length == 1) {
+      @if (media.length == 1 || thumbnail) {
         @if(media[0] | strapiMedia; as imgSrc) {
           <img
-          class="sui rounded-2 media-container c-pointer"
+          class="sui rounded-2 media-container c-pointer" [class.thumbnail]="thumbnail" 
           [alt]="media[0].alternativeText"
           [src]="imgSrc"
           (click)="lightboxSv.openFullscreen(media, 0, [imgSrc])"
           />
         }
       } @else {
-        @if (asGallery) {
-
+        @if (asGallery && !thumbnail) {
             <app-lightbox [images]="media" [fullscreen]="false"/>
         } @else {
           <div class="imagegrid imageposition-{{imagePosition}}">

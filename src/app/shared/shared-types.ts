@@ -1,3 +1,4 @@
+import { ArticleTextWithImageSection } from '../article/article-sections/text-image-section/text-image-section.component';
 import { ArticleSection } from '../article/article.component';
 
 export type StrapiMedia = {
@@ -81,7 +82,8 @@ export type Animal = {
   freeRoamer?: boolean,
   animal_article?: {
     updatedAt: string,
-  }
+  },
+  homeFoundArticle: ArticleTextWithImageSection,
 }
 
 export type AnimalStatusName = "in-spaichingen" | "in-rumänien" | "vermittlungshilfe" | "zuhause-gefunden" | "vermisst" | "fundtier";

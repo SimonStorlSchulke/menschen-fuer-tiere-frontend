@@ -1,4 +1,4 @@
-<div class="teammember" [class.ehrenamtlich]="teamMember.ehrenamtlich">
+<div class="teammember">
   <img class="avatar" [alt]="teamMember.name" [src]="teamMember.image ? (teamMember.image | strapiMedia : 'small') : '/assets/img/contact-no-image.jpg'">
   <h3 class="sui mb-1 mt-2">{{teamMember.name}}</h3>
   <span class="bold">{{teamMember.role}}</span>

@@ -1,8 +1,10 @@
-import {Component, ElementRef, HostListener, inject, Input, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, HostListener, inject, Input, OnInit, ViewChild} from '@angular/core';
 import { LightboxService } from '../../services/lightbox.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiService } from '../../services/strapi.service';
 import { StrapiMedia } from '../shared-types';
+import { interval } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-lightbox',
@@ -17,6 +19,9 @@ export class LightboxComponent implements OnInit {
 
   lightboxSv = inject(LightboxService);
   strapiSv = inject(StrapiService);
+  cdRef = inject(ChangeDetectorRef);
+
+  userUnputHappeded = false;
 
   @Input() images: StrapiMedia[] = [];
   @Input() currentSource: string = "";
@@ -24,6 +29,14 @@ export class LightboxComponent implements OnInit {
   @Input() fullscreen = false;
 
   currentIndex = 0;
+
+  constructor() {
+    interval(5000).pipe(takeUntilDestroyed()).subscribe(() => {
+      if(this.userUnputHappeded) return;
+        this.to(this.currentIndex + 1);
+        this.cdRef.markForCheck();
+      });
+  }
 
   ngOnInit() {
     if(!this.fullscreen) {
@@ -41,6 +54,8 @@ export class LightboxComponent implements OnInit {
         )
       })
     }
+
+
   }
 
   getSrc(): string {
@@ -50,6 +65,11 @@ export class LightboxComponent implements OnInit {
 
   getFullscreenStartingSources() {
     return this.strapiSv.getImageFormatUrls(this.images, "medium");
+  }
+
+  toFromUi(index: number) {
+    this.userUnputHappeded = true;
+    this.to(index);
   }
 
   to(index: number) {

@@ -8,7 +8,8 @@
 .animal-list-section .section-explainer {
   display: none;
   font-size: 1rem;
-  margin-bottom: 16px;
+  margin-top: 24px;
+  margin-bottom: 32px;
 }
 
 ::ng-deep {
@@ -27,9 +28,23 @@
   }
 }
 
+.animal-list-section:not(:has(app-animal-tile)) {
+  display: none;
+}
+
 .animal-list {
     display: flex;
     flex-wrap: wrap;
     gap: 48px;
     justify-content: center;
+}
+
+.empty-list {
+  display: block;
+}
+
+:host:has(app-animal-tile) {
+  .empty-list {
+  display: none;
+}
 }
