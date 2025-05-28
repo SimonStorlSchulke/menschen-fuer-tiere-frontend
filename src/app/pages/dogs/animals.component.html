@@ -45,6 +45,7 @@
             <input class="text-oswald" type="text" name="search" id="search" placeholder="suchen" #searchInput (input)="onSearchTyped(searchInput.value)"/>
           </div>
         </div>
+
       @if(pageContent.animalKindsData.currentAnimalKind == 'Hunde') {
         <div class="">
           <div class="filter-selector">
@@ -68,8 +69,33 @@
           </div>
         </div>
       }
+
+
+      @if(pageContent.animalKindsData.currentAnimalKind == 'Katzen') {
+        <div class="">
+          <div class="filter-selector">
+            <button (click)="toggleFilter('freeroamer', 'no')" [class.active]="isFilterActive('freeroamer', 'no')">Kein Freigänger</button>
+            <button (click)="toggleFilter('freeroamer', 'yes')" [class.active]="isFilterActive('freeroamer', 'yes')">Freigänger</button>
+          </div>
+        </div>
+        <div class="">
+          <div class="filter-selector">
+            <button (click)="toggleFilter('gender', 'female')" [class.active]="isFilterActive('gender', 'female')">Kätzinnen</button>
+            <button (click)="toggleFilter('gender', 'male')" [class.active]="isFilterActive('gender', 'male')">Kater</button>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="filter-selector">
+            <button (click)="toggleFilter('age', 'young')" [class.active]="isFilterActive('age', 'young')">Kätzchen</button>
+            <button (click)="toggleFilter('age', 'medium')" [class.active]="isFilterActive('age', 'medium')">Erwachsen</button>
+            <button (click)="toggleFilter('age', 'old')" [class.active]="isFilterActive('age', 'old')">Senioren</button>
+          </div>
+        </div>
+      }
+
       </div>
-      <strong class="sui text-center">{{ getExplainer() }}</strong>
+      <strong class="sui text-center">{{ getExplainer(pageContent.animalKindsData.currentAnimalKind) }}</strong>
 
     </div>
   </div>

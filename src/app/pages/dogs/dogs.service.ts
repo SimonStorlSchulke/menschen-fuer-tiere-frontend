@@ -7,6 +7,13 @@ export class DogsService {
 
   filters = new Map<string, Map<string, boolean>>([
     [
+      'freeroamer',
+      new Map([
+        ['yes', false],
+        ['no', false],
+      ]),
+    ],
+    [
       'size',
       new Map([
         ['small', false],

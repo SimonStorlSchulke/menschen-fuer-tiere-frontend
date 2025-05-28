@@ -49,12 +49,21 @@ export class AnimalsComponent {
   animalSv = inject(AnimalService);
   animalArticleSv = inject(AnimalArticleService);
   dogsSv = inject(DogsService);
+  route = inject(ActivatedRoute);
 
   query$ = new BehaviorSubject<string>('');
 
-  pageContent$: Observable<AnimalsPageData> = inject(ActivatedRoute).data.pipe(
+  constructor() {
+    this.loadAnimalkind();
+  }
+
+  pageContent$!: Observable<AnimalsPageData>;
+
+  private loadAnimalkind() {
+    this.pageContent$ = this.route.data.pipe(
     switchMap(data => {
       const animalKindsData: AnimalKindsData = data["animalKindsData"];
+      this.resetFilters();
 
       const url = `animal-kinds?filters[namePlural][$eqi]=${animalKindsData.currentAnimalKind}&populate=*`
       const dynamicPage$ = this.animalArticleSv.getAndInsertAnimalLinks<AnimalKind[]>(url);
@@ -80,6 +89,7 @@ export class AnimalsComponent {
       );
     })
   );
+  }
 
   settings$: Observable<AnimalsSettings> = this.animalArticleSv.get<AnimalsSettings>("einstellungen-tiere?populate=*");
 
@@ -107,13 +117,15 @@ export class AnimalsComponent {
   }
 
   onSearchTyped(e: string) {
-    if (e.length > 1) {
+    if (e.length > 0) {
       this.query$.next(`filters[$or][0][name][$contains]=${e}&filters[$or][1][description][$contains]=${e}&`);
       window.setTimeout(() => {
         this.resetFilters();
       }, 400);
     } else {
-      this.query$.next('');
+      window.setTimeout(() => {
+      this.loadAnimalkind();
+      }, 200)
     }
   }
 
@@ -144,6 +156,10 @@ export class AnimalsComponent {
       if (this.isFilterActive('gender', 'female') && animal.gender == 'female') fitsGender = true;
 
 
+      let fitsFreeRoamer = !this.activeFilter('freeroamer');
+      if (this.isFilterActive('freeroamer', 'yes') && animal.freeRoamer) fitsFreeRoamer = true;
+      if (this.isFilterActive('freeroamer', 'no') && !animal.freeRoamer) fitsFreeRoamer = true;
+
       let fitsAge = !this.activeFilter('age');
       if (animal.birthday) {
         const yearsOld = this.animalSv.yearsOld(animal)!;
@@ -152,11 +168,11 @@ export class AnimalsComponent {
         if (this.isFilterActive('age', 'old') && yearsOld >= 7) fitsAge = true;
       }
 
-      return fitsSize && fitsGender && fitsAge;
+      return fitsSize && fitsGender && fitsAge && fitsFreeRoamer;
     };
   }
 
-  getExplainer() {
+  getExplainer(animalKind: string) {
     const sizeTexts = new Map<string, string>([
       ["small", "mit bis zu 30cm Schulterhöhe"],
       ["medium", "mit 30-55cm Schulterhöhe"],
@@ -170,12 +186,17 @@ export class AnimalsComponent {
     ]);
 
     const gender = this.activeFilter("gender");
-    const genderText = gender ? (gender == "male" ? "Rüden" : "Hündinnen") : "Hunde";
+
+    const neutralText = animalKind == "Katzen" ? "Katzen" : "Hunde";
+    const maleText = animalKind == "Katzen" ? "Kater" : "Rüden";
+    const femaleText = animalKind == "Katzen" ? "Kätzinnen" : "Hündinnen";
+
+    const genderText = gender ? (gender == "male" ? maleText : femaleText) : neutralText;
     const sizeText = sizeTexts.get(this.activeFilter("size") ?? "") ?? "";
     const ageText = ageTexts.get(this.activeFilter("age") ?? "") ?? "";
 
     const text = [genderText, sizeText, ageText].join(" ");
-    if (text.trim() == "Hunde") return "";
+    if (text.trim() == neutralText) return "";
     return text;
   }
 }
