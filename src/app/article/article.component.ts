@@ -10,6 +10,7 @@ import { ArticleBlogCardsSection, BlogCardsComponent } from './article-sections/
 import { ArticleCounterSection, CounterSectionComponent } from './article-sections/counter-section/counter-section.component';
 import { ArticlePaypalButtonSection, PaypalButtonSectionComponent } from './article-sections/paypal-button-section/paypal-button-section.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FileSection, FileSectionComponent } from "./article-sections/file-section/file-section.component";
 
 export type ArticleSection =
   | ArticleTextSection
@@ -22,7 +23,8 @@ export type ArticleSection =
   | ArticleImageSection
   | SectionStartSection
   | ArticlePaypalButtonSection
-  | ArticleCounterSection;
+  | ArticleCounterSection
+  | FileSection;
 
 
 
@@ -37,17 +39,18 @@ export type ArticleRowStartSection = {
 @Component({
     selector: 'app-article',
     imports: [
-        TextSectionComponent,
-        TextImageSectionComponent,
-        HeroSectionComponent,
-        ImageSectionComponent,
-        AnimalCardsSectionComponent,
-        ButtonLinkSectionComponent,
-        SectionStartComponent,
-        BlogCardsComponent,
-        CounterSectionComponent,
-        PaypalButtonSectionComponent,
-    ],
+    TextSectionComponent,
+    TextImageSectionComponent,
+    HeroSectionComponent,
+    ImageSectionComponent,
+    AnimalCardsSectionComponent,
+    ButtonLinkSectionComponent,
+    SectionStartComponent,
+    BlogCardsComponent,
+    CounterSectionComponent,
+    PaypalButtonSectionComponent,
+    FileSectionComponent,
+],
     templateUrl: './article.component.html',
     styleUrl: './article.component.scss',
     standalone: true,
