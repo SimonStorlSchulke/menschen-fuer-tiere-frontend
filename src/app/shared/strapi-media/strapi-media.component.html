@@ -6,9 +6,13 @@
       @if (media.length == 1 || thumbnail) {
         @if(media[0] | strapiMedia; as imgSrc) {
           <img
-          class="sui rounded-2 media-container c-pointer" [class.thumbnail]="thumbnail" 
+          class="sui rounded-2 media-container c-pointer" [class.thumbnail]="thumbnail"
           [alt]="media[0].alternativeText"
           [src]="imgSrc"
+          [style.min-width]="maxWidth+'px'"
+          [style.min-height]="maxHeight+'px'"
+          [style.max-width]="maxWidth+'px'"
+          [style.max-height]="maxHeight+'px'"
           (click)="lightboxSv.openFullscreen(media, 0, [imgSrc])"
           />
         }

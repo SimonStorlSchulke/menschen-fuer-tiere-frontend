@@ -11,5 +11,7 @@ import { StrapiMediaComponent } from "../shared/strapi-media/strapi-media.compon
   styleUrl: './home-found.component.scss'
 })
 export class HomeFoundComponent {
+
+  focused = -1;
   animals$ = inject(AnimalService).getHomeFoundAnimals();
 }

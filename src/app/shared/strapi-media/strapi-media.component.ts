@@ -19,6 +19,8 @@ export class StrapiMediaComponent {
   @Input() asGallery: boolean = true;
   @Input() thumbnail: boolean = false;
   @Input() imagePosition: string = "solo";
+  @Input() maxWidth = 2000;
+  @Input() maxHeight = 2000;
   strapiSv = inject(StrapiService);
   lightboxSv = inject(LightboxService);
 }

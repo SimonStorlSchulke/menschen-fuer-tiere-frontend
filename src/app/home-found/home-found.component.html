@@ -1,10 +1,18 @@
-@if(animals$ | async; as animals) {
+@if (animals$ | async; as animals) {
+  <h3 class="sui pb-3"> 🐾❤️Grüße von...❤️🐾</h3>
+  <div class="sui flex-y gap-5">
     @for (animal of animals; track $index) {
-        <div class="card">
-            @if(animal.homeFoundArticle.images?.length! > 0) {
-                <app-strapi-media [media]="animal!.homeFoundArticle!.images!" [asGallery]="true" [thumbnail]="true"/>
-            }
-            <div class="text" [innerHTML]="animal.homeFoundArticle.text | strapiRichText"></div>
+      <div class="card sui shadow flex-x gap-5" [class.focused]="focused == $index">
+        <div style="z-index: 1">
+          @if (animal.homeFoundArticle.images?.length! > 0) {
+            <app-strapi-media [media]="animal!.homeFoundArticle!.images!" [asGallery]="true" [thumbnail]="true" [maxHeight]="300" [maxWidth]="300"/>
+          }
         </div>
+        <div (click)="focused = focused == $index ? -1 : $index"  class="text sui px-2 py-3" [innerHTML]="'<h3> ' + animal.name + ' </h3>' + (animal.homeFoundArticle.text | strapiRichText)"></div>
+        @if (focused != $index) {
+          <div class="card-overlay"><span>⌄</span></div>
+        }
+      </div>
     }
+  </div>
 }

@@ -1,6 +1,6 @@
 import { Component, Input, inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BlogArticle } from '../../../blog/blog.component';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { StrapiService } from '../../../services/strapi.service';
 import { BlogTileComponent } from '../../../blog/blog-tile/blog-tile.component';
 import { AsyncPipe } from '@angular/common';
@@ -31,10 +31,10 @@ export class BlogCardsComponent {
 
   //TODO this is horrible.
   constructor(cdRef: ChangeDetectorRef) {
-    inject(ActivatedRoute).url.subscribe((url) => {
-          if(!url[0]?.path) return;
-          const blogtype = url[0]?.path == "wissenswertes" ? "wissen" : "news"
-          this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&filters[type]=${blogtype}&pagination[pageSize]=${50}`);
+    inject(ActivatedRoute).url.pipe(tap((url) => console.log(url))).subscribe((url) => {
+          let blogtype = url[0]?.path == "wissenswertes" ? "wissen" : "news"
+           const filters = (!url[0]?.path) ? "&filters[type][$ne]=wissen" : `&filters[type]=${blogtype}`;
+          this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*${filters}&pagination[pageSize]=${50}`);
         }
       )
   }
