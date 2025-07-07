@@ -9,10 +9,10 @@
           class="sui rounded-2 media-container c-pointer" [class.thumbnail]="thumbnail"
           [alt]="media[0].alternativeText"
           [src]="imgSrc"
-          [style.min-width]="maxWidth+'px'"
-          [style.min-height]="maxHeight+'px'"
-          [style.max-width]="maxWidth+'px'"
-          [style.max-height]="maxHeight+'px'"
+          [style.min-width]="maxWidth > 0 ? maxWidth+'px' : 'unset'"
+          [style.min-height]="maxHeight > 0 ? maxHeight+'px' : 'unset'"
+          [style.max-width]="maxWidth > 0 ? maxWidth+'px' : 'unset'"
+          [style.max-height]="maxHeight > 0 ? maxHeight+'px' : 'unset'"
           (click)="lightboxSv.openFullscreen(media, 0, [imgSrc])"
           />
         }
