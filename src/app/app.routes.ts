@@ -42,6 +42,9 @@ const pageResolver: ResolveFn<DefaultPageData> = (
 
 
 export const routes: Routes = [
+  { path: 'hunde', redirectTo: '/tiere/Hunde' },
+  { path: 'katzen', redirectTo: '/tiere/Katzen' },
+  { path: 'infos', redirectTo: '/veranstaltungen' },
 /*  {
     path: 'ueber-uns',
     component: AboutComponent,
@@ -100,4 +103,5 @@ export const routes: Routes = [
   { path: 'dsgvo', component: DsgvoComponent },
   { path: 'formulare/bewerbung', component: ApplyComponent },
   { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
+
 ];
