@@ -1,7 +1,7 @@
 <app-hero [images]="[contactData.pageData.hero]"/>
 <app-article [sections]="contactData.pageData.article"/>
 
-<div class="sui wrapper mb-5">
+<div class="sui wrapper mb-5 flex-x gap-6">
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6097413406712!2d8.725226228485955!3d48.06815803382651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790a020eb7871f1%3A0xe77550d5f67e60d3!2sMenschen%20f%C3%BCr%20Tiere%20e.V.%20Tierheim!5e0!3m2!1sen!2sde!4v1742208275125!5m2!1sen!2sde"
           width="600"
           height="450"
@@ -12,9 +12,10 @@
   </iframe>
 </div>
 
+
 <div class="sui flex-x gap-6 wrapper">
   @if(sentStatus != HttpStatusCode.Ok) {
-  <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
+  <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5" style="display: none">
     <h2>Schreib uns!</h2>
     <form
       class="sui flex-y gap-5"

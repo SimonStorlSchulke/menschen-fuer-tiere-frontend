@@ -104,28 +104,24 @@ export class StrapiService {
         toReturn = image.formats.thumbnail.url;
         break;
       case "small":
-        toReturn = image.formats.small?.url ?? image.formats.thumbnail.url;
+        toReturn =
+          image.formats.small?.url ??
+          image.url;
         break;
       case "medium":
         toReturn =
           image.formats.medium?.url ??
-          image.formats.small?.url ??
-          image.formats.thumbnail.url;
+          image.url;
         break;
       case "large":
         toReturn =
           image.formats.large?.url ??
-          image.formats.medium?.url ??
-          image.formats.small?.url ??
-          image.formats.thumbnail.url;
+          image.url;
         break;
       case "xlarge":
         toReturn =
           image.formats.xlarge?.url ??
-          image.formats.large?.url ??
-          image.formats.medium?.url ??
-          image.formats.small?.url ??
-          image.formats.thumbnail.url;
+          image.url;
         break;
       case "original":
         toReturn = image.url;
