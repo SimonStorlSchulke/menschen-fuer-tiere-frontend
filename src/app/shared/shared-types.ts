@@ -56,6 +56,14 @@ export type AnimalKind = {
   article?: ArticleSection[],
 }
 
+export type SentForm = {
+  data: {
+    type?: string,
+    email?: string,
+    text?: string,
+  }
+}
+
 export type Animal = {
   id: number,
   documentId: string,

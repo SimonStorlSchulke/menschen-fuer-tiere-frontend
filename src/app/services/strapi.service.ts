@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, map } from "rxjs";
+import { Observable, map, tap } from "rxjs";
 import { StrapiFilter, StrapiMedia } from "../shared/shared-types";
 
 let showDrafts = false;
@@ -36,6 +36,13 @@ export class StrapiService {
         headers: StrapiService.headers,
       })
       .pipe(map((obj) => flattenStrapiObject(obj)));
+  }
+
+  create<T>(path: string, body: T): Observable<T> {
+    return this.httpClient.post<T>(StrapiService.apiBaseUrl + path, body, {
+      headers: StrapiService.headers,
+    })
+      .pipe(tap((obj) => console.log(obj)));
   }
 
   getWithMeta<DataT, MetaT>(path: string): Observable<[DataT, MetaT]> {
