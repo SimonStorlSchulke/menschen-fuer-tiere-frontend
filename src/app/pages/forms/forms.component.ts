@@ -41,7 +41,7 @@ export class FormsComponent {
       .forEach(formBlock => {
         const question = formBlock.querySelector("label")?.innerText ?? "";
         let input: HTMLTextAreaElement | HTMLInputElement | null = formBlock.querySelector("input");
-        if (!input) input = formBlock.querySelector("textarea");
+        input ??= formBlock.querySelector("textarea");
         const answer = input?.value || '(keine Antwort)';
 
         form.data.text += `${question}\n ${answer}\n\n`;
