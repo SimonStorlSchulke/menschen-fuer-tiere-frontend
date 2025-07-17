@@ -1,4 +1,5 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
+import { IconComponent } from '../../shared/icon/icon.component';
 import {HeroComponent} from '../../shared/hero/hero.component';
 import {ActivatedRoute, ResolveFn, RouterLink} from '@angular/router';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -29,7 +30,7 @@ export const contactResolver: ResolveFn<ContactData> = () => {
 
 @Component({
     selector: 'app-contact',
-    imports: [HeroComponent, ArticleComponent, TeammemberTileComponent, RouterLink],
+    imports: [HeroComponent, ArticleComponent, TeammemberTileComponent,IconComponent, RouterLink],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
   standalone: true,

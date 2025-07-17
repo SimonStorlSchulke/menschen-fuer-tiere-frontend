@@ -1,45 +1,61 @@
 <app-hero [images]="[contactData.pageData.hero]"/>
+<div class="sui wrapper">
+  <div class="contact  sui mb-4">
+    <span>
+      <h2>Kontakt</h2>
+        <a class="sui flex-x ai-center gap-3" href="mailto:info@menschen-fuer-tiere-spaichingen.de"> <img alt="mail icon"
+                                                                                                          aria-hidden="true"
+                                                                                                          class="sui inline-icon"
+                                                                                                          src="assets/img/mail.svg"><span>info&#64;menschen-fuer-tiere-spaichingen.de</span></a>
+        <span class="sui flex-x ai-center gap-3">
+          <icon type="phone"/><span>0 1234 / 56 78 99 - 0</span>
+        </span>
+    </span>
+  </div>
+</div>
 <app-article [sections]="contactData.pageData.article"/>
 
+
 <div class="sui wrapper mb-5 flex-x gap-6">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6097413406712!2d8.725226228485955!3d48.06815803382651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790a020eb7871f1%3A0xe77550d5f67e60d3!2sMenschen%20f%C3%BCr%20Tiere%20e.V.%20Tierheim!5e0!3m2!1sen!2sde!4v1742208275125!5m2!1sen!2sde"
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6097413406712!2d8.725226228485955!3d48.06815803382651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790a020eb7871f1%3A0xe77550d5f67e60d3!2sMenschen%20f%C3%BCr%20Tiere%20e.V.%20Tierheim!5e0!3m2!1sen!2sde!4v1742208275125!5m2!1sen!2sde"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
   </iframe>
 </div>
 
 
 <div class="sui flex-x gap-6 wrapper">
-  @if(sentStatus != HttpStatusCode.Ok) {
-  <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5" style="display: none">
-    <h2>Schreib uns!</h2>
-    <form
-      class="sui flex-y gap-5"
-      action="#"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <div class="sui flex-x gap-5">
-        <div class="form-block">
-          <input
-            (input)="onInput()"
-            #messagerName
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Name*"
-          />
+  @if (sentStatus != HttpStatusCode.Ok) {
+    <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5" style="display: none">
+      <h2>Schreib uns!</h2>
+      <form
+        class="sui flex-y gap-5"
+        action="#"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="sui flex-x gap-5">
+          <div class="form-block">
+            <input
+              (input)="onInput()"
+              #messagerName
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name*"
+            />
+          </div>
+          <div class="form-block">
+            <input (input)="onInput()" #messagerMail type="email" name="email" id="email" placeholder="Email*"/>
+          </div>
         </div>
-        <div class="form-block">
-          <input (input)="onInput()" #messagerMail type="email" name="email" id="email" placeholder="Email*"/>
-        </div>
-      </div>
 
-      <div class="form-block">
+        <div class="form-block">
       <textarea
         #message
         rows="1"
@@ -48,44 +64,34 @@
         id="message"
         placeholder="Nachricht*"
       ></textarea>
-      @if(draftsText) {
-        <span>Drafts werden ab jetzt (in diesem Browsertab) angezeigt</span>
-      }
+          @if (draftsText) {
+            <span>Drafts werden ab jetzt (in diesem Browsertab) angezeigt</span>
+          }
 
+        </div>
+
+      </form>
+      <div class="sui flex-x ai-center">
+        <input #acceptDsgvo (click)="onInput()" type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
+        <label class="sui  pl-3" for="accept-dsgvo">
+          Ich habe die <a style="color: #000; font-weight: bold" class="link" target="_blank" [routerLink]="'/dsgvo'">Datenschutzerklärung</a> gelesen. Ich
+          stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
+        </label>
       </div>
-
-    </form>
-    <div class="sui flex-x ai-center">
-      <input #acceptDsgvo (click)="onInput()" type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
-      <label class="sui  pl-3" for="accept-dsgvo">
-        Ich habe die <a style="color: #000; font-weight: bold" class="link" target="_blank" [routerLink]="'/dsgvo'">Datenschutzerklärung</a> gelesen. Ich
-        stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
-      </label>
-    </div>
-    <button [disabled]="!valid" (click)="send()" class="sui primary large">Jetzt senden</button>
-    @if(sentStatus == HttpStatusCode.TooManyRequests) {
-      <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
-        einmal.</p>
-    }
-  </section>
+      <button [disabled]="!valid" (click)="send()" class="sui primary large">Jetzt senden</button>
+      @if (sentStatus == HttpStatusCode.TooManyRequests) {
+        <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
+          einmal.</p>
+      }
+    </section>
   } @else {
     <div class="pt-5 sui rounded-3 wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
-    <h2>Danke für Ihre Zusendung!</h2>
-    <p>Wir melden uns so bald wie möglich zurück.</p>
+      <h2>Danke für Ihre Zusendung!</h2>
+      <p>Wir melden uns so bald wie möglich zurück.</p>
     </div>
   }
 
-  <div class="contact  sui mb-4">
-    <span>
-      <h2>Kontakt</h2>
-        <a class="sui flex-x ai-center gap-3" href="mailto:info@menschen-fuer-tiere-spaichingen.de"> <img alt="mail icon"
-                                                                                                       aria-hidden="true"
-                                                                                                       class="sui inline-icon"
-                                                                                                       src="assets/img/mail.svg"><span>info&#64;menschen-fuer-tiere-spaichingen.de</span></a>
-        <span class="sui flex-x ai-center gap-3"><img alt="phone icon" aria-hidden="true" class="sui inline-icon"
-                                                      src="assets/img/phone.svg"><span>0 1234 / 56 78 99 - 0</span></span>
-    </span>
-  </div>
+
 </div>
 
 

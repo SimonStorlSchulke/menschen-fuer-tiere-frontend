@@ -73,9 +73,9 @@
             <h4 class="sui w-100 text-center text-oswald pate">Vielen Dank an {{cAnimal.paten}} für die Übernahme der Patenschaft für {{cAnimal.name}}!</h4>
           }
 
-          @if(["in-spaichingen", "in-rumänien", "vermittlungshilfe"].includes(cAnimal.status)) {
+          @if(["in-spaichingen", "in-rumänien"].includes(cAnimal.status)) {
             <div class="sui flex-x gap-3">
-              <a [routerLink]="'/formulare/bewerbung'"><button class="primary">Jetzt bewerben</button></a>
+              <a [routerLink]="'/kontakt'"><button class="primary">Jetzt bewerben</button></a>
             </div>
           }
         </div>
@@ -85,12 +85,12 @@
   </div>
   <app-article [sections]="article.sections" />
 
-  @if(["in-spaichingen", "in-rumänien", "vermittlungshilfe"].includes(cAnimal.status)) {
+  @if(["in-spaichingen", "in-rumänien"].includes(cAnimal.status)) {
   <div class="sui wrapper flex-y ai-center mt-5 mb-5 gap-3">
     <h3 class="text-oswald">{{ getCtoText() }}</h3>
 
     <div class="sui flex-x gap-3">
-      <a [routerLink]="'/formulare/bewerbung'"><button class="primary">Jetzt bewerben</button></a>
+      <a [routerLink]="'/kontakt'"><button class="primary">Jetzt bewerben</button></a>
     </div>
   </div>
   }
