@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { StrapiService } from '../../services/strapi.service';
 import { BlogArticle } from '../../blog/blog.component';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, SlicePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
@@ -9,7 +9,7 @@ import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pip
 @Component({
   selector: 'app-info-popup',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, StrapiMediaPipe],
+  imports: [AsyncPipe, RouterLink, StrapiMediaPipe, SlicePipe],
   templateUrl: './info-popup.component.html',
   styleUrl: './info-popup.component.scss',
 })

@@ -13,7 +13,7 @@
               [src]="news.thumbnail | strapiMedia: 'medium'"
             />
             <div class="news sui flex-y gap-2">
-                <span class="description">{{news.description}}</span>
+                <span class="description">{{ (news.description.length>150)? (news.description | slice:0:150)+'...':(news.description) }}</span>
                 <a class="link" [routerLink]="'news/' + news.id" (click)="hideIdsForever([news.id])">Mehr erfahren ›</a>
             </div>
           </div>
