@@ -1,40 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { map } from 'rxjs';
 import { NgIf } from '@angular/common';
-import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, Router, RouterLink } from '@angular/router';
+import { AnimalArticle } from '../../../services/animal-article.service';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ArticleComponent } from '../../article/article.component';
-import { StrapiMediaPipe } from "../../article/article-sections/strapi-image.pipe";
-import { AnimalService } from '../../services/animal.service';
+import { ArticleComponent } from '../../../article/article.component';
+import { StrapiMediaPipe } from "../../../article/article-sections/strapi-image.pipe";
+import { AnimalService } from '../../../services/animal.service';
 import { Title } from '@angular/platform-browser';
-import { Animal } from '../../shared/shared-types';
+import { Animal } from '../../../shared/shared-types';
 
-
-export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
-  route: ActivatedRouteSnapshot,
-) => {
-  const name = route.paramMap.get('name')!;  //todo null savety
-  return inject(AnimalArticleService).getArticleByAnimalName(name)
-  .pipe(map(data => {
-    if(!data) return null;
-    data.preselectedAnimalId = data.animals.findIndex(a => a.name.toLocaleLowerCase() == name.toLocaleLowerCase());
-    return data;
-  }));
-}
 
 @Component({
-    selector: 'app-animal-article',
-    templateUrl: './animal-article.component.html',
-    styleUrl: './animal-article.component.scss',
-    imports: [
-        ArticleComponent,
-        StrapiMediaPipe,
-        RouterLink,
-        NgIf,
-    ]
+  selector: 'app-animal-article-print',
+  templateUrl: './animal-article-print.component.html',
+  styleUrl: './animal-article-print.component.scss',
+  imports: [
+    ArticleComponent,
+    StrapiMediaPipe,
+    RouterLink,
+    NgIf,
+  ]
 })
-export class AnimalArticleComponent {
+export class AnimalArticlePrintComponent {
   animalSv = inject(AnimalService);
   titleSv = inject(Title);
 
@@ -53,10 +40,6 @@ export class AnimalArticleComponent {
         this.selectedCv = this.article!.preselectedAnimalId;
         this.titleSv.setTitle(`${this.getDefaultTitle()} | Menschen für Tiere e.V. Spaichingen`);
       });
-  }
-
-  get cAnimal() {
-   return this.article!.animals[this.selectedCv]
   }
 
   getDefaultTitle(): string {

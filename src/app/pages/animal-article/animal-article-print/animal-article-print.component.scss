@@ -1,0 +1,138 @@
+@use "colors" as *;
+@use "variables" as *;
+
+h1 .gender-icon {
+  color: #fff;
+  width: calc($fontsize-h1 * 1);
+  height: calc($fontsize-h1 * 1.4);
+  transform: translateY(0.4rem);
+  display: inline-block;
+}
+
+.cvs {
+  .tabs {
+    max-width: fit-content;
+
+    .tab {
+      border-radius: 16px 16px 0 0;
+      font-size: $fontsize-h3;
+      padding: 12px 24px;
+      margin-right: 3px;
+
+      cursor: pointer;
+      transition:
+        background-color 0.25s,
+        color 0.25s,
+        margin 0.25s;
+
+      &.active {
+        color: $primary;
+        text-decoration: underline;
+        text-decoration-thickness: 8px;
+        text-underline-offset: 6px;
+      }
+
+      &:not(.active):hover {
+        padding-bottom: 8px;
+        margin-top: -8px;
+      }
+
+      .gender-icon {
+        width: calc($fontsize-h3 * 1.7);
+        height: calc($fontsize-h3 * 1.7);
+        transform: translateY(0.3rem);
+      }
+
+      &.active {
+
+      }
+    }
+  }
+
+  .tab-body {
+    border-radius: 0 16px 16px 16px;
+
+    .cv-image-wrapper {
+      position: relative;
+
+      .cv-img {
+        width: 320px;
+        min-width: 320px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+
+      .bubbles {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: start;
+        font-family: oswald, system-ui;
+
+        color: #fff;
+
+        span {
+          background-color: $primary;
+          border-radius: 40px;
+          padding: 4px 12px;
+
+          &.emergency {
+            background-color: $cto;
+          }
+        }
+      }
+    }
+
+    .pate {
+      color: $primary;
+    }
+
+  }
+}
+
+.cv-grid {
+  display: grid;
+  gap: 32px;
+  grid-template:
+    "a b c";
+  .cv-attributes {
+    grid-area: a;
+  }
+  .cv-description {
+    grid-area: b;
+  }
+  .cv-image-wrapper {
+    grid-area: c;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .cv-grid {
+    gap: 24px;
+    grid-template:
+    "a c" auto
+    "b b" auto;
+    grid-template-columns: 1fr auto;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .cv-grid {
+    grid-template:
+    "a"
+    "c"
+    "b";
+  }
+}
+
+.gender-icon {
+  height: 42px;
+  width: 42px;
+  object-fit: fill;
+}

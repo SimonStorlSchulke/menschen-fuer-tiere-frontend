@@ -1,4 +1,6 @@
 import { ActivatedRouteSnapshot, ResolveFn, Routes } from '@angular/router';
+import { DefaultLayoutComponent } from 'src/app/layout/default-layout/default-layout.component';
+import { AnimalArticlePrintComponent } from 'src/app/pages/animal-article/animal-article-print/animal-article-print.component';
 import {
   AnimalArticleComponent,
   animalArticleResolver,
@@ -42,66 +44,83 @@ const pageResolver: ResolveFn<DefaultPageData> = (
 
 
 export const routes: Routes = [
-  { path: 'hunde', redirectTo: '/tiere/Hunde' },
-  { path: 'katzen', redirectTo: '/tiere/Katzen' },
-  { path: 'infos', redirectTo: '/veranstaltungen' },
-/*  {
-    path: 'ueber-uns',
-    component: AboutComponent,
-    data: { title: 'Über uns' },
-    resolve: { aboutData: aboutResolver },
-  },*/
-  {
-    path: 'tiere',
-    component: AnimalsComponent,
-    data: { title: 'Tiere' },
-    resolve: {animalKindsData: animalsResolver },
-  },
-  {
-    path: 'tiere/:animalKind',
-    component: AnimalsComponent,
-    data: { title: 'Tiere' },
-    resolve: {animalKindsData: animalsResolver },
-  },
-  {
-    path: 'tierartikel/:name',
-    component: AnimalArticleComponent,
-    data: { title: 'dynamic' },
-    resolve: { animalArticle: animalArticleResolver },
-  },
-/*  {
-    path: 'veranstaltungen',
-    component: NewsComponent,
-    data: { title: 'Veranstaltungen' },
-    resolve: { newsData: newsResolver },
-  },
-  {
-    path: 'wissenswertes',
-    component: KnowledgeComponent,
-    data: { title: 'Wissenswertes' },
-    resolve: { newsData: newsResolver },
-  },*/
-  {
-    path: 'news/:id',
-    component: BlogComponent,
-    data: { title: 'News & Wissen' },
-    resolve: { articleData: blogArticleResolver },
-  },
-  {
-    path: 'kontakt',
-    component: ContactComponent,
-    data: { title: 'Kontakt' },
-    resolve: { contactData: contactResolver },
-  },
-  {
-    path: 'sponsoren',
-    component: SponsorsComponent,
-    data: { title: 'Sponsoren' },
-    resolve: { pageData: sponsorsResolver },
-  },
-  { path: 'impressum', component: ImprintComponent },
-  { path: 'dsgvo', component: DsgvoComponent },
-  { path: 'formulare/bewerbung', component: ApplyComponent },
-  { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
 
+  {
+    path: 'print',
+    children: [
+      {
+        path: 'tierartikel/:name',
+        component: AnimalArticlePrintComponent,
+        data: { title: 'dynamic' },
+        resolve: { animalArticle: animalArticleResolver },
+      },
+    ]
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    children: [
+      { path: 'hunde', redirectTo: '/tiere/Hunde' },
+      { path: 'katzen', redirectTo: '/tiere/Katzen' },
+      { path: 'infos', redirectTo: '/veranstaltungen' },
+      /*  {
+          path: 'ueber-uns',
+          component: AboutComponent,
+          data: { title: 'Über uns' },
+          resolve: { aboutData: aboutResolver },
+        },*/
+      {
+        path: 'tiere',
+        component: AnimalsComponent,
+        data: { title: 'Tiere' },
+        resolve: {animalKindsData: animalsResolver },
+      },
+      {
+        path: 'tiere/:animalKind',
+        component: AnimalsComponent,
+        data: { title: 'Tiere' },
+        resolve: {animalKindsData: animalsResolver },
+      },
+      {
+        path: 'tierartikel/:name',
+        component: AnimalArticleComponent,
+        data: { title: 'dynamic' },
+        resolve: { animalArticle: animalArticleResolver },
+      },
+      /*  {
+          path: 'veranstaltungen',
+          component: NewsComponent,
+          data: { title: 'Veranstaltungen' },
+          resolve: { newsData: newsResolver },
+        },
+        {
+          path: 'wissenswertes',
+          component: KnowledgeComponent,
+          data: { title: 'Wissenswertes' },
+          resolve: { newsData: newsResolver },
+        },*/
+      {
+        path: 'news/:id',
+        component: BlogComponent,
+        data: { title: 'News & Wissen' },
+        resolve: { articleData: blogArticleResolver },
+      },
+      {
+        path: 'kontakt',
+        component: ContactComponent,
+        data: { title: 'Kontakt' },
+        resolve: { contactData: contactResolver },
+      },
+      {
+        path: 'sponsoren',
+        component: SponsorsComponent,
+        data: { title: 'Sponsoren' },
+        resolve: { pageData: sponsorsResolver },
+      },
+      { path: 'impressum', component: ImprintComponent },
+      { path: 'dsgvo', component: DsgvoComponent },
+      { path: 'formulare/bewerbung', component: ApplyComponent },
+      { path: '**', component: DefaultPageComponent, resolve: { pageData: pageResolver } },
+    ]
+  },
 ];
