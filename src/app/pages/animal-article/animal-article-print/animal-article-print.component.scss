@@ -1,6 +1,10 @@
 @use "colors" as *;
 @use "variables" as *;
 
+::ng-deep body {
+  background: #fff !important;
+}
+
 h1 .gender-icon {
   color: #fff;
   width: calc($fontsize-h1 * 1);
