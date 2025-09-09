@@ -73,3 +73,21 @@
         width: calc(100dvw - 60px);
     }
 }
+
+
+.reserved {
+  position: absolute;
+  bottom: 72px;
+  right: 8px;
+  z-index: 1;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background-color: $accent;
+  outline: 2px solid $yellow;
+  font-size: $fontsize-small;
+  color: $text;
+  text-underline: none !important;
+  margin-top: 8px;
+  font-weight: normal;
+}
+

@@ -25,7 +25,7 @@ h1 .gender-icon {
         color 0.25s,
         margin 0.25s;
 
-      &.active {
+      &.active .name {
         color: $primary;
         text-decoration: underline;
         text-decoration-thickness: 8px;
@@ -41,10 +41,6 @@ h1 .gender-icon {
         width: calc($fontsize-h3 * 1.7);
         height: calc($fontsize-h3 * 1.7);
         transform: translateY(0.3rem);
-      }
-
-      &.active {
-
       }
     }
   }
@@ -135,4 +131,17 @@ h1 .gender-icon {
   height: 42px;
   width: 42px;
   object-fit: fill;
+}
+
+.reserved {
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background-color: $accent;
+  outline: 2px solid $yellow;
+  font-size: $fontsize-default;
+  color: $text;
+  text-underline: none !important;
+  margin-top: 8px;
+  font-weight: normal;
 }

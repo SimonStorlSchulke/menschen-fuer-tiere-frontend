@@ -4,6 +4,9 @@
     @if(!animal.publishedAt) {
         <span class="draft">draft</span>
     }
+    @if(animal.reserved) {
+        <span class="reserved">reserviert</span>
+    }
     <div class="sui flex-x center ai-center name-row">
         <span class="sui text-oswald text-secondary text-center p-1 px-2">{{animal.name}}</span>
         @if(animal.gender == "male") {

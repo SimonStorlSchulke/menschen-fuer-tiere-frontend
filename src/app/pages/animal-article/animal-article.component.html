@@ -2,13 +2,18 @@
   <div class="sui wrapper">
     <div class="sui pt-4">
       <div class="sui flex-x ai-center">
-        <h1 class="sui grow-1 mb-3 flex-x ai-center gap-4">
-          <a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/' + article.animals[0].animalKind?.namePlural">&lt; </a>
-          {{ getDefaultTitle() }}
-          @if(article.animals.length == 1) {
-            <img [alt]="article.animals[0].gender" class="gender-icon" [src]="getGendericon(article.animals[0])" />
+        <div class="sui grow-1 flex-y">
+          <h1 class="sui mb-3 flex-x ai-center gap-4">
+            <a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/' + article.animals[0].animalKind?.namePlural">&lt; </a>
+            {{ getDefaultTitle() }}
+            @if(article.animals.length == 1) {
+              <img [alt]="article.animals[0].gender" class="gender-icon" [src]="getGendericon(article.animals[0])" />
+            }
+          </h1>
+          @if(article.animals.length == 1 && article.animals[0].reserved) {
+            <span class="reserved">reserviert</span>
           }
-        </h1>
+        </div>
         <a class="print" [routerLink]="['/print/tierartikel', article.animals[0].name]" target="_blank">
           <img alt="print" class="sui inline-icon" src="assets/icons/printer.svg">
         </a>
@@ -19,8 +24,11 @@
           @if(article.animals.length > 1) {
             @for (animal of article.animals; track animal.id) {
               <div class="tab sui p-3 text-oswald ai-center flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
-                <span>{{ article.animals.length > 1 ? animal.name : "Steckbrief" }}</span>
+                <span class="name">{{ article.animals.length > 1 ? animal.name : "Steckbrief" }}</span>
                 <img [alt]="animal.gender" class="gender-icon" [src]="getGendericon(animal)" />
+                @if(animal.reserved) {
+                  <span class="reserved">reserviert</span>
+                }
               </div>
             }
           }

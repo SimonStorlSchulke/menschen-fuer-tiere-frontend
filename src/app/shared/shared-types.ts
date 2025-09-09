@@ -92,6 +92,7 @@ export type Animal = {
     updatedAt: string,
   },
   homeFoundArticle: ArticleTextWithImageSection,
+  reserved?: boolean | null,
 }
 
 export type AnimalStatusName = "in-spaichingen" | "in-rumänien" | "vermittlungshilfe" | "zuhause-gefunden" | "vermisst" | "fundtier";
