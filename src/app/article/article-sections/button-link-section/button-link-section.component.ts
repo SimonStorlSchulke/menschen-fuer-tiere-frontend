@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, computed, input, Input} from '@angular/core';
 
 export type ButtonLinkSection = {
   __component: 'article-section.button-link';
@@ -15,5 +15,10 @@ export type ButtonLinkSection = {
     styleUrl: './button-link-section.component.scss'
 })
 export class ButtonLinkSectionComponent {
-  @Input({required: true}) sectionData!: ButtonLinkSection;
+  sectionData = input.required<ButtonLinkSection>();
+
+  isExternalLink = computed(() =>
+    this.sectionData().link.startsWith('http')
+    && !this.sectionData().link.includes('menschen-fuer-tiere-spaichingen.de')
+  );
 }

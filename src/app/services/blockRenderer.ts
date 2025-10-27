@@ -19,7 +19,7 @@ function renderRichTextNode(node: RichTextNode): string {
             }
             return text;
         case 'link':
-            return `<a  ${convertButtonLinks(`href="${node.url}"`)}>${renderChildren(node.children)}</a>`;
+            return `<a  ${convertButtonLinks(`href="${node.url}" target="${getLinkTarget(node.url)}"`)}>${renderChildren(node.children)}</a>`;
         case 'image':
             return `<img src="${node.image?.url}" alt="${node.image?.alternativeText}" width="${node.image?.width}" height="${node.image?.height}" />`;
         case 'list':
@@ -46,6 +46,10 @@ function convertButtonLinks(linkUrl: string) {
     return linkUrl.replace("-BUTTON", "").replace('href=', 'class="button primary sui my-3 inline-block" href=');
   }
   return linkUrl;
+}
+
+function getLinkTarget(url: string | undefined) {
+  return (url?.startsWith('http') && !url?.includes('menschen-fuer-tiere-spaichingen.de')) ? '_blank' : '_self';
 }
 
 function renderChildren(children?: RichTextNode[]): string {
