@@ -9,6 +9,7 @@ import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pip
 export type SponsorsData = {
   sponsors: { name: string, description?: string, icon: StrapiMedia }[],
   article: ArticleSection[],
+  article2: ArticleSection[],
 }
 
 export const sponsorsResolver: ResolveFn<SponsorsData> = () => {
