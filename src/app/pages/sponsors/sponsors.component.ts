@@ -13,7 +13,7 @@ export type SponsorsData = {
 }
 
 export const sponsorsResolver: ResolveFn<SponsorsData> = () => {
-  return inject(AnimalArticleService).getAndInsertAnimalLinks<SponsorsData>("sponsor?populate[article][populate]=*&populate[sponsors][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<SponsorsData>("sponsor?populate[article][populate]=*&populate[article2][populate]=*&populate[sponsors][populate]=*");
 }
 
 @Component({
@@ -33,6 +33,7 @@ export class SponsorsComponent {
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
       .subscribe( ({ pageData }) => {
+        console.log(pageData);
           this.pageData = pageData;
         }
       );
