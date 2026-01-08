@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
 import { StrapiMediaPipe } from '../strapi-image.pipe';
 import { StrapiMedia } from '../../../shared/shared-types';
 
@@ -11,7 +10,7 @@ export type ArticleHeroSection = {
 
 @Component({
     selector: 'app-hero-section',
-    imports: [StrapiRichTextPipe, StrapiMediaPipe],
+    imports: [StrapiMediaPipe],
     templateUrl: './hero-section.component.html',
     styleUrl: './hero-section.component.scss',
   standalone: true,
