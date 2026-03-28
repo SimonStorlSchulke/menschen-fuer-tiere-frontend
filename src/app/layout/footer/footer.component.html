@@ -9,13 +9,13 @@
 <div class="footer bg-lightgreen sui flex-y">
   <div class="footer-top wrapper">
     <div>
-    <h2>Unsere Öffnungszeiten</h2>
-    Mi - Fr. 16.30 - 18.00 Uhr
-    oder nach Vereinbarung
+      <h2>Unsere Öffnungszeiten</h2>
+      Mi - Fr. 16.30 - 18.00 Uhr
+      oder nach Vereinbarung
       <br><br>
-    <a routerLink="/">
-      <img alt="menschen-fuer-tiere-logo" class="sui flex-y gap-2" src="assets/img/mfts-logo-mono.png"/>
-    </a>
+      <a routerLink="/">
+        <img alt="menschen-fuer-tiere-logo" class="sui flex-y gap-2" src="assets/img/mfts-logo-mono.png"/>
+      </a>
     </div>
     <div class="sui flex-y gap-2">
       <h2>Spenden</h2>
@@ -24,11 +24,25 @@
       Kreditinstitut: Kreissparkasse Tuttlingen<br>
       IBAN : DE77 6435 0070 0000 4865 52<br>
       BIC: SOLADES1TUT<br>
-      Verwendungszweck: Spende<br><br>
+      Verwendungszweck: Spende<br>
 
-      Zweites Spendenkonto und weitere Infos unter Menüpunkt Helfen
-
-      <br><br>
+      <app-paypal-button-section [sectionData]="{__component: 'article-section.paypal-button',background: 'nein'}"/>
+      Weitere Infos unter Menüpunkt Helfen
+    </div>
+    <div class="sui flex-y gap-2">
+      <span>
+        <h2 style="text-decoration: underline; text-underline-offset: 8px"><a [routerLink]="'kontakt'">Kontakt</a></h2>
+        Jahnweg 8<br>
+        78549 Spaichingen<br><br>
+        <a class="sui flex-x ai-center gap-3 mb-2" href="mailto:info@menschen-fuer-tiere-spaichingen.de">
+          <icon type="mail"/>
+          <span>info&#64;menschen-fuer-tiere-spaichingen.de</span>
+        </a>
+        <span class="sui flex-x ai-center gap-3">
+          <icon type="phone"/><span>+49 7424 6517 oder +49 7424 9313661</span>
+        </span>
+      </span>
+      <br>
       <h3 class="sui pt-3">Soziale Netzwerke</h3>
       <span class="sui flex-x ai-center gap-3">
         <a aria-label="Unsere Facebook Seite" href="https://www.facebook.com/TierschutzvereinMenschenFuerTiereSpaichingen/?locale=de_DE">
@@ -37,22 +51,6 @@
         <a aria-label="Unsere Instagram Seite" href="https://www.instagram.com/tierheimspaichingen/">
           <icon type="instagram" size="large"/>
         </a></span>
-
-    </div>
-    <div class="sui flex-y gap-2">
-      <span>
-        <h2 style="text-decoration: underline; text-underline-offset: 8px"><a [routerLink]="'kontakt'" >Kontakt</a></h2>
-        Jahnweg 8<br>
-        78549 Spaichingen<br><br>
-      <a class="sui flex-x ai-center gap-3 mb-2" href="mailto:info@menschen-fuer-tiere-spaichingen.de">
-        <icon type="mail"/>
-        <span>info&#64;menschen-fuer-tiere-spaichingen.de</span>
-      </a>
-      <span class="sui flex-x ai-center gap-3">
-        <icon type="phone"/><span>+49 7424 6517 ...oder +49 7424 9313661</span>
-      </span>
-      </span>
-      <app-paypal-button-section [sectionData]="{__component: 'article-section.paypal-button',background: 'nein'}"/>
     </div>
   </div>
 
